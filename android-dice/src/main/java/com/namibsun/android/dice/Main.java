@@ -1,6 +1,7 @@
 package com.namibsun.android.dice;
 
 import android.content.Context;
+import android.opengl.Matrix;
 import android.os.CountDownTimer;
 import android.os.Vibrator;
 import android.support.v7.app.ActionBarActivity;
@@ -18,6 +19,7 @@ public class Main extends ActionBarActivity {
 
     private ImageView image;
     private Vibrator vibrator;
+    private int animationCount = 0;
 
     /**
      * Method run when created
@@ -65,20 +67,25 @@ public class Main extends ActionBarActivity {
     }
 
     public void rollDice(View view) {
-        //this.image.setEnabled(false);
+        this.image.setEnabled(false);
         this.vibrator.vibrate(2000);
 
-        new CountDownTimer(2000, 100) {
+        new CountDownTimer(2000, 5) {
             public void onTick(long millisUntilFinished) {
-                Main.this.image.setImageResource(getRandomImage());
+                rotateImage(Main.this.image);
+                if (Main.this.animationCount == 10) {
+                    Main.this.image.setImageResource(getRandomImage());
+                    Main.this.animationCount = 0;
+                } else {
+                    Main.this.animationCount++;
+                }
             }
 
             public void onFinish() {
-                Main.this.image.setImageResource(getRandomImage());
+                straightenImage(Main.this.image);
+                Main.this.image.setEnabled(true);
             }
         }.start();
-
-        //this.image.setEnabled(true);
     }
 
     /**
@@ -87,6 +94,7 @@ public class Main extends ActionBarActivity {
      */
     private int getRandomImage() {
         int random = (int) (Math.random() * 6 + 1);
+        System.out.print(random);
         switch(random) {
             case 1: return R.drawable.diceone500;
             case 2: return R.drawable.dicetwo500;
@@ -96,5 +104,42 @@ public class Main extends ActionBarActivity {
             case 6: return R.drawable.dicesix500;
             default: return R.drawable.diceone500;
         }
+    }
+
+    private int getSemiRandomImage(int last) {
+        int random = getRandomImage();
+        while(random == last) {
+            random = getRandomImage();
+        }
+        return random;
+    }
+
+    private void rotateImage(ImageView image) {
+
+        float rotation = image.getRotation();
+        if (rotation == 0.0f) {
+            image.setRotation(1.1f);
+        } else if (rotation > 0.0f && rotation < 10.0f) {
+            if ((rotation - (int)rotation) < 0.5f) {
+                image.setRotation(rotation + 1.0f);
+            } else {
+                image.setRotation(rotation - 1.0f);
+            }
+        } else if (rotation >= 10.0f) {
+            image.setRotation(9.9f);
+        } else if (rotation < 0.0f && rotation > -10.0f) {
+            if (((-1.0f * rotation) + (int)rotation) < 0.5f) {
+                image.setRotation(rotation - 1.0f);
+            } else {
+                image.setRotation(rotation + 1.0f);
+            }
+        } else if (rotation <= -10.0f) {
+            image.setRotation(-9.9f);
+        }
+
+    }
+
+    private void straightenImage(ImageView image) {
+        image.setRotation(0);
     }
 }
