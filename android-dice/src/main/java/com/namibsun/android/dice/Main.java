@@ -42,7 +42,7 @@ public class Main extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        //getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -70,10 +70,10 @@ public class Main extends ActionBarActivity {
         this.image.setEnabled(false);
         this.vibrator.vibrate(2000);
 
-        new CountDownTimer(2000, 5) {
+        new CountDownTimer(2000, 10) {
             public void onTick(long millisUntilFinished) {
                 rotateImage(Main.this.image);
-                if (Main.this.animationCount == 10) {
+                if (Main.this.animationCount == 5) {
                     Main.this.image.setImageResource(getRandomImage());
                     Main.this.animationCount = 0;
                 } else {
@@ -118,23 +118,23 @@ public class Main extends ActionBarActivity {
 
         float rotation = image.getRotation();
         if (rotation == 0.0f) {
-            image.setRotation(1.1f);
-        } else if (rotation > 0.0f && rotation < 10.0f) {
-            if ((rotation - (int)rotation) < 0.5f) {
-                image.setRotation(rotation + 1.0f);
+            image.setRotation(1.000001f);
+        } else if (rotation > 0.0f && rotation < 11.0f) {
+            if ((rotation - Math.floor(rotation)) < 0.5f) {
+                image.setRotation(rotation + 2.0f);
             } else {
-                image.setRotation(rotation - 1.0f);
+                image.setRotation(rotation - 2.0f);
             }
         } else if (rotation >= 10.0f) {
-            image.setRotation(9.9f);
-        } else if (rotation < 0.0f && rotation > -10.0f) {
-            if (((-1.0f * rotation) + (int)rotation) < 0.5f) {
-                image.setRotation(rotation - 1.0f);
+            image.setRotation(9.999999f);
+        } else if (rotation < 0.0f && rotation > -11.0f) {
+            if (((-1.0f * rotation) + Math.ceil(rotation)) < 0.5f) {
+                image.setRotation(rotation - 2.0f);
             } else {
-                image.setRotation(rotation + 1.0f);
+                image.setRotation(rotation + 2.0f);
             }
         } else if (rotation <= -10.0f) {
-            image.setRotation(-9.9f);
+            image.setRotation(-8.999999f);
         }
 
     }
