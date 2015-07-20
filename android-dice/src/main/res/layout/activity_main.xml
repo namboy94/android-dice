@@ -12,9 +12,9 @@
             android:clickable="true"
             android:onClick="rollDice"
             android:id="@+id/dice_image"
-            android:src="@drawable/dice1"
+            android:src="@drawable/diceone500"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:contentDescription="bla"/>
 
 </RelativeLayout>

@@ -88,13 +88,13 @@ public class Main extends ActionBarActivity {
     private int getRandomImage() {
         int random = (int) (Math.random() * 6 + 1);
         switch(random) {
-            case 1: return R.drawable.dice1;
-            case 2: return R.drawable.dice2;
-            case 3: return R.drawable.dice3;
-            case 4: return R.drawable.dice4;
-            case 5: return R.drawable.dice5;
-            case 6: return R.drawable.dice6;
-            default: return R.drawable.dice1;
+            case 1: return R.drawable.diceone500;
+            case 2: return R.drawable.dicetwo500;
+            case 3: return R.drawable.dicethree500;
+            case 4: return R.drawable.dicefour500;
+            case 5: return R.drawable.dicefive500;
+            case 6: return R.drawable.dicesix500;
+            default: return R.drawable.diceone500;
         }
     }
 }
