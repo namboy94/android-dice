@@ -1,5 +1,6 @@
 package com.namibsun.android.dice;
 
+import android.media.Image;
 import android.os.CountDownTimer;
 import android.widget.ImageView;
 
@@ -40,6 +41,7 @@ public class SingleDice {
 
             public void onFinish() {
                 straightenDice();
+                SingleDice.this.dice.setImageResource(getRandom());
                 SingleDice.this.dice.setEnabled(true);
             }
         }.start();
