@@ -12,7 +12,7 @@
             android:clickable="true"
             android:onClick="rollDice"
             android:id="@+id/dice_image"
-            android:src="@drawable/diceone500"
+            android:src="@drawable/dice5"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true" android:layout_centerInParent="true"/>

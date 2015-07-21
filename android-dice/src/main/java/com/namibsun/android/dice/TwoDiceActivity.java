@@ -64,6 +64,10 @@ public class TwoDiceActivity extends Activity {
             Intent menuIntent = new Intent(this, Main.class);
             startActivity(menuIntent);
             return true;
+        } else if (id == R.id.risk_action) {
+            Intent menuIntent = new Intent(this, RiskDice.class);
+            startActivity(menuIntent);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -77,6 +81,6 @@ public class TwoDiceActivity extends Activity {
         ArrayList<ImageView> dice = new ArrayList<ImageView>();
         dice.add(this.image1);
         dice.add(this.image2);
-        new MultiDice(dice).rollDice();
+        new MultiDice(dice, DiceColor.WHITEBLACK).rollDice();
     }
 }

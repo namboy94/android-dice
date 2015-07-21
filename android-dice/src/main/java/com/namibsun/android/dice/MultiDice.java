@@ -5,6 +5,8 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 
+import static com.namibsun.android.dice.DiceColor.WHITEBLACK;
+
 /**
  * Class that is used to simulate an indefinite amount of dice.
  * @author Hermann Krumrey (hermann@krumreyh.com)
@@ -12,13 +14,16 @@ import java.util.ArrayList;
 public class MultiDice {
 
     private ArrayList<ImageView> dice;
+    private DiceColor color;
+
 
     /**
      * Constructor that loads an Arraylist of dice elements to the class's private variables
      * @param dice - the dice to be loaded
      */
-    public MultiDice(ArrayList<ImageView> dice) {
+    public MultiDice(ArrayList<ImageView> dice, DiceColor color) {
         this.dice = dice;
+        this.color = color;
     }
 
     /**
@@ -74,15 +79,33 @@ public class MultiDice {
      * @return the id of a pseudo random die
      */
     private int getPseudoRandom(int key, int counter) {
-        switch ((((key + counter) * 2) % 6) + 1) {
-            case 1: return R.drawable.diceone500;
-            case 2: return R.drawable.dicetwo500;
-            case 3: return R.drawable.dicethree500;
-            case 4: return R.drawable.dicefour500;
-            case 5: return R.drawable.dicefive500;
-            case 6: return R.drawable.dicesix500;
-            default: return R.drawable.dicesix500;
+        switch (this.color) {
+            case WHITEBLACK:    switch ((((key + counter) * 2) % 6) + 1) {
+                                case 1: return R.drawable.dice1;
+                                case 2: return R.drawable.dice2;
+                                case 3: return R.drawable.dice3;
+                                case 4: return R.drawable.dice4;
+                                case 5: return R.drawable.dice5;
+                                case 6: return R.drawable.dice6;
+                                }
+            case REDWHITE:      switch ((((key + counter) * 2) % 6) + 1) {
+                                case 1: return R.drawable.dice1red;
+                                case 2: return R.drawable.dice2red;
+                                case 3: return R.drawable.dice3red;
+                                case 4: return R.drawable.dice4red;
+                                case 5: return R.drawable.dice5red;
+                                case 6: return R.drawable.dice6red;
+                                }
+            case BLUEWHITE:     switch ((((key + counter) * 2) % 6) + 1) {
+                                case 1: return R.drawable.dice1blue;
+                                case 2: return R.drawable.dice2blue;
+                                case 3: return R.drawable.dice3blue;
+                                case 4: return R.drawable.dice4blue;
+                                case 5: return R.drawable.dice5blue;
+                                case 6: return R.drawable.dice6blue;
+                                }
         }
+        return 0;
     }
 
     /**
@@ -91,16 +114,33 @@ public class MultiDice {
      */
     private int getRandom() {
         int random = (int) (Math.random() * 6 + 1);
-        System.out.print(random);
-        switch(random) {
-            case 1: return R.drawable.diceone500;
-            case 2: return R.drawable.dicetwo500;
-            case 3: return R.drawable.dicethree500;
-            case 4: return R.drawable.dicefour500;
-            case 5: return R.drawable.dicefive500;
-            case 6: return R.drawable.dicesix500;
-            default: return R.drawable.diceone500;
+        switch (this.color) {
+            case WHITEBLACK:    switch (random) {
+                case 1: return R.drawable.dice1;
+                case 2: return R.drawable.dice2;
+                case 3: return R.drawable.dice3;
+                case 4: return R.drawable.dice4;
+                case 5: return R.drawable.dice5;
+                case 6: return R.drawable.dice6;
+            }
+            case REDWHITE:      switch (random) {
+                case 1: return R.drawable.dice1red;
+                case 2: return R.drawable.dice2red;
+                case 3: return R.drawable.dice3red;
+                case 4: return R.drawable.dice4red;
+                case 5: return R.drawable.dice5red;
+                case 6: return R.drawable.dice6red;
+            }
+            case BLUEWHITE:     switch (random) {
+                case 1: return R.drawable.dice1blue;
+                case 2: return R.drawable.dice2blue;
+                case 3: return R.drawable.dice3blue;
+                case 4: return R.drawable.dice4blue;
+                case 5: return R.drawable.dice5blue;
+                case 6: return R.drawable.dice6blue;
+            }
         }
+        return 0;
     }
 
     /**

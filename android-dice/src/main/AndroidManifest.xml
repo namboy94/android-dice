@@ -14,12 +14,17 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".TwoDiceActivity"
-            android:label="@string/title_activity_two_dice">
+            android:label="@string/title_activity_two_dice" >
+        </activity>
+        <activity
+            android:name=".RiskDice"
+            android:label="@string/title_activity_risk_dice" >
         </activity>
     </application>
 

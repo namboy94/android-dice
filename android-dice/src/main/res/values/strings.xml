@@ -8,4 +8,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="one_dice">One Dice</string>
     <string name="two_dice">Two Dice</string>
+    <string name="title_activity_risk_dice">Risk Dice</string>
+    <string name="risk">Risk Dice</string>
 </resources>

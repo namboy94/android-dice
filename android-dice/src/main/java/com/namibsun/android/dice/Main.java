@@ -67,6 +67,10 @@ public class Main extends Activity {
             Intent menuIntent = new Intent(this, TwoDiceActivity.class);
             startActivity(menuIntent);
             return true;
+        } else if (id == R.id.risk_action) {
+            Intent menuIntent = new Intent(this, RiskDice.class);
+            startActivity(menuIntent);
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -80,6 +84,6 @@ public class Main extends Activity {
         this.vibrator.vibrate(2000);
         ArrayList<ImageView> dice = new ArrayList<ImageView>();
         dice.add(this.image);
-        new MultiDice(dice).rollDice();
+        new MultiDice(dice, DiceColor.WHITEBLACK).rollDice();
     }
 }
