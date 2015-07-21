@@ -11,13 +11,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
 
+/**
+ * Android Activity that enables the rolling of two dice
+ * @author  Hermann Krumrey (hermann@krumreyh.com)
+ */
 public class TwoDiceActivity extends Activity {
 
     private ImageView image1;
     private ImageView image2;
     private Vibrator vibrator;
 
+    /**
+     * Method run when created, gets objects in layout and saves them to local variables
+     * @param savedInstanceState - android-default-thingamajig
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +36,11 @@ public class TwoDiceActivity extends Activity {
         this.vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
     }
 
+    /**
+     * Method run when mnu is being created
+     * @param menu - the menu being created
+     * @return true
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -34,6 +48,11 @@ public class TwoDiceActivity extends Activity {
         return true;
     }
 
+    /**
+     * Method run when an option on the menu is selected
+     * @param item - the selected item
+     * @return true, I guess?
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -49,8 +68,15 @@ public class TwoDiceActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Rolls the dice
+     * @param view - the active view
+     */
     public void rollDice(View view) {
         this.vibrator.vibrate(2000);
-        new TwoDice(this.image1, this.image2).rollDice();
+        ArrayList<ImageView> dice = new ArrayList<ImageView>();
+        dice.add(this.image1);
+        dice.add(this.image2);
+        new MultiDice(dice).rollDice();
     }
 }

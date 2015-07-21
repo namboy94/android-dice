@@ -13,8 +13,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+
 /**
  * Main Activity class of the android app
+ * It allows to roll a single dice
  * @author  Hermann Krumrey (hermann@krumreyh.com)
  */
 public class Main extends Activity {
@@ -24,8 +27,8 @@ public class Main extends Activity {
     private int animationCount = 0;
 
     /**
-     * Method run when created
-     * @param savedInstanceState -
+     * Method run when created, gets objects in layout and saves them to local variables
+     * @param savedInstanceState - android-default-thingamajig
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +40,10 @@ public class Main extends Activity {
 
 
     /**
-     * Method run when created
-     * @param menu -
-     * @return
+     * Method run when mnu is being created
+     * @param menu - the menu being created
+     * @return true
      */
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -50,9 +52,9 @@ public class Main extends Activity {
     }
 
     /**
-     * Method run when created
-     * @param item -
-     * @return -
+     * Method run when an option on the menu is selected
+     * @param item - the selected item
+     * @return true, I guess?
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -70,8 +72,14 @@ public class Main extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Rolls the dice
+     * @param view - the active view
+     */
     public void rollDice(View view) {
         this.vibrator.vibrate(2000);
-        new SingleDice(this.image).rollDice();
+        ArrayList<ImageView> dice = new ArrayList<ImageView>();
+        dice.add(this.image);
+        new MultiDice(dice).rollDice();
     }
 }
