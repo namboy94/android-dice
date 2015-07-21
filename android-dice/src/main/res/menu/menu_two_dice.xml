@@ -2,7 +2,7 @@
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
       tools:context=".TwoDiceActivity">
-    <item android:id="@+id/action_settings"
+    <item android:id="@+id/action_one"
           android:title="@string/one_dice"
           android:orderInCategory="100"
           app:showAsAction="never" />

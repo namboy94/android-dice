@@ -2,6 +2,7 @@ package com.namibsun.android.dice;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Vibrator;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -40,8 +41,9 @@ public class TwoDiceActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_one) {
+            Intent menuIntent = new Intent(this, Main.class);
+            startActivity(menuIntent);
             return true;
         }
         return super.onOptionsItemSelected(item);
