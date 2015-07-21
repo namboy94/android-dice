@@ -1,5 +1,6 @@
 package com.namibsun.android.dice;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Vibrator;
 import android.support.v7.app.ActionBarActivity;
@@ -10,7 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 
-public class TwoDiceActivity extends ActionBarActivity {
+public class TwoDiceActivity extends Activity {
 
     private ImageView image1;
     private ImageView image2;
@@ -24,7 +25,6 @@ public class TwoDiceActivity extends ActionBarActivity {
         this.image2 = (ImageView) findViewById(R.id.dice2_image);
         this.vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -44,7 +44,6 @@ public class TwoDiceActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 

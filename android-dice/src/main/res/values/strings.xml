@@ -7,4 +7,5 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="one_dice">One Dice</string>
+    <string name="two_dice">Two Dice</string>
 </resources>

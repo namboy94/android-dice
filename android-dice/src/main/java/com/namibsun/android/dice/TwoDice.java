@@ -29,8 +29,7 @@ public class TwoDice {
             int key = 0;
 
             public void onTick(long millisUntilFinished) {
-                wiggleDice(1);
-                wiggleDice(2);
+                wiggleDice();
                 if (timer == 5) {
                     changeDice(getPseudoRandom(key, 0), dice1);
                     changeDice(getPseudoRandom(key, 100), dice2);
@@ -117,51 +116,34 @@ public class TwoDice {
         }
     }
 
-    private void wiggleDice(int dice) {
-        if (dice == 1) {
+    private void wiggleDice() {
             float rotation = dice1.getRotation();
             if (rotation == 0.0f) {
                 dice1.setRotation(1.000001f);
+                dice2.setRotation(-1.000001f);
             } else if (rotation > 0.0f && rotation < 11.0f) {
                 if ((rotation - Math.floor(rotation)) < 0.5f) {
                     dice1.setRotation(rotation + 2.0f);
+                    dice2.setRotation((-1.0f * rotation) - 2.0f);
                 } else {
                     dice1.setRotation(rotation - 2.0f);
+                    dice2.setRotation((-1.0f * rotation) + 2.0f);
                 }
             } else if (rotation >= 10.0f) {
                 dice1.setRotation(9.999999f);
+                dice2.setRotation(-9.999999f);
             } else if (rotation < 0.0f && rotation > -11.0f) {
                 if (((-1.0f * rotation) + Math.ceil(rotation)) < 0.5f) {
                     dice1.setRotation(rotation - 2.0f);
+                    dice2.setRotation((-1.0f * rotation) + 2.0f);
                 } else {
                     dice1.setRotation(rotation + 2.0f);
+                    dice2.setRotation((-1.0f * rotation) - 2.0f);
                 }
             } else if (rotation <= -11.0f) {
                 dice1.setRotation(-9.999999f);
+                dice2.setRotation(9.999999f);
             }
-        } else {
-            float rotation = dice2.getRotation();
-            if (rotation == 0.0f) {
-                dice2.setRotation(-1.000001f);
-            } else if (rotation < 0.0f && rotation > 11.0f) {
-                if (((-1.0f * rotation) + Math.ceil(rotation)) < 0.5f) {
-                    dice2.setRotation(rotation - 2.0f);
-                } else {
-                    dice2.setRotation(rotation + 2.0f);
-                }
-            } else if (rotation <= 10.0f) {
-                dice2.setRotation(-9.999999f);
-            } else if (rotation > 0.0f && rotation < 10.0f) {
-                if ((rotation + Math.floor(rotation)) < 0.5f) {
-                    dice2.setRotation(rotation + 2.0f);
-                } else {
-                    dice2.setRotation(rotation - 2.0f);
-                }
-            } else if (rotation >= 10.0f) {
-                dice2.setRotation(8.999999f);
-            }
-        }
-
     }
 
     private void straightenDice(ImageView dice) {
