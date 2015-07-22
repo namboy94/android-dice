@@ -10,4 +10,8 @@
           android:title="@string/risk"
           android:orderInCategory="100"
           app:showAsAction="never" />
+    <item android:id="@+id/custom_action"
+          android:title="@string/customDice"
+          android:orderInCategory="100"
+          app:showAsAction="never" />
 </menu>

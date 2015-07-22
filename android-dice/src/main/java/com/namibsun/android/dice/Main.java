@@ -8,6 +8,7 @@ import android.os.CountDownTimer;
 import android.os.Vibrator;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
  * It allows to roll a single dice
  * @author  Hermann Krumrey (hermann@krumreyh.com)
  */
-public class Main extends Activity {
+public class Main extends AppCompatActivity {
 
     private ImageView image;
     private Vibrator vibrator;
@@ -69,6 +70,10 @@ public class Main extends Activity {
             return true;
         } else if (id == R.id.risk_action) {
             Intent menuIntent = new Intent(this, RiskDice.class);
+            startActivity(menuIntent);
+            return true;
+        } else if (id == R.id.custom_action) {
+            Intent menuIntent = new Intent(this, CustomDice.class);
             startActivity(menuIntent);
             return true;
         }

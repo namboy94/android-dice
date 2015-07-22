@@ -26,6 +26,10 @@
             android:name=".RiskDice"
             android:label="@string/title_activity_risk_dice" >
         </activity>
+        <activity
+            android:name=".CustomDice"
+            android:label="@string/title_activity_custom_dice" >
+        </activity>
     </application>
 
 </manifest>

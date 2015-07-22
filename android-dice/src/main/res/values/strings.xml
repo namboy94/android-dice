@@ -10,4 +10,6 @@
     <string name="two_dice">Two Dice</string>
     <string name="title_activity_risk_dice">Risk Dice</string>
     <string name="risk">Risk Dice</string>
+    <string name="title_activity_custom_dice">Custom Dice</string>
+    <string name="customDice">Custom Dice</string>
 </resources>

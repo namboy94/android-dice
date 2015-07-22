@@ -39,9 +39,10 @@
             android:layout_height="125dp"
             android:layout_row="0"
             android:layout_column="0" android:layout_gravity="center"
-            android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"/>
+            android:layout_above="@+id/risk_r3" android:layout_centerHorizontal="true"/>
     <ImageView
             android:clickable="true"
+            android:longClickable="true"
             android:onClick="rollBlueDice"
             android:id="@+id/risk_b2"
             android:src="@drawable/dice4blue"
@@ -53,6 +54,7 @@
             android:layout_alignParentEnd="true"/>
     <ImageView
             android:clickable="true"
+            android:longClickable="true"
             android:onClick="rollBlueDice"
             android:id="@+id/risk_b1"
             android:src="@drawable/dice3blue"

@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
-      tools:context="com.namibsun.android.dice.RiskDice">
+      tools:context="com.namibsun.android.dice.CustomDice">
       <item android:id="@+id/action_one"
             android:title="@string/one_dice"
             android:orderInCategory="100"
@@ -10,8 +10,8 @@
             android:title="@string/two_dice"
             android:orderInCategory="100"
             app:showAsAction="never" />
-      <item android:id="@+id/custom_action"
-            android:title="@string/customDice"
+      <item android:id="@+id/risk_action"
+            android:title="@string/risk"
             android:orderInCategory="100"
             app:showAsAction="never" />
 </menu>

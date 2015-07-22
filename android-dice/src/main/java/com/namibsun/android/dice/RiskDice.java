@@ -2,9 +2,11 @@ package com.namibsun.android.dice;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Vibrator;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,7 +15,7 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 
 
-public class RiskDice extends Activity {
+public class RiskDice extends AppCompatActivity {
 
     private ImageView red1;
     private ImageView red2;
@@ -50,7 +52,17 @@ public class RiskDice extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_one) {
+            Intent menuIntent = new Intent(this, Main.class);
+            startActivity(menuIntent);
+            return true;
+        } else if (id == R.id.action_two) {
+            Intent menuIntent = new Intent(this, TwoDiceActivity.class);
+            startActivity(menuIntent);
+            return true;
+        } else if (id == R.id.custom_action) {
+            Intent menuIntent = new Intent(this, CustomDice.class);
+            startActivity(menuIntent);
             return true;
         }
 

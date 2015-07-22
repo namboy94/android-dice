@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Vibrator;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
  * Android Activity that enables the rolling of two dice
  * @author  Hermann Krumrey (hermann@krumreyh.com)
  */
-public class TwoDiceActivity extends Activity {
+public class TwoDiceActivity extends AppCompatActivity {
 
     private ImageView image1;
     private ImageView image2;
@@ -66,6 +67,10 @@ public class TwoDiceActivity extends Activity {
             return true;
         } else if (id == R.id.risk_action) {
             Intent menuIntent = new Intent(this, RiskDice.class);
+            startActivity(menuIntent);
+            return true;
+        } else if (id == R.id.custom_action) {
+            Intent menuIntent = new Intent(this, CustomDice.class);
             startActivity(menuIntent);
             return true;
         }
