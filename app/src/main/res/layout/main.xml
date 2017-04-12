@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/dice5"
+        android:layout_margin="30dp"
+        android:contentDescription="@string/dice_content_description"/>
+
+</LinearLayout>
