@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.namibsun.android.dice" >
+    package="net.namibsun.dice" >
 
     <uses-permission android:name="android.permission.VIBRATE" />
 
@@ -23,7 +23,7 @@
             android:label="@string/title_activity_two_dice" >
         </activity>
         <activity
-            android:name=".RiskDice"
+            android:name="net.namibsun.dice.RiskDice"
             android:label="@string/title_activity_risk_dice" >
         </activity>
         <activity

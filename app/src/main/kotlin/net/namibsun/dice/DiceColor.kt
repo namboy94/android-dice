@@ -1,9 +1,9 @@
-package com.namibsun.android.dice;
+package net.namibsun.dice
 
 /**
  * Enum that helps determine the preferred color of the dice
  */
-public enum DiceColor {
+enum class DiceColor {
 
     WHITEBLACK,
     REDWHITE,
