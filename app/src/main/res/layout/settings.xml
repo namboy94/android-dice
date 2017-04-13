@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2015-2017 Hermann Krumrey
+
+This file is part of android-dice.
+
+android-dice is an Android app that allows a user to roll a virtual
+die. Multiple configurations are supported
+
+android-dice is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+android-dice is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with android-dice. If not, see <http://www.gnu.org/licenses/>.
+-->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
@@ -7,85 +27,64 @@
     android:background="@color/background">
 
     <android.support.v7.widget.CardView
-        android:layout_marginBottom="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        style="@style/settings_card">
 
         <CheckBox
+            style="@style/matchparent"
             android:id="@+id/vibrate_check"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textAlignment="center"
             android:text="@string/vibrate_option"/>
 
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
-        android:layout_marginBottom="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        style="@style/settings_card">
 
         <CheckBox
+            style="@style/matchparent"
             android:id="@+id/wiggle_animation_check"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:text="@string/wiggle_animation_option" />
 
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
-        android:layout_marginBottom="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        style="@style/settings_card">
 
         <CheckBox
+            style="@style/matchparent"
             android:id="@+id/change_animation_check"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:text="@string/switcher_animation_option" />
 
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-
-        android:layout_weight="1">
+        style="@style/settings_card"
+        android:layout_marginBottom="0dp">
 
         <RadioGroup
             android:id="@+id/style_select_group"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/wrapcontent"
                 android:text="@string/theme_settings_title"/>
             <RadioButton
+                style="@style/wrapcontent"
                 android:id="@+id/classic_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:tag="CLASSIC"
                 android:text="@string/classic_theme_option"/>
             <RadioButton
+                style="@style/wrapcontent"
                 android:id="@+id/red_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:tag="RED"
                 android:text="@string/red_theme_option"/>
             <RadioButton
+                style="@style/wrapcontent"
                 android:id="@+id/blue_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:tag="BLUE"
                 android:text="@string/blue_theme_option"/>
         </RadioGroup>
 
     </android.support.v7.widget.CardView>
-
-
 
     <Button
         android:id="@+id/ok_button"
@@ -93,7 +92,5 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:text="@string/ok_button_text"/>
-
-
 
 </LinearLayout>
