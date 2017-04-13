@@ -19,21 +19,21 @@
         android:layout_marginBottom="100dp"
         android:orientation="vertical">
 
-        <net.namibsun.dice.views.VerticalSquareView
+        <ImageView
             android:id="@+id/topdie"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:src="@drawable/dice6"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/six"
+            android:layout_margin="10dp"
             android:contentDescription="@string/dice_content_description"/>
 
 
-        <net.namibsun.dice.views.VerticalSquareView
+        <ImageView
             android:id="@+id/bottomdie"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:src="@drawable/dice6"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/six"
             android:contentDescription="@string/dice_content_description"/>
 
     </LinearLayout>
