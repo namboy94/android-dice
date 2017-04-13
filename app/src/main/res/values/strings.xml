@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Dice</string>
     <string name="dice_content_description">A default die. Can be pressed to start rolling</string>
+    <string name="setting_button_description">The Settings button</string>
 </resources>

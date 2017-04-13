@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/background"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:theme="@android:style/Theme.NoTitleBar">
 
     <ImageView
+        android:id="@+id/settings"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/settings"
+        android:contentDescription="@string/setting_button_description"/>
+
+    <ImageView
+        android:id="@+id/die"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/dice5"
         android:layout_margin="30dp"
         android:contentDescription="@string/dice_content_description"/>
 
-</LinearLayout>
+</RelativeLayout>
