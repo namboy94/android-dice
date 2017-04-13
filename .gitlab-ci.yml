@@ -8,6 +8,10 @@ stages:
 variables:
   GITLAB_ACCESS_TOKEN: "$GITLAB_ACCESS_TOKEN"
   GITHUB_ACCESS_TOKEN: "$GITHUB_ACCESS_TOKEN"
+  ANDROID_HOME: "/opt/android-sdk"
+  ANDROIDKEY_ALIAS: "$ANDROIDKEY_ALIAS"
+  ANDROIDKEY_PASS: "$ANDROIDKEY_PASS"
+  ANDROIDKEY_LOCATION: "$ANDROIDKEY_LOCATION"
 
 github_mirror:
   stage: mirror
@@ -27,6 +31,20 @@ lint:
     - linux-buildserver
   script:
     - gradle ktlint
+
+build_app:
+  stage: build
+  only:
+    - master
+  tags:
+    - linux-buildserver
+  script:
+    - mkdir -p artifacts
+    - ./gradlew assembleRelease -Pandroid.injected.signing.store.file=$ANDROIDKEY_LOCATION -Pandroid.injected.signing.store.password=$ANDROIDKEY_PASS -Pandroid.injected.signing.key.alias=$ANDROIDKEY_ALIAS -Pandroid.injected.signing.key.password=$ANDROIDKEY_PASS
+    - mv app/build/outputs/app-release.jar artifacts/diceroll-$(gradle version -q).apk
+  artifacts:
+     paths:
+      - artifacts/
 
 upload_gitlab_release:
   stage: release
