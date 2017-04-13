@@ -27,12 +27,12 @@ import android.util.Log
 import android.os.Bundle
 import android.widget.ImageView
 import android.support.v7.app.AppCompatActivity
+import android.content.Context
 
 
 class MainActivity : AppCompatActivity() {
 
     var die: ClassicDie? = null
-    val theme = Theme(ThemeStyles.CLASSIC, true, false, true)
 
     /**
      * Initializes the App's Main Activity View.
@@ -47,13 +47,28 @@ class MainActivity : AppCompatActivity() {
 
         // Get the die views and assign OnClickListeners, as well as initialize the die
         this.die = ClassicDie(
-                this, this.findViewById(R.id.die) as ImageView, this.theme
+                this, this.findViewById(R.id.die) as ImageView, this.loadTheme()
         )
 
         // Define the OnClickListeners for the menu buttons
         this.findViewById(R.id.settings).setOnClickListener {
             this.startActivity(Intent(this, SettingsActivity::class.java))
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        this.die!!.updateTheme(this.loadTheme())
+    }
+
+    fun loadTheme() : Theme {
+        val prefs = this.getSharedPreferences("SHARED_PREFS", Context.MODE_PRIVATE)
+        return Theme(
+                ThemeStyles.valueOf(prefs.getString("style", "CLASSIC")),
+                prefs.getBoolean("vibrate", true),
+                prefs.getBoolean("wiggleAnimation", true),
+                prefs.getBoolean("changeAnimation", true)
+        )
     }
 
 }

@@ -18,7 +18,7 @@ import kotlin.concurrent.thread
  *                 permutations should be the default image. By default this is the 5th element.
  */
 class ClassicDie(private val context: AppCompatActivity,
-                 val view: ImageView, private val theme: Theme, private var current: Int = 4) {
+                 val view: ImageView, private var theme: Theme, private var current: Int = 4) {
 
     /**
      * The vibrator is used to vibrate the device while the animation is running,
@@ -37,6 +37,11 @@ class ClassicDie(private val context: AppCompatActivity,
     init {
         this.view.setImageResource(this.theme.permutations[this.current])
         this.view.setOnClickListener { this.roll() }
+    }
+
+    fun updateTheme(theme: Theme) {
+        this.theme = theme
+        this.view.setImageResource(this.theme.permutations[this.current])
     }
 
     /**

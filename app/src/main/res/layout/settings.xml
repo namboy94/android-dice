@@ -6,31 +6,39 @@
     android:layout_height="match_parent">
 
     <CheckBox
+        android:id="@+id/vibrate_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Vibrate"/>
 
     <CheckBox
+        android:id="@+id/wiggle_animation_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Wiggle Animation" />
 
     <CheckBox
+        android:id="@+id/change_animation_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Switcher Animation" />
 
     <RadioGroup
+        android:id="@+id/style_select_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <RadioButton
+            android:id="@+id/classic_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:tag="CLASSIC"
             android:text="Classic"/>
         <RadioButton
+            android:id="@+id/red_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Not Classic"/>
+            android:tag="RED"
+            android:text="Red"/>
     </RadioGroup>
 
 

@@ -28,6 +28,10 @@ class Theme(style: ThemeStyles, val vibrate: Boolean,
                     R.drawable.dice1, R.drawable.dice2, R.drawable.dice3,
                     R.drawable.dice4, R.drawable.dice5, R.drawable.dice6
             )
+            ThemeStyles.RED -> listOf(
+                    R.drawable.dice1red, R.drawable.dice2red, R.drawable.dice3red,
+                    R.drawable.dice4red, R.drawable.dice5red, R.drawable.dice6red
+            )
         }
     }
 }
@@ -36,5 +40,5 @@ class Theme(style: ThemeStyles, val vibrate: Boolean,
  * An enum to help define different Theme style types
  */
 enum class ThemeStyles {
-    CLASSIC
+    CLASSIC, RED
 }
