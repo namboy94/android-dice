@@ -48,7 +48,7 @@ class Theme(style: ThemeStyles, val vibrate: Boolean,
     fun findPermutations(style: ThemeStyles) : List<Int> {
 
         // Add new styles here!
-        return when(style) {
+        return when (style) {
             ThemeStyles.CLASSIC -> listOf(
                     R.drawable.classic_1, R.drawable.classic_2, R.drawable.classic_3,
                     R.drawable.classic_4, R.drawable.classic_5, R.drawable.classic_6
@@ -65,14 +65,12 @@ class Theme(style: ThemeStyles, val vibrate: Boolean,
     }
 }
 
-
 /**
  * An enum to help define different Theme style types
  */
 enum class ThemeStyles {
     CLASSIC, RED, BLUE
 }
-
 
 /**
  * Loads a theme object from a shared preferences object

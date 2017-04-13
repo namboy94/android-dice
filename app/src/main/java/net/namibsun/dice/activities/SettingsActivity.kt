@@ -83,7 +83,6 @@ class SettingsActivity : BaseActivity() {
         this.changeAnimationCheck =
                 this.findViewById(net.namibsun.dice.R.id.change_animation_check) as CheckBox
 
-
         val style = ThemeStyles.valueOf(this.prefs!!.getString("style", "CLASSIC"))
         val vibrate = this.prefs!!.getBoolean("vibrate", true)
         val wiggleAnimation = this.prefs!!.getBoolean("wiggleAnimation", true)
@@ -93,7 +92,7 @@ class SettingsActivity : BaseActivity() {
         this.wiggleAnimationCheck!!.isChecked = wiggleAnimation
         this.changeAnimationCheck!!.isChecked = changeAnimation
 
-        when(style) {
+        when (style) {
             ThemeStyles.CLASSIC -> this.styleGroup!!.check(R.id.classic_style)
             ThemeStyles.RED -> this.styleGroup!!.check(R.id.red_style)
             ThemeStyles.BLUE -> this.styleGroup!!.check(R.id.blue_style)

@@ -32,7 +32,6 @@ import net.namibsun.dice.helpers.initializeBottomMenuBar
 import net.namibsun.dice.helpers.initializeSettingsButton
 import net.namibsun.dice.objects.loadTheme
 
-
 /**
  * The Main Activity of the Application. Shows a single die, a settings button and
  * a bar to switch between modes
@@ -48,7 +47,6 @@ class MainActivity : BaseActivity() {
      * A shared preferences object used to store and load settings
      */
     var prefs: SharedPreferences? = null
-
 
     /**
      * Initializes the App's Main Activity View.
@@ -79,5 +77,4 @@ class MainActivity : BaseActivity() {
         super.onResume()
         this.die!!.updateTheme(loadTheme(this.prefs!!))
     }
-
 }

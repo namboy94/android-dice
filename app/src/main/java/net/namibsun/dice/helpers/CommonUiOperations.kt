@@ -29,7 +29,6 @@ import net.namibsun.dice.activities.MainActivity
 import net.namibsun.dice.activities.SettingsActivity
 import net.namibsun.dice.activities.TwoDiceActivity
 
-
 /**
  * Initializes the OnClickListener of the Settings button
  * @param context: The activity that calls this method

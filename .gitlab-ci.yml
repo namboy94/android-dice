@@ -1,5 +1,6 @@
 stages:
   - mirror
+  - test
   - release
   - docs
   - finalize
@@ -19,6 +20,13 @@ github_mirror:
     - git checkout develop
     - git pull
     - git push git@github.com:namboy94/android-dice.git develop -f
+
+lint:
+  stage: test
+  tags:
+    - linux-buildserver
+  script:
+    - gradle ktlint
 
 upload_gitlab_release:
   stage: release
