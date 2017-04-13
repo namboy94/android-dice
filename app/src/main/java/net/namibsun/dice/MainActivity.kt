@@ -22,17 +22,10 @@ This file is part of android-dice.
 
 package net.namibsun.dice
 
-import net.namibsun.dice.R
-import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.view.View
-import android.view.animation.RotateAnimation
+import android.os.Bundle
 import android.widget.ImageView
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
-import android.view.animation.LinearInterpolator
-import kotlin.system.measureTimeMillis
+import android.support.v7.app.AppCompatActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -55,7 +48,6 @@ class MainActivity : AppCompatActivity() {
         this.die = ClassicDie(
                 this, this.findViewById(R.id.die) as ImageView, this.theme
         )
-        this.die!!.view.setOnClickListener { this.die!!.roll() }
 
         // Define the OnClickListener for the menu buttons
         this.findViewById(R.id.settings).setOnClickListener {  }
