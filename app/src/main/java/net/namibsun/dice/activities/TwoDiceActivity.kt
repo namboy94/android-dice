@@ -23,13 +23,14 @@ This file is part of android-dice.
 package net.namibsun.dice.activities
 
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.ImageView
 import net.namibsun.dice.objects.ClassicDie
 import net.namibsun.dice.R
+import net.namibsun.dice.helpers.initializeBottomMenuBar
+import net.namibsun.dice.helpers.initializeSettingsButton
 import net.namibsun.dice.objects.loadTheme
 
 
@@ -46,6 +47,11 @@ class TwoDiceActivity : AppCompatActivity() {
      */
     var prefs: SharedPreferences? = null
 
+    /**
+     * Sets the layout, creates the dice objects and overrides their default
+     * OnClickListeners so that both are rolled simultaneously
+     * @param savedInstanceState: The saved instance state of the App
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -68,9 +74,8 @@ class TwoDiceActivity : AppCompatActivity() {
         this.bottomDie!!.view.setOnClickListener { this.topDie!!.roll(); this.bottomDie!!.roll() }
 
         // Define the OnClickListeners for the menu buttons
-        this.findViewById(R.id.settings).setOnClickListener {
-            this.startActivity(Intent(this, SettingsActivity::class.java))
-        }
+        initializeSettingsButton(this)
+        initializeBottomMenuBar(this)
     }
 
     /**

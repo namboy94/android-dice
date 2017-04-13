@@ -23,13 +23,14 @@ This file is part of android-dice.
 package net.namibsun.dice.activities
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.support.v7.app.AppCompatActivity
 import android.content.SharedPreferences
 import net.namibsun.dice.objects.ClassicDie
 import net.namibsun.dice.R
+import net.namibsun.dice.helpers.initializeBottomMenuBar
+import net.namibsun.dice.helpers.initializeSettingsButton
 import net.namibsun.dice.objects.loadTheme
 
 
@@ -63,12 +64,8 @@ class MainActivity : AppCompatActivity() {
         )
 
         // Define the OnClickListeners for the menu buttons
-        this.findViewById(R.id.settings).setOnClickListener {
-            this.startActivity(Intent(this, SettingsActivity::class.java))
-        }
-        this.findViewById(R.id.two_dice_activity).setOnClickListener {
-            this.startActivity(Intent(this, TwoDiceActivity::class.java))
-        }
+        initializeSettingsButton(this)
+        initializeBottomMenuBar(this)
     }
 
     /**

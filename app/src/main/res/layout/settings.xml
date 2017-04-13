@@ -39,6 +39,24 @@
             android:layout_height="wrap_content"
             android:tag="RED"
             android:text="Red"/>
+        <RadioButton
+            android:id="@+id/bmp_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="BMP"
+            android:text="BMP"/>
+        <RadioButton
+            android:id="@+id/small_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="SMALL"
+            android:text="Small"/>
+        <RadioButton
+            android:id="@+id/xml_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="XML"
+            android:text="XML"/>
     </RadioGroup>
 
 

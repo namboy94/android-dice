@@ -69,6 +69,9 @@ class SettingsActivity : AppCompatActivity() {
         when(style) {
             ThemeStyles.CLASSIC -> this.styleGroup!!.check(R.id.classic_style)
             ThemeStyles.RED -> this.styleGroup!!.check(R.id.red_style)
+            ThemeStyles.BMP -> this.styleGroup!!.check(R.id.bmp_style)
+            ThemeStyles.SMALL -> this.styleGroup!!.check(R.id.small_style)
+            ThemeStyles.XML -> this.styleGroup!!.check(R.id.xml_style)
         }
 
     }

@@ -50,12 +50,24 @@ class Theme(style: ThemeStyles, val vibrate: Boolean,
         // Add new styles here!
         return when(style) {
             ThemeStyles.CLASSIC -> listOf(
-                    R.drawable.dice1, R.drawable.dice2, R.drawable.dice3,
+                    R.drawable.dice1, R.drawable.dice2bmp, R.drawable.dice3bmp,
                     R.drawable.dice4, R.drawable.dice5, R.drawable.dice6
             )
             ThemeStyles.RED -> listOf(
                     R.drawable.dice1red, R.drawable.dice2red, R.drawable.dice3red,
                     R.drawable.dice4red, R.drawable.dice5red, R.drawable.dice6red
+            )
+            ThemeStyles.BMP -> listOf(
+                    R.drawable.dice1bmp, R.drawable.dice2bmp, R.drawable.dice3bmp,
+                    R.drawable.dice4bmp, R.drawable.dice5bmp, R.drawable.dice6bmp
+            )
+            ThemeStyles.SMALL -> listOf(
+                    R.drawable.dice1small, R.drawable.dice2small, R.drawable.dice3small,
+                    R.drawable.dice4small, R.drawable.dice5small, R.drawable.dice6small
+            )
+            ThemeStyles.XML -> listOf(
+                    R.drawable.one, R.drawable.two, R.drawable.three,
+                    R.drawable.four, R.drawable.five, R.drawable.six
             )
         }
     }
@@ -66,7 +78,7 @@ class Theme(style: ThemeStyles, val vibrate: Boolean,
  * An enum to help define different Theme style types
  */
 enum class ThemeStyles {
-    CLASSIC, RED
+    CLASSIC, RED, BMP, SMALL, XML
 }
 
 
