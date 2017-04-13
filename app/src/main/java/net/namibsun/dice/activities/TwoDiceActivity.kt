@@ -25,7 +25,6 @@ package net.namibsun.dice.activities
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.widget.ImageView
 import net.namibsun.dice.objects.ClassicDie
 import net.namibsun.dice.R
@@ -33,11 +32,10 @@ import net.namibsun.dice.helpers.initializeBottomMenuBar
 import net.namibsun.dice.helpers.initializeSettingsButton
 import net.namibsun.dice.objects.loadTheme
 
-
 /**
  * An Activity that alows
  */
-class TwoDiceActivity : AppCompatActivity() {
+class TwoDiceActivity : BaseActivity() {
 
     /**
      * The Die on top

@@ -24,11 +24,11 @@ package net.namibsun.dice.objects
 
 import android.content.Context
 import android.os.Vibrator
-import android.support.v7.app.AppCompatActivity
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import net.namibsun.dice.R
+import net.namibsun.dice.activities.BaseActivity
 import java.security.SecureRandom
 import kotlin.concurrent.thread
 
@@ -41,7 +41,7 @@ import kotlin.concurrent.thread
  *                 permutations should be the default image. By default this is the 5th element.
  * @param animation: Can be used to override the default wiggle animation
  */
-class ClassicDie(private val context: AppCompatActivity,
+class ClassicDie(private val context: BaseActivity,
                  val view: ImageView,
                  private var theme: Theme,
                  private var current: Int = 4,
@@ -112,6 +112,8 @@ class ClassicDie(private val context: AppCompatActivity,
      * animations and vibrations are started
      */
     fun roll() {
+
+        this.context.logEvent("Diceroll", "Start")
 
         if (this.theme.vibrate && !this.theme.wiggleAnimation && !this.theme.changeAnimation) {
             this.vibrator.vibrate(100)

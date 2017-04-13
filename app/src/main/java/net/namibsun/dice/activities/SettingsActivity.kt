@@ -25,7 +25,6 @@ package net.namibsun.dice.activities
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.widget.CheckBox
 import android.widget.RadioGroup
 import net.namibsun.dice.R
@@ -35,7 +34,7 @@ import net.namibsun.dice.objects.ThemeStyles
  * The Settings Activity for the Android App. It enables the user to define certain settings
  * to his/her liking.
  */
-class SettingsActivity : AppCompatActivity() {
+class SettingsActivity : BaseActivity() {
 
     /**
      * A shared preferences object used to store and load settings
@@ -75,9 +74,10 @@ class SettingsActivity : AppCompatActivity() {
             this.storeAndReturn()
         }
 
-        this.vibrateCheck = this.findViewById(net.namibsun.dice.R.id.vibrate_check) as CheckBox
-        this.styleGroup = this.findViewById(net.namibsun.dice.R.id.style_select_group) as RadioGroup
-
+        this.vibrateCheck =
+                this.findViewById(net.namibsun.dice.R.id.vibrate_check) as CheckBox
+        this.styleGroup =
+                this.findViewById(net.namibsun.dice.R.id.style_select_group) as RadioGroup
         this.wiggleAnimationCheck =
                 this.findViewById(net.namibsun.dice.R.id.wiggle_animation_check) as CheckBox
         this.changeAnimationCheck =

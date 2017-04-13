@@ -25,7 +25,6 @@ package net.namibsun.dice.activities
 import android.content.Context
 import android.os.Bundle
 import android.widget.ImageView
-import android.support.v7.app.AppCompatActivity
 import android.content.SharedPreferences
 import net.namibsun.dice.objects.ClassicDie
 import net.namibsun.dice.R
@@ -34,7 +33,11 @@ import net.namibsun.dice.helpers.initializeSettingsButton
 import net.namibsun.dice.objects.loadTheme
 
 
-class MainActivity : AppCompatActivity() {
+/**
+ * The Main Activity of the Application. Shows a single die, a settings button and
+ * a bar to switch between modes
+ */
+class MainActivity : BaseActivity() {
 
     /**
      * The Die displayed on the activity
@@ -45,6 +48,7 @@ class MainActivity : AppCompatActivity() {
      * A shared preferences object used to store and load settings
      */
     var prefs: SharedPreferences? = null
+
 
     /**
      * Initializes the App's Main Activity View.
