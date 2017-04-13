@@ -3,8 +3,14 @@ package net.namibsun.dice
 /**
  * Class that defines the attributes for a theme.
  * For example, the permutations for a normal 6-sided die
+ * @param style: The style of the theme. Used to define which images to use for the die
+ * @param vibrate: Can be set to true to enable vibrating
+ * @param wiggleAnimation: Can be set to true to enable a wiggle animation
+ * @param changeAnimation: Can be set to true to enable an animation that
+ *                         changes the eyes of the die while it is rolling
  */
-class Theme(style: ThemeStyles, val vibrate: Boolean, val animate: Boolean) {
+class Theme(style: ThemeStyles, val vibrate: Boolean,
+            val wiggleAnimation: Boolean, val changeAnimation: Boolean) {
 
     /**
      * The permutations for a 6-sided die

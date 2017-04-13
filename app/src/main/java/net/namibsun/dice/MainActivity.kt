@@ -22,6 +22,7 @@ This file is part of android-dice.
 
 package net.namibsun.dice
 
+import android.content.Intent
 import android.util.Log
 import android.os.Bundle
 import android.widget.ImageView
@@ -31,7 +32,7 @@ import android.support.v7.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
 
     var die: ClassicDie? = null
-    val theme = Theme(ThemeStyles.CLASSIC, true, true)
+    val theme = Theme(ThemeStyles.CLASSIC, true, false, true)
 
     /**
      * Initializes the App's Main Activity View.
@@ -49,8 +50,10 @@ class MainActivity : AppCompatActivity() {
                 this, this.findViewById(R.id.die) as ImageView, this.theme
         )
 
-        // Define the OnClickListener for the menu buttons
-        this.findViewById(R.id.settings).setOnClickListener {  }
+        // Define the OnClickListeners for the menu buttons
+        this.findViewById(R.id.settings).setOnClickListener {
+            this.startActivity(Intent(this, SettingsActivity::class.java))
+        }
     }
 
 }

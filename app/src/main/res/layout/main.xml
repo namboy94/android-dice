@@ -23,8 +23,13 @@
         android:id="@+id/die"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/dice5"
-        android:layout_margin="30dp"
+        android:src="@drawable/dice6"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginBottom="130dp"
         android:contentDescription="@string/dice_content_description"/>
 
 </RelativeLayout>
