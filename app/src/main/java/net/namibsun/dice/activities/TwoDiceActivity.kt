@@ -39,7 +39,14 @@ import net.namibsun.dice.objects.loadTheme
  */
 class TwoDiceActivity : AppCompatActivity() {
 
+    /**
+     * The Die on top
+     */
     var topDie : ClassicDie? = null
+
+    /**
+     * The Die on the bottom
+     */
     var bottomDie : ClassicDie? = null
 
     /**

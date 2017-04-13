@@ -23,6 +23,7 @@ This file is part of android-dice.
 package net.namibsun.dice.activities
 
 import android.annotation.SuppressLint
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.CheckBox
@@ -36,9 +37,29 @@ import net.namibsun.dice.objects.ThemeStyles
  */
 class SettingsActivity : AppCompatActivity() {
 
+    /**
+     * A shared preferences object used to store and load settings
+     */
+    var prefs: SharedPreferences? = null
+
+    /**
+     * The Checkbox for the vibration option
+     */
     var vibrateCheck : CheckBox? = null
+
+    /**
+     * The Checkbox for the Wiggle Animation option
+     */
     var wiggleAnimationCheck : CheckBox? = null
+
+    /**
+     * The Checkbox for the Change Animation option
+     */
     var changeAnimationCheck : CheckBox? = null
+
+    /**
+     * The Radiobutton Group for the style options
+     */
     var styleGroup : RadioGroup? = null
 
     /**
@@ -48,18 +69,25 @@ class SettingsActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         this.setContentView(net.namibsun.dice.R.layout.settings)
-        this.findViewById(net.namibsun.dice.R.id.ok_button).setOnClickListener { this.storeAndReturn() }
+        this.prefs = this.getSharedPreferences("SHARED_PREFS", android.content.Context.MODE_PRIVATE)
+
+        this.findViewById(net.namibsun.dice.R.id.ok_button).setOnClickListener {
+            this.storeAndReturn()
+        }
 
         this.vibrateCheck = this.findViewById(net.namibsun.dice.R.id.vibrate_check) as CheckBox
-        this.wiggleAnimationCheck = this.findViewById(net.namibsun.dice.R.id.wiggle_animation_check) as CheckBox
-        this.changeAnimationCheck = this.findViewById(net.namibsun.dice.R.id.change_animation_check) as CheckBox
         this.styleGroup = this.findViewById(net.namibsun.dice.R.id.style_select_group) as RadioGroup
 
-        val prefs = this.getSharedPreferences("SHARED_PREFS", android.content.Context.MODE_PRIVATE)
-        val style = ThemeStyles.valueOf(prefs.getString("style", "CLASSIC"))
-        val vibrate = prefs.getBoolean("vibrate", true)
-        val wiggleAnimation = prefs.getBoolean("wiggleAnimation", true)
-        val changeAnimation = prefs.getBoolean("changeAnimation", true)
+        this.wiggleAnimationCheck =
+                this.findViewById(net.namibsun.dice.R.id.wiggle_animation_check) as CheckBox
+        this.changeAnimationCheck =
+                this.findViewById(net.namibsun.dice.R.id.change_animation_check) as CheckBox
+
+
+        val style = ThemeStyles.valueOf(this.prefs!!.getString("style", "CLASSIC"))
+        val vibrate = this.prefs!!.getBoolean("vibrate", true)
+        val wiggleAnimation = this.prefs!!.getBoolean("wiggleAnimation", true)
+        val changeAnimation = this.prefs!!.getBoolean("changeAnimation", true)
 
         this.vibrateCheck!!.isChecked = vibrate
         this.wiggleAnimationCheck!!.isChecked = wiggleAnimation
@@ -70,7 +98,6 @@ class SettingsActivity : AppCompatActivity() {
             ThemeStyles.RED -> this.styleGroup!!.check(R.id.red_style)
             ThemeStyles.BLUE -> this.styleGroup!!.check(R.id.blue_style)
         }
-
     }
 
     /**
@@ -78,7 +105,7 @@ class SettingsActivity : AppCompatActivity() {
      */
     @SuppressLint("CommitPrefEdits")
     fun storeAndReturn() {
-        val editor = this.getSharedPreferences("SHARED_PREFS", android.content.Context.MODE_PRIVATE).edit()
+        val editor = this.prefs!!.edit()
 
         val radioGroup = this.findViewById(net.namibsun.dice.R.id.style_select_group) as RadioGroup
         val selected = this.findViewById(radioGroup.checkedRadioButtonId)
