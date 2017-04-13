@@ -53,33 +53,12 @@ class MainActivity : AppCompatActivity() {
 
         // Get the die views and assign OnClickListeners, as well as initialize the die
         this.die = ClassicDie(
-                this.findViewById(R.id.die) as ImageView, this.theme
+                this, this.findViewById(R.id.die) as ImageView, this.theme
         )
         this.die!!.view.setOnClickListener { this.die!!.roll() }
 
         // Define the OnClickListener for the menu buttons
         this.findViewById(R.id.settings).setOnClickListener {  }
     }
-
-    fun wiggle(view: ImageView) {
-        val anim = AnimationUtils.loadAnimation(this, R.anim.wiggle)
-
-        //anim.setAnimationListener(BackgroundChanger(view, listOf(R.drawable.dice1, R.drawable.dice2)))
-
-
-        view.startAnimation(anim)
-
-        Log.e("aa", "" + anim.hasEnded())
-
-        view.setImageResource(R.drawable.dice1)
-
-
-        Log.e("Start", "" + measureTimeMillis{})
-        //while (!anim.hasEnded()) {
-        //}
-        Log.e("Done", "" + measureTimeMillis{})
-    }
-
-
 
 }
