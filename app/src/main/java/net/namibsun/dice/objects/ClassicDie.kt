@@ -95,7 +95,7 @@ class ClassicDie(private val context: AppCompatActivity,
 
     /**
      * Switches the Image resource to the next image.
-     * While doing so, it is ensured that two consecutive images are always different
+     * While doing so, it is ensured that classic_2 consecutive images are always different
      * from each other
      */
     fun nextImage() {
@@ -156,7 +156,7 @@ class ClassicDie(private val context: AppCompatActivity,
 
     /**
      * Implementation of the AnimationListener that changes the background image
-     * of the die to one of the permutations stored in the themes object while an animation
+     * of the die to classic_1 of the permutations stored in the themes object while an animation
      * is running
      */
     inner class Animator : Animation.AnimationListener {

@@ -23,7 +23,6 @@ This file is part of android-dice.
 package net.namibsun.dice.activities
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.CheckBox
@@ -68,6 +67,8 @@ class SettingsActivity : AppCompatActivity() {
 
         when(style) {
             ThemeStyles.CLASSIC -> this.styleGroup!!.check(R.id.classic_style)
+            ThemeStyles.RED -> this.styleGroup!!.check(R.id.red_style)
+            ThemeStyles.BLUE -> this.styleGroup!!.check(R.id.blue_style)
         }
 
     }

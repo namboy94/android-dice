@@ -5,7 +5,7 @@
     <corners
         android:radius="10px"/>
 
-    <solid android:color="@color/dice_base"/>
+    <solid android:color="@color/classic_base"/>
 
     <size android:height="100dp"
         android:width="100dp"/>

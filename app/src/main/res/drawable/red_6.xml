@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/red_base"/>
+    <item
+        android:top="10dp"
+        android:bottom="70dp"
+        android:left="15dp"
+        android:right="65dp"
+        android:drawable="@drawable/red_eye"/>
+    <item
+        android:top="40dp"
+        android:bottom="40dp"
+        android:left="15dp"
+        android:right="65dp"
+        android:drawable="@drawable/red_eye"/>
+    <item
+        android:top="70dp"
+        android:bottom="10dp"
+        android:left="15dp"
+        android:right="65dp"
+        android:drawable="@drawable/red_eye"/>
+    <item
+        android:top="10dp"
+        android:bottom="70dp"
+        android:left="65dp"
+        android:right="15dp"
+        android:drawable="@drawable/red_eye"/>
+    <item
+        android:top="40dp"
+        android:bottom="40dp"
+        android:left="65dp"
+        android:right="15dp"
+        android:drawable="@drawable/red_eye"/>
+    <item
+        android:top="70dp"
+        android:bottom="10dp"
+        android:left="65dp"
+        android:right="15dp"
+        android:drawable="@drawable/red_eye"/>
+</layer-list>

@@ -50,8 +50,16 @@ class Theme(style: ThemeStyles, val vibrate: Boolean,
         // Add new styles here!
         return when(style) {
             ThemeStyles.CLASSIC -> listOf(
-                    R.drawable.one, R.drawable.two, R.drawable.three,
-                    R.drawable.four, R.drawable.five, R.drawable.six
+                    R.drawable.classic_1, R.drawable.classic_2, R.drawable.classic_3,
+                    R.drawable.classic_4, R.drawable.classic_5, R.drawable.classic_6
+            )
+            ThemeStyles.RED -> listOf(
+                    R.drawable.red_1, R.drawable.red_2, R.drawable.red_3,
+                    R.drawable.red_4, R.drawable.red_5, R.drawable.red_6
+            )
+            ThemeStyles.BLUE -> listOf(
+                    R.drawable.blue_1, R.drawable.blue_2, R.drawable.blue_3,
+                    R.drawable.blue_4, R.drawable.blue_5, R.drawable.blue_6
             )
         }
     }
@@ -62,7 +70,7 @@ class Theme(style: ThemeStyles, val vibrate: Boolean,
  * An enum to help define different Theme style types
  */
 enum class ThemeStyles {
-    CLASSIC
+    CLASSIC, RED, BLUE
 }
 
 
