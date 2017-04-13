@@ -1,3 +1,25 @@
+/*
+Copyright 2015-2017 Hermann Krumrey
+
+This file is part of android-dice.
+
+    android-dice is an Android app that allows a user to roll a virtual
+    die. Multiple configurations are supported
+
+    android-dice is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    android-dice is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with android-dice. If not, see <http://www.gnu.org/licenses/>.
+*/
+
 package net.namibsun.dice
 
 import android.content.Context
@@ -13,7 +35,7 @@ import kotlin.concurrent.thread
  * This is a class that simulates a classic 6-sided die.
  * @param context: The context/Activity for this die.
  * @param view: The view that represents this die
- * @param theme: The theme to be applied to the die
+ * @param theme: The starting theme to be applied to the die
  * @param current: Optional parameter that can specify which image of the theme's
  *                 permutations should be the default image. By default this is the 5th element.
  */
@@ -35,13 +57,24 @@ class ClassicDie(private val context: AppCompatActivity,
      * Sets the OnClickListener for the image view
      */
     init {
-        this.view.setImageResource(this.theme.permutations[this.current])
         this.view.setOnClickListener { this.roll() }
+        this.draw()
     }
 
+    /**
+     * Draws the currently selected image resource
+     */
+    fun draw() {
+        this.view.setImageResource(this.theme.permutations[this.current])
+    }
+
+    /**
+     * Updates the theme of the Die
+     * @param theme: The theme to change to
+     */
     fun updateTheme(theme: Theme) {
         this.theme = theme
-        this.view.setImageResource(this.theme.permutations[this.current])
+        this.draw()
     }
 
     /**
@@ -66,7 +99,7 @@ class ClassicDie(private val context: AppCompatActivity,
             next = this.random.nextInt(this.theme.permutations.size)
         }
         this.current = next
-        this.view.setImageResource(this.theme.permutations[this.current])
+        this.draw()
     }
 
     /**

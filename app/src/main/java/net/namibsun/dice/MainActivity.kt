@@ -32,6 +32,9 @@ import android.content.Context
 
 class MainActivity : AppCompatActivity() {
 
+    /**
+     * The Die displayed on the activity
+     */
     var die: ClassicDie? = null
 
     /**
@@ -54,13 +57,23 @@ class MainActivity : AppCompatActivity() {
         this.findViewById(R.id.settings).setOnClickListener {
             this.startActivity(Intent(this, SettingsActivity::class.java))
         }
+        this.findViewById(R.id.two_dice_activity).setOnClickListener {
+            this.startActivity(Intent(this, TwoDiceActivity::class.java))
+        }
     }
 
+    /**
+     * Loads the theme whenever the Activity resumes, in case these values have changed
+     */
     override fun onResume() {
         super.onResume()
         this.die!!.updateTheme(this.loadTheme())
     }
 
+    /**
+     * Loads the theme from the shared preferences file
+     * @return The theme created from the shared preferences
+     */
     fun loadTheme() : Theme {
         val prefs = this.getSharedPreferences("SHARED_PREFS", Context.MODE_PRIVATE)
         return Theme(
