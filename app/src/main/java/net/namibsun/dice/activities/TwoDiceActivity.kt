@@ -20,12 +20,17 @@ This file is part of android-dice.
     along with android-dice. If not, see <http://www.gnu.org/licenses/>.
 */
 
-package net.namibsun.dice
+package net.namibsun.dice.activities
 
 import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.ImageView
+import net.namibsun.dice.objects.ClassicDie
+import net.namibsun.dice.R
+import net.namibsun.dice.objects.loadTheme
 
 
 /**
@@ -35,15 +40,36 @@ class TwoDiceActivity : AppCompatActivity() {
     var topDie : ClassicDie? = null
     var bottomDie : ClassicDie? = null
 
+    /**
+     * A shared preferences object used to store and load settings
+     */
+    var prefs: SharedPreferences? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         this.setContentView(R.layout.twodice)
+        this.prefs = this.getSharedPreferences("SHARED_PREFS", Context.MODE_PRIVATE)
 
-        this.topDie = ClassicDie(this, this.findViewById(R.id.topdie) as ImageView, this.loadTheme())
-        this.bottomDie = ClassicDie(this, this.findViewById(R.id.bottomdie) as ImageView, this.loadTheme())
+        this.topDie = ClassicDie(
+                this,
+                this.findViewById(net.namibsun.dice.R.id.topdie) as ImageView,
+                loadTheme(this.prefs!!)
+        )
+        this.bottomDie = ClassicDie(
+                this,
+                this.findViewById(net.namibsun.dice.R.id.bottomdie) as ImageView,
+                loadTheme(this.prefs!!),
+                animation = R.anim.wigglereverse
+        )
 
         this.topDie!!.view.setOnClickListener { this.topDie!!.roll(); this.bottomDie!!.roll() }
         this.bottomDie!!.view.setOnClickListener { this.topDie!!.roll(); this.bottomDie!!.roll() }
+
+        // Define the OnClickListeners for the menu buttons
+        this.findViewById(R.id.settings).setOnClickListener {
+            this.startActivity(Intent(this, SettingsActivity::class.java))
+        }
     }
 
     /**
@@ -51,22 +77,8 @@ class TwoDiceActivity : AppCompatActivity() {
      */
     override fun onResume() {
         super.onResume()
-        this.topDie!!.updateTheme(this.loadTheme())
-        this.bottomDie!!.updateTheme(this.loadTheme())
-    }
-
-    /**
-     * Loads the theme from the shared preferences file
-     * @return The theme created from the shared preferences
-     */
-    fun loadTheme() : Theme {
-        val prefs = this.getSharedPreferences("SHARED_PREFS", Context.MODE_PRIVATE)
-        return Theme(
-                ThemeStyles.valueOf(prefs.getString("style", "CLASSIC")),
-                prefs.getBoolean("vibrate", true),
-                prefs.getBoolean("wiggleAnimation", true),
-                prefs.getBoolean("changeAnimation", true)
-        )
+        this.topDie!!.updateTheme(loadTheme(this.prefs!!))
+        this.bottomDie!!.updateTheme(loadTheme(this.prefs!!))
     }
 
 }

@@ -30,7 +30,7 @@
             android:layout_weight="1">
         </View>
 
-        <net.namibsun.dice.HorizontalDieView
+        <net.namibsun.dice.views.HorizontalSquareView
             android:id="@+id/die"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

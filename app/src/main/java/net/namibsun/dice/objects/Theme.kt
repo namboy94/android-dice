@@ -1,4 +1,29 @@
-package net.namibsun.dice
+/*
+Copyright 2015-2017 Hermann Krumrey
+
+This file is part of android-dice.
+
+    android-dice is an Android app that allows a user to roll a virtual
+    die. Multiple configurations are supported
+
+    android-dice is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    android-dice is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with android-dice. If not, see <http://www.gnu.org/licenses/>.
+*/
+
+package net.namibsun.dice.objects
+
+import android.content.SharedPreferences
+import net.namibsun.dice.R
 
 /**
  * Class that defines the attributes for a theme.
@@ -36,9 +61,25 @@ class Theme(style: ThemeStyles, val vibrate: Boolean,
     }
 }
 
+
 /**
  * An enum to help define different Theme style types
  */
 enum class ThemeStyles {
     CLASSIC, RED
+}
+
+
+/**
+ * Loads a theme object from a shared preferences object
+ * @param prefs: The Shared Preferences to use
+ * @return The generated Theme object
+ */
+fun loadTheme(prefs: SharedPreferences) : Theme {
+    return Theme(
+            ThemeStyles.valueOf(prefs.getString("style", "CLASSIC")),
+            prefs.getBoolean("vibrate", true),
+            prefs.getBoolean("wiggleAnimation", true),
+            prefs.getBoolean("changeAnimation", true)
+    )
 }

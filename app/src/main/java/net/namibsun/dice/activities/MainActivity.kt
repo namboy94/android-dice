@@ -20,14 +20,17 @@ This file is part of android-dice.
     along with android-dice. If not, see <http://www.gnu.org/licenses/>.
 */
 
-package net.namibsun.dice
+package net.namibsun.dice.activities
 
+import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.os.Bundle
 import android.widget.ImageView
 import android.support.v7.app.AppCompatActivity
-import android.content.Context
+import android.content.SharedPreferences
+import net.namibsun.dice.objects.ClassicDie
+import net.namibsun.dice.R
+import net.namibsun.dice.objects.loadTheme
 
 
 class MainActivity : AppCompatActivity() {
@@ -38,19 +41,25 @@ class MainActivity : AppCompatActivity() {
     var die: ClassicDie? = null
 
     /**
+     * A shared preferences object used to store and load settings
+     */
+    var prefs: SharedPreferences? = null
+
+    /**
      * Initializes the App's Main Activity View.
      * @param savedInstanceState: The Instance Information of the app.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        Log.i("MainActivity", "onCreate")
-
         super.onCreate(savedInstanceState)
         this.setContentView(R.layout.main)
+        this.prefs = this.getSharedPreferences("SHARED_PREFS", Context.MODE_PRIVATE)
 
         // Get the die views and assign OnClickListeners, as well as initialize the die
         this.die = ClassicDie(
-                this, this.findViewById(R.id.die) as ImageView, this.loadTheme()
+                this,
+                this.findViewById(net.namibsun.dice.R.id.die) as ImageView,
+                loadTheme(this.prefs!!)
         )
 
         // Define the OnClickListeners for the menu buttons
@@ -67,21 +76,7 @@ class MainActivity : AppCompatActivity() {
      */
     override fun onResume() {
         super.onResume()
-        this.die!!.updateTheme(this.loadTheme())
-    }
-
-    /**
-     * Loads the theme from the shared preferences file
-     * @return The theme created from the shared preferences
-     */
-    fun loadTheme() : Theme {
-        val prefs = this.getSharedPreferences("SHARED_PREFS", Context.MODE_PRIVATE)
-        return Theme(
-                ThemeStyles.valueOf(prefs.getString("style", "CLASSIC")),
-                prefs.getBoolean("vibrate", true),
-                prefs.getBoolean("wiggleAnimation", true),
-                prefs.getBoolean("changeAnimation", true)
-        )
+        this.die!!.updateTheme(loadTheme(this.prefs!!))
     }
 
 }
