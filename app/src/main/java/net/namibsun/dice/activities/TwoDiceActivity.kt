@@ -34,6 +34,7 @@ import net.namibsun.dice.objects.loadTheme
 
 
 /**
+ * An Activity that alows
  */
 class TwoDiceActivity : AppCompatActivity() {
 
