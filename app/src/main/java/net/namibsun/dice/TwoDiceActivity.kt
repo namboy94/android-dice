@@ -22,17 +22,51 @@ This file is part of android-dice.
 
 package net.namibsun.dice
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.widget.ImageView
 
 
 /**
  */
 class TwoDiceActivity : AppCompatActivity() {
 
+    var topDie : ClassicDie? = null
+    var bottomDie : ClassicDie? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.setContentView(R.layout.twodice)
+
+        this.topDie = ClassicDie(this, this.findViewById(R.id.topdie) as ImageView, this.loadTheme())
+        this.bottomDie = ClassicDie(this, this.findViewById(R.id.bottomdie) as ImageView, this.loadTheme())
+
+        this.topDie!!.view.setOnClickListener { this.topDie!!.roll(); this.bottomDie!!.roll() }
+        this.bottomDie!!.view.setOnClickListener { this.topDie!!.roll(); this.bottomDie!!.roll() }
+    }
+
+    /**
+     * Loads the theme whenever the Activity resumes, in case these values have changed
+     */
+    override fun onResume() {
+        super.onResume()
+        this.topDie!!.updateTheme(this.loadTheme())
+        this.bottomDie!!.updateTheme(this.loadTheme())
+    }
+
+    /**
+     * Loads the theme from the shared preferences file
+     * @return The theme created from the shared preferences
+     */
+    fun loadTheme() : Theme {
+        val prefs = this.getSharedPreferences("SHARED_PREFS", Context.MODE_PRIVATE)
+        return Theme(
+                ThemeStyles.valueOf(prefs.getString("style", "CLASSIC")),
+                prefs.getBoolean("vibrate", true),
+                prefs.getBoolean("wiggleAnimation", true),
+                prefs.getBoolean("changeAnimation", true)
+        )
     }
 
 }

@@ -19,18 +19,31 @@
         android:src="@drawable/settings"
         android:contentDescription="@string/setting_button_description"/>
 
-    <ImageView
-        android:id="@+id/die"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/dice6"
-        android:layout_marginLeft="40dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginTop="130dp"
-        android:layout_marginBottom="130dp"
-        android:contentDescription="@string/dice_content_description"/>
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+        </View>
+
+        <net.namibsun.dice.HorizontalDieView
+            android:id="@+id/die"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/dice6"
+            android:contentDescription="@string/dice_content_description"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+        </View>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
