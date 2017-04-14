@@ -154,8 +154,8 @@ class ClassicDie(private val context: BaseActivity,
         else {
             animation.setAnimationListener(object : Animation.AnimationListener {
                 override fun onAnimationRepeat(animation: Animation?) { }
-                override fun onAnimationStart(animation: Animation?) { this@ClassicDie.nextImage() }
-                override fun onAnimationEnd(animation: Animation?) { }
+                override fun onAnimationStart(animation: Animation?) { }
+                override fun onAnimationEnd(animation: Animation?) { this@ClassicDie.nextImage() }
             })
         }
 
