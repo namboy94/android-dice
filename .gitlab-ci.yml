@@ -45,8 +45,7 @@ build_app:
     - mkdir -p artifacts
     - cp $GOOGLE_SERVICES_JSON_LOCATION app/google-services.json
     - ./gradlew assembleRelease -Pandroid.injected.signing.store.file=$ANDROIDKEY_LOCATION -Pandroid.injected.signing.store.password=$ANDROIDKEY_PASS -Pandroid.injected.signing.key.alias=$ANDROIDKEY_ALIAS -Pandroid.injected.signing.key.password=$ANDROIDKEY_PASS
-    - tree
-    - mv app/build/outputs/apk/app-release.jar artifacts/diceroll-$(gradle version -q).apk
+    - mv app/build/outputs/apk/app-release.apk artifacts/diceroll-$(gradle version -q).apk
   artifacts:
      paths:
       - artifacts/
