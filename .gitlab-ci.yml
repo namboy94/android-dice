@@ -13,6 +13,7 @@ variables:
   ANDROIDKEY_ALIAS: "$ANDROIDKEY_ALIAS"
   ANDROIDKEY_PASS: "$ANDROIDKEY_PASS"
   ANDROIDKEY_LOCATION: "$ANDROIDKEY_LOCATION"
+  GOOGLE_SERVICES_JSON_LOCATION: "$GOOGLE_SERVICES_JSON_LOCATION"
 
 github_mirror:
   stage: mirror
@@ -42,6 +43,7 @@ build_app:
     - linux-buildserver
   script:
     - mkdir -p artifacts
+    - cp $GOOGLE_SERVICES_JSON_LOCATION app/google-services.json
     - ./gradlew assembleRelease -Pandroid.injected.signing.store.file=$ANDROIDKEY_LOCATION -Pandroid.injected.signing.store.password=$ANDROIDKEY_PASS -Pandroid.injected.signing.key.alias=$ANDROIDKEY_ALIAS -Pandroid.injected.signing.key.password=$ANDROIDKEY_PASS
     - mv app/build/outputs/app-release.jar artifacts/diceroll-$(gradle version -q).apk
   artifacts:
