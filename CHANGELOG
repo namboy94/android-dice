@@ -1,3 +1,6 @@
+V 1.0.1:
+  - Fixed Layout of the Settings Screen
+  - Fixed dice not changing when only the wiggle animation was selected
 V 1.0.0:
   - Rewrote project in Kotlin
   - First Play Store Release of new app
