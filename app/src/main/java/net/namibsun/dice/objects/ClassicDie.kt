@@ -149,7 +149,14 @@ class ClassicDie(private val context: BaseActivity,
         val animation = AnimationUtils.loadAnimation(this.context, this.animation)
 
         if (this.theme.changeAnimation) {
-            animation.setAnimationListener(Animator())
+            animation.setAnimationListener(ChangeAnimator())
+        }
+        else {
+            animation.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationRepeat(animation: Animation?) { }
+                override fun onAnimationStart(animation: Animation?) { }
+                override fun onAnimationEnd(animation: Animation?) { this@ClassicDie.nextImage() }
+            })
         }
 
         this.vibrate(animation.duration * 10)
@@ -158,10 +165,10 @@ class ClassicDie(private val context: BaseActivity,
 
     /**
      * Implementation of the AnimationListener that changes the background image
-     * of the die to classic_1 of the permutations stored in the themes object while an animation
+     * of the die to one of the permutations stored in the themes objects while an animation
      * is running
      */
-    inner class Animator : Animation.AnimationListener {
+    inner class ChangeAnimator : Animation.AnimationListener {
 
         //Not Needed
         override fun onAnimationRepeat(animation: Animation?) {}
