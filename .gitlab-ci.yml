@@ -37,6 +37,7 @@ build_app:
   stage: build
   only:
     - master
+    - develop
   tags:
     - linux-buildserver
   script:
