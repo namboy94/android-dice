@@ -19,27 +19,25 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with android-dice. If not, see <http://www.gnu.org/licenses/>.
 -->
-<resources>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-    </style>
-
-    <!--> Repeatedly used styles <-->
-
-    <style name="settings_card">
-        <item name="android:layout_height">0dp</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_marginBottom">10dp</item>
-    </style>
-
-    <style name="matchparent">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-    </style>
-
-    <style name="wrapcontent">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-
-</resources>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/red_base"/>
+    <item
+        android:top="70dp"
+        android:bottom="10dp"
+        android:left="15dp"
+        android:right="65dp"
+        android:drawable="@drawable/red_eye"/>
+    <item
+        android:top="10dp"
+        android:bottom="70dp"
+        android:left="65dp"
+        android:right="15dp"
+        android:drawable="@drawable/red_eye"/>
+    <item
+        android:top="40dp"
+        android:bottom="40dp"
+        android:left="40dp"
+        android:right="40dp"
+        android:drawable="@drawable/red_eye"/>
+</layer-list>

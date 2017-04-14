@@ -1,14 +1,40 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+/*
+Copyright 2015-2017 Hermann Krumrey
+
+This file is part of android-dice.
+
+    android-dice is an Android app that allows a user to roll a virtual
+    die. Multiple configurations are supported
+
+    android-dice is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    android-dice is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with android-dice. If not, see <http://www.gnu.org/licenses/>.
+*/
+
+ext {
+    version = "1.0.0"
+    versionCode = 1
+}
 
 buildscript {
+
+    ext.kotlin_version = '1.1.1'
     repositories {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.1.1'
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath 'com.android.tools.build:gradle:2.3.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:3.0.0'
     }
 }
 
@@ -16,4 +42,8 @@ allprojects {
     repositories {
         jcenter()
     }
+}
+
+task version() {
+    println rootProject.ext.version
 }

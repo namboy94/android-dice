@@ -19,27 +19,15 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with android-dice. If not, see <http://www.gnu.org/licenses/>.
 -->
-<resources>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-    </style>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
 
-    <!--> Repeatedly used styles <-->
+    <corners
+        android:radius="10px"/>
 
-    <style name="settings_card">
-        <item name="android:layout_height">0dp</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_marginBottom">10dp</item>
-    </style>
+    <solid android:color="@color/classic_base"/>
 
-    <style name="matchparent">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-    </style>
+    <size android:height="100dp"
+        android:width="100dp"/>
 
-    <style name="wrapcontent">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-
-</resources>
+</shape>
