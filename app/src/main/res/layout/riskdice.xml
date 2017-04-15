@@ -81,7 +81,7 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
                 style="@style/risk_die"/>
 
             <ImageView
-                android:id="@+id/blue_die_3"
+                android:id="@+id/red_die_3"
                 android:src="@drawable/red_6"
                 android:contentDescription="@string/risk_dice_description"
                 style="@style/risk_die"/>

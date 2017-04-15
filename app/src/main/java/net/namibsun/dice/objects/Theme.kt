@@ -40,7 +40,7 @@ class Theme(style: ThemeStyles, val vibrate: Boolean,
     /**
      * The permutations for a 6-sided die
      */
-    val permutations = this.findPermutations(style)
+    var permutations = this.findPermutations(style)
 
     /**
      * Defines the permutations for a 6-sided die based on the provided style value
@@ -75,11 +75,21 @@ enum class ThemeStyles {
 /**
  * Loads a theme object from a shared preferences object
  * @param prefs: The Shared Preferences to use
+ * @param styleOverride: Can be used to override the style of the Theme
  * @return The generated Theme object
  */
-fun loadTheme(prefs: SharedPreferences) : Theme {
+fun loadTheme(prefs: SharedPreferences, styleOverride: ThemeStyles? = null) : Theme {
+
+    val style: ThemeStyles
+    if(styleOverride == null) {
+        style = ThemeStyles.valueOf(prefs.getString("style", "CLASSIC"))
+    }
+    else {
+        style = styleOverride
+    }
+
     return Theme(
-            ThemeStyles.valueOf(prefs.getString("style", "CLASSIC")),
+            style,
             prefs.getBoolean("vibrate", true),
             prefs.getBoolean("wiggleAnimation", true),
             prefs.getBoolean("changeAnimation", true)

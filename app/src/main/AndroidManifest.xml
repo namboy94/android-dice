@@ -41,6 +41,8 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
         </activity>
         <activity android:name=".activities.TwoDiceActivity">
         </activity>
+        <activity android:name=".activities.RiskDiceActivity">
+        </activity>
     </application>
 
 </manifest>

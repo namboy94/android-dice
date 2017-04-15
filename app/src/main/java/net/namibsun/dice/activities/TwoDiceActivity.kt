@@ -48,11 +48,6 @@ class TwoDiceActivity : BaseActivity() {
     var bottomDie : ClassicDie? = null
 
     /**
-     * A shared preferences object used to store and load settings
-     */
-    var prefs: SharedPreferences? = null
-
-    /**
      * Sets the layout, creates the dice objects and overrides their default
      * OnClickListeners so that both are rolled simultaneously
      * @param savedInstanceState: The saved instance state of the App
