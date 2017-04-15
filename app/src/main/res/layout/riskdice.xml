@@ -47,14 +47,14 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
 
             <ImageView
                 android:id="@+id/blue_die_1"
-                android:src="@drawable/blue_3"
+                android:src="@drawable/die_3"
                 android:contentDescription="@string/risk_dice_description"
                 style="@style/risk_die"/>
 
 
             <ImageView
                 android:id="@+id/blue_die_2"
-                android:src="@drawable/blue_2"
+                android:src="@drawable/die_2"
                 android:contentDescription="@string/risk_dice_description"
                 style="@style/risk_die"/>
 
@@ -70,19 +70,19 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
 
             <ImageView
                 android:id="@+id/red_die_1"
-                android:src="@drawable/red_4"
+                android:src="@drawable/die_4"
                 android:contentDescription="@string/risk_dice_description"
                 style="@style/risk_die"/>
 
             <ImageView
                 android:id="@+id/red_die_2"
-                android:src="@drawable/red_5"
+                android:src="@drawable/die_5"
                 android:contentDescription="@string/risk_dice_description"
                 style="@style/risk_die"/>
 
             <ImageView
                 android:id="@+id/red_die_3"
-                android:src="@drawable/red_6"
+                android:src="@drawable/die_6"
                 android:contentDescription="@string/risk_dice_description"
                 style="@style/risk_die"/>
 

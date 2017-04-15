@@ -25,10 +25,10 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
         android:drawable="@drawable/die_base"
         android:id="@+id/die_base"/>
     <item
+        android:id="@+id/middle_eye"
         android:top="40dp"
         android:bottom="40dp"
         android:left="40dp"
         android:right="40dp"
-        android:id="@+id/middle_eye"
-        android:drawable="@drawable/classic_eye"/>
+        android:drawable="@drawable/die_eye"/>
 </layer-list>

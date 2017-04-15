@@ -22,7 +22,9 @@ This file is part of android-dice.
 
 package net.namibsun.dice.objects
 
+import android.content.Context
 import android.content.SharedPreferences
+import android.support.v4.content.ContextCompat
 import net.namibsun.dice.R
 
 /**
@@ -34,35 +36,32 @@ import net.namibsun.dice.R
  * @param changeAnimation: Can be set to true to enable an animation that
  *                         changes the eyes of the die while it is rolling
  */
-class Theme(style: ThemeStyles, val vibrate: Boolean,
+class Theme(val style: ThemeStyles, val vibrate: Boolean,
             val wiggleAnimation: Boolean, val changeAnimation: Boolean) {
 
     /**
-     * The permutations for a 6-sided die
+     * Calculates the Theme's colour values
+     * @param context: The currently active activity
+     * @return A hashmap of colour values
      */
-    var permutations = this.findPermutations(style)
-
-    /**
-     * Defines the permutations for a 6-sided die based on the provided style value
-     */
-    fun findPermutations(style: ThemeStyles) : List<Int> {
-
-        // Add new styles here!
-        return when (style) {
-            ThemeStyles.CLASSIC -> listOf(
-                    R.drawable.die_1, R.drawable.die_1, R.drawable.die_1,
-                    R.drawable.die_1, R.drawable.die_1, R.drawable.die_1
+    fun getThemeColors(context: Context) : HashMap<String, Int> {
+        val colors = when (this.style) {
+            ThemeStyles.CLASSIC -> hashMapOf(
+                    "die_base" to R.color.classic_base, "die_eye" to R.color.classic_eye
             )
-            ThemeStyles.RED -> listOf(
-                    R.drawable.red_1, R.drawable.red_2, R.drawable.red_3,
-                    R.drawable.red_4, R.drawable.red_5, R.drawable.red_6
+            ThemeStyles.RED -> hashMapOf(
+                    "die_base" to R.color.red_base, "die_eye" to R.color.red_eye
             )
-            ThemeStyles.BLUE -> listOf(
-                    R.drawable.blue_1, R.drawable.blue_2, R.drawable.blue_3,
-                    R.drawable.blue_4, R.drawable.blue_5, R.drawable.blue_6
+            ThemeStyles.BLUE -> hashMapOf(
+                    "die_base" to R.color.blue_base, "die_eye" to R.color.blue_eye
             )
         }
+        for ((key, value) in colors) {
+            colors[key] = ContextCompat.getColor(context, value)
+        }
+        return colors
     }
+
 }
 
 /**

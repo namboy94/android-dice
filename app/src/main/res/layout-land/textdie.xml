@@ -37,7 +37,7 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
         android:layout_height="160dp"
         android:layout_centerHorizontal="true"
         android:textColor="#000000"
-        android:background="@drawable/classic_base"
+        android:background="@drawable/die_base"
         android:textSize="65sp"
         android:gravity="center"
         android:layout_marginTop="60dp"

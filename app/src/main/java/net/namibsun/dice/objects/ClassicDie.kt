@@ -26,7 +26,6 @@ import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
 import android.os.Vibrator
-import android.support.v4.content.ContextCompat
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
@@ -49,6 +48,11 @@ class ClassicDie(private val context: BaseActivity,
                  private var theme: Theme,
                  private var current: Int = 4,
                  private val animation: Int = R.anim.wiggle) {
+
+    val dieFaces = listOf(
+            R.drawable.die_1, R.drawable.die_2, R.drawable.die_3,
+            R.drawable.die_4, R.drawable.die_5, R.drawable.die_6
+    )
 
     /**
      * The vibrator is used to vibrate the device while the animation is running,
@@ -73,17 +77,9 @@ class ClassicDie(private val context: BaseActivity,
      * Draws the currently selected image resource
      */
     fun draw() {
-        this.view.setImageResource(this.theme.permutations[this.current])
-    }
+        this.view.setImageResource(this.dieFaces[this.current])
 
-    /**
-     * Updates the theme of the Die
-     * @param theme: The theme to change to
-     */
-    fun updateTheme(theme: Theme) {
-        this.theme = theme
-        this.draw()
-
+        val colors : HashMap<String, Int> = this.theme.getThemeColors(this.context)
         val layer = this.view.drawable as LayerDrawable
         layer.mutate()
 
@@ -94,16 +90,23 @@ class ClassicDie(private val context: BaseActivity,
             var eyeDrawable = layer.findDrawableByLayerId(eye)
             val base = layer.findDrawableByLayerId(R.id.die_base) as GradientDrawable
 
-            base.setColor(0)
+            base.setColor(colors["die_base"]!!)
 
             if (eyeDrawable != null) {
                 eyeDrawable = eyeDrawable as GradientDrawable
-                eyeDrawable.setColor(0)
+                eyeDrawable.setColor(colors["die_eye"]!!)
             }
         }
-
         this.view.setImageDrawable(layer)
+    }
 
+    /**
+     * Updates the theme of the Die
+     * @param theme: The theme to change to
+     */
+    fun updateTheme(theme: Theme) {
+        this.theme = theme
+        this.draw()
     }
 
     /**
@@ -125,7 +128,7 @@ class ClassicDie(private val context: BaseActivity,
     fun nextImage() {
         var next = this.current
         while (next == this.current) {
-            next = this.random.nextInt(this.theme.permutations.size)
+            next = this.random.nextInt(6)
         }
         this.current = next
         this.draw()

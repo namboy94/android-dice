@@ -43,7 +43,7 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
             android:id="@+id/topdie"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:src="@drawable/classic_6"
+            android:src="@drawable/die_6"
             android:layout_margin="10dp"
             android:contentDescription="@string/dice_content_description"/>
 
@@ -53,7 +53,7 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_margin="10dp"
-            android:src="@drawable/classic_6"
+            android:src="@drawable/die_6"
             android:contentDescription="@string/dice_content_description"/>
 
     </LinearLayout>
