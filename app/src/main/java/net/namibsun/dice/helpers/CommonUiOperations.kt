@@ -25,10 +25,7 @@ package net.namibsun.dice.helpers
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import net.namibsun.dice.R
-import net.namibsun.dice.activities.MainActivity
-import net.namibsun.dice.activities.RiskDiceActivity
-import net.namibsun.dice.activities.SettingsActivity
-import net.namibsun.dice.activities.TwoDiceActivity
+import net.namibsun.dice.activities.*
 
 /**
  * Initializes the OnClickListener of the Settings button
@@ -54,5 +51,8 @@ fun initializeBottomMenuBar(context: AppCompatActivity) {
     }
     context.findViewById(R.id.risk_dice_activity).setOnClickListener {
         context.startActivity(Intent(context, RiskDiceActivity::class.java))
+    }
+    context.findViewById(R.id.text_dice_activity).setOnClickListener {
+        context.startActivity(Intent(context, TextDieActivity::class.java))
     }
 }

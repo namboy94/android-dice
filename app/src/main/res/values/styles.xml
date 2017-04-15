@@ -64,8 +64,8 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1.5</item>
         <item name="android:maxLength">4</item>
-        <item name="android:text">@string/text_die_range_start_value</item>
         <item name="android:inputType">numberDecimal</item>
+        <item name="android:text">0</item>
     </style>
 
     <style name="OneDieImage">

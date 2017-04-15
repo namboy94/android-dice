@@ -2,7 +2,6 @@ package net.namibsun.dice.objects
 
 import android.content.Context
 import android.os.Vibrator
-import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -24,8 +23,8 @@ import kotlin.concurrent.thread
 abstract class Die(protected val context: BaseActivity,
                    val view: View,
                    protected var theme: Theme,
-                   protected val limit: Int = 6,
-                   protected val minimum: Int = 1,
+                   protected var limit: Int = 6,
+                   protected var minimum: Int = 1,
                    initialValue: Int = 5,
                    protected val wiggleAnimationResource: Int = R.anim.wiggle) {
 
