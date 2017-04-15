@@ -21,15 +21,33 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
 -->
 <resources>
     <string name="app_name">Dice Roller</string>
-    <string name="dice_content_description">A default die. Can be pressed to start rolling</string>
+
+    <!-- Titles -->
+    <string name="theme_settings_title">Theme Settings</string>
+
+    <!-- Image Descriptions -->
+    <string name="dice_content_description">A standard die. Can be pressed to start rolling</string>
     <string name="setting_button_description">The Settings button</string>
+    <string name="red_risk_dice_description">A Red Risk Die</string>
+    <string name="blue_risk_dice_description">A Blue Risk Die</string>
+
+    <!-- Menu options -->
     <string name="vibrate_option">Vibrate</string>
     <string name="wiggle_animation_option">Wiggle Animation</string>
     <string name="switcher_animation_option">Switcher Animation</string>
     <string name="classic_theme_option">Classic</string>
     <string name="red_theme_option">Red</string>
     <string name="blue_theme_option">Blue</string>
+
+    <!-- Buttons -->
     <string name="ok_button_text">OK</string>
-    <string name="theme_settings_title">Theme Settings</string>
-    <string name="risk_dice_description">A Risk Die</string>
+    <string name="one_die_activity_button">1 Die</string>
+    <string name="two_dice_activity_button">2 Dice</string>
+    <string name="risk_dice_activity_button">Risk Dice</string>
+    <string name="text_die_activity_button">Text Die</string>
+
+    <!-- Text Dice -->
+    <string name="text_die_start_value">0</string>
+    <string name="text_die_range_label">Range:</string>
+    <string name="text_die_range_start_value">0</string>
 </resources>

@@ -23,64 +23,61 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    android:background="@color/background">
+    style="@style/Background">
 
     <android.support.v7.widget.CardView
-        style="@style/settings_card">
+        style="@style/SettingsCard">
 
         <CheckBox
-            style="@style/matchparent"
+            style="@style/MatchParent"
             android:id="@+id/vibrate_check"
             android:text="@string/vibrate_option"/>
 
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
-        style="@style/settings_card">
+        style="@style/SettingsCard">
 
         <CheckBox
-            style="@style/matchparent"
+            style="@style/MatchParent"
             android:id="@+id/wiggle_animation_check"
             android:text="@string/wiggle_animation_option" />
 
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
-        style="@style/settings_card">
+        style="@style/SettingsCard">
 
         <CheckBox
-            style="@style/matchparent"
+            style="@style/MatchParent"
             android:id="@+id/change_animation_check"
             android:text="@string/switcher_animation_option" />
 
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
-        style="@style/settings_card"
+        style="@style/SettingsCard"
         android:layout_weight="3"
         android:layout_marginBottom="0dp">
 
         <RadioGroup
             android:id="@+id/style_select_group"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            style="@style/MatchParent">
             <TextView
-                style="@style/wrapcontent"
+                style="@style/WrapContent"
                 android:text="@string/theme_settings_title"/>
             <RadioButton
-                style="@style/wrapcontent"
+                style="@style/WrapContent"
                 android:id="@+id/classic_style"
                 android:tag="CLASSIC"
                 android:text="@string/classic_theme_option"/>
             <RadioButton
-                style="@style/wrapcontent"
+                style="@style/WrapContent"
                 android:id="@+id/red_style"
                 android:tag="RED"
                 android:text="@string/red_theme_option"/>
             <RadioButton
-                style="@style/wrapcontent"
+                style="@style/WrapContent"
                 android:id="@+id/blue_style"
                 android:tag="BLUE"
                 android:text="@string/blue_theme_option"/>

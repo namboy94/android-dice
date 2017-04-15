@@ -20,26 +20,17 @@ You should have received a copy of the GNU General Public License
 along with android-dice. If not, see <http://www.gnu.org/licenses/>.
 -->
 <RelativeLayout
-    android:id="@+id/layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:background="@color/background"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:theme="@android:style/Theme.NoTitleBar">
+    style="@style/Background">
 
-    <include layout="@layout/settingsbutton">
-    </include>
+    <include layout="@layout/settingsbutton"/>
 
     <ImageView
-        android:id="@+id/die"
+        style="@style/OneDieImage"
         android:layout_width="250dp"
         android:layout_height="250dp"
-        android:src="@drawable/die_6"
-        android:layout_centerInParent="true"
         android:contentDescription="@string/dice_content_description"/>
 
-    <include layout="@layout/modeswitcherbar">
-    </include>
+    <include layout="@layout/modeswitcherbar"/>
 
 </RelativeLayout>

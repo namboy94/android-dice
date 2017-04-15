@@ -21,10 +21,15 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
 -->
 <resources>
     <color name="background">#C9C9C9</color>
+
+    <!-- Dice Colors -->
     <color name="classic_eye">#000000</color>
     <color name="classic_base">#FFFFFF</color>
     <color name="red_eye">#FFFFFF</color>
     <color name="red_base">#FF0000</color>
     <color name="blue_eye">#FFFFFF</color>
     <color name="blue_base">#0000FF</color>
+
+    <color name="text_die_font">#000000</color>
+    <color name="text_font">#000000</color>
 </resources>

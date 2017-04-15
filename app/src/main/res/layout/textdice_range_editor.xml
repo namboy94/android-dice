@@ -19,34 +19,25 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with android-dice. If not, see <http://www.gnu.org/licenses/>.
 -->
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
 
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_alignParentBottom="true"
+        style="@style/MatchParent"
+        android:gravity="center"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/single_die_activity"
-            style="@style/ModeSwitcherButton"
-            android:text="@string/one_die_activity_button"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/text_font"
+            android:gravity="center"
+            android:text="@string/text_die_range_label"/>
 
-        <Button
-            android:id="@+id/two_dice_activity"
-            style="@style/ModeSwitcherButton"
-            android:text="@string/two_dice_activity_button"/>
-
-        <Button
-            android:id="@+id/risk_dice_activity"
-            style="@style/ModeSwitcherButton"
-            android:text="@string/risk_dice_activity_button"/>
-
-        <Button
-            android:id="@+id/text_dice_activity"
-            style="@style/ModeSwitcherButton"
-            android:text="@string/text_die_activity_button"/>
+        <EditText style="@style/RangeEditBox"/>
+        <EditText style="@style/RangeEditBox"/>
 
     </LinearLayout>
-
 </merge>

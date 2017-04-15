@@ -20,33 +20,91 @@ You should have received a copy of the GNU General Public License
 along with android-dice. If not, see <http://www.gnu.org/licenses/>.
 -->
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
+
+    <style name="MatchParent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
     </style>
 
-    <!--> Repeatedly used styles <-->
+    <style name="WrapContent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 
-    <style name="settings_card">
+    <style name="Background">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/background</item>
+        <item name="android:theme">@android:style/Theme.Light.NoTitleBar</item>
+    </style>
+
+    <style name="SettingsCard">
         <item name="android:layout_height">0dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_marginBottom">10dp</item>
     </style>
 
-    <style name="matchparent">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-    </style>
-
-    <style name="wrapcontent">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-
-    <style name="risk_die">
+    <style name="RiskDie">
         <item name="android:layout_height">100dp</item>
         <item name="android:layout_width">100dp</item>
         <item name="android:layout_margin">10dp</item>
+        <item name="android:src">@drawable/die_5</item>
     </style>
 
+    <style name="ModeSwitcherButton">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="RangeEditBox">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1.5</item>
+        <item name="android:maxLength">4</item>
+        <item name="android:text">@string/text_die_range_start_value</item>
+        <item name="android:inputType">numberDecimal</item>
+    </style>
+
+    <style name="OneDieImage">
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:src">@drawable/die_5</item>
+        <item type="id" name="die"/>
+    </style>
+
+    <style name="TextDieImage">
+        <item type="id" name="textdie"/>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textColor">@color/text_die_font</item>
+        <item name="android:gravity">center</item>
+        <item name="text">@string/text_die_start_value</item>
+        <item name="android:background">@drawable/die_base</item>
+        <item name="android:text">@string/text_die_start_value</item>
+    </style>
+
+    <style name="TextDieRangeCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_marginLeft">50dp</item>
+        <item name="android:layout_marginRight">50dp</item>
+    </style>
+
+    <style name="DoubleDiceFrame">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginBottom">100dp</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+
+    <style name="DoubleDiceImage">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">200dp</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:src">@drawable/die_5</item>
+    </style>
 
 </resources>

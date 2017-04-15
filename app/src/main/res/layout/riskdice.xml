@@ -20,25 +20,17 @@ You should have received a copy of the GNU General Public License
 along with android-dice. If not, see <http://www.gnu.org/licenses/>.
 -->
 <RelativeLayout
-    android:id="@+id/layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:background="@color/background"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:theme="@android:style/Theme.NoTitleBar">
+    style="@style/Background">
 
-    <include layout="@layout/settingsbutton">
-    </include>
+    <include layout="@layout/settingsbutton"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/WrapContent"
         android:orientation="vertical"
         android:layout_centerInParent="true">
 
         <LinearLayout
-            android:id="@+id/blue_dice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -47,50 +39,42 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
 
             <ImageView
                 android:id="@+id/blue_die_1"
-                android:src="@drawable/die_3"
-                android:contentDescription="@string/risk_dice_description"
-                style="@style/risk_die"/>
+                android:contentDescription="@string/blue_risk_dice_description"
+                style="@style/RiskDie"/>
 
 
             <ImageView
                 android:id="@+id/blue_die_2"
-                android:src="@drawable/die_2"
-                android:contentDescription="@string/risk_dice_description"
-                style="@style/risk_die"/>
+                android:contentDescription="@string/blue_risk_dice_description"
+                style="@style/RiskDie"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/red_dice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/WrapContent"
             android:gravity="center"
             android:layout_marginBottom="20dp"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/red_die_1"
-                android:src="@drawable/die_4"
-                android:contentDescription="@string/risk_dice_description"
-                style="@style/risk_die"/>
+                android:contentDescription="@string/red_risk_dice_description"
+                style="@style/RiskDie"/>
 
             <ImageView
                 android:id="@+id/red_die_2"
-                android:src="@drawable/die_5"
-                android:contentDescription="@string/risk_dice_description"
-                style="@style/risk_die"/>
+                android:contentDescription="@string/red_risk_dice_description"
+                style="@style/RiskDie"/>
 
             <ImageView
                 android:id="@+id/red_die_3"
-                android:src="@drawable/die_6"
-                android:contentDescription="@string/risk_dice_description"
-                style="@style/risk_die"/>
+                android:contentDescription="@string/red_risk_dice_description"
+                style="@style/RiskDie"/>
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <include layout="@layout/modeswitcherbar">
-    </include>
+    <include layout="@layout/modeswitcherbar"/>
 
 </RelativeLayout>
