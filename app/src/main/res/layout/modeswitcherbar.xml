@@ -42,10 +42,10 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
             style="@style/ModeSwitcherButton"
             android:text="@string/risk_dice_activity_button"/>
 
-        <Button
+        <!--Button
             android:id="@+id/text_dice_activity"
             style="@style/ModeSwitcherButton"
-            android:text="@string/text_die_activity_button"/>
+            android:text="@string/text_die_activity_button"/-->
 
     </LinearLayout>
 
