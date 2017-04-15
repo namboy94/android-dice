@@ -41,6 +41,7 @@ class RiskDiceActivity : BaseActivity() {
         this.setContentView(R.layout.riskdice)
         initializeSettingsButton(this)
         initializeBottomMenuBar(this)
+        this.findViewById(R.id.risk_dice_activity).setOnClickListener { }
 
         listOf(R.id.red_die_1, R.id.red_die_2, R.id.red_die_3).mapTo(redDice) {
             ClassicDie(this, this.findViewById(it) as ImageView,

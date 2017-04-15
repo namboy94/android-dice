@@ -76,6 +76,7 @@ class TwoDiceActivity : BaseActivity() {
         // Define the OnClickListeners for the menu buttons
         initializeSettingsButton(this)
         initializeBottomMenuBar(this)
+        this.findViewById(R.id.two_dice_activity).setOnClickListener { }
     }
 
     /**

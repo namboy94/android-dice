@@ -62,6 +62,7 @@ class MainActivity : BaseActivity() {
         // Define the OnClickListeners for the menu buttons
         initializeSettingsButton(this)
         initializeBottomMenuBar(this)
+        this.findViewById(R.id.single_die_activity).setOnClickListener { }
     }
 
     /**
