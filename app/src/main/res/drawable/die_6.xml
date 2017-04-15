@@ -21,29 +21,49 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
 -->
 <layer-list
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/classic_base"/>
     <item
+        android:drawable="@drawable/die_base"
+        android:id="@+id/die_base"/>
+    <item
+        android:id="@+id/left_top_eye"
         android:top="10dp"
         android:bottom="70dp"
         android:left="15dp"
         android:right="65dp"
-        android:drawable="@drawable/classic_eye"/>
+        android:drawable="@drawable/die_eye"/>
     <item
+        android:id="@+id/left_bottom_eye"
         android:top="70dp"
         android:bottom="10dp"
         android:left="15dp"
         android:right="65dp"
-        android:drawable="@drawable/classic_eye"/>
+        android:drawable="@drawable/die_eye"/>
     <item
+        android:id="@+id/right_top_eye"
         android:top="10dp"
         android:bottom="70dp"
         android:left="65dp"
         android:right="15dp"
-        android:drawable="@drawable/classic_eye"/>
+        android:drawable="@drawable/die_eye"/>
     <item
+        android:id="@+id/right_bottom_eye"
         android:top="70dp"
         android:bottom="10dp"
         android:left="65dp"
         android:right="15dp"
-        android:drawable="@drawable/classic_eye"/>
+        android:drawable="@drawable/die_eye"/>
+    <item
+        android:id="@+id/left_middle_eye"
+        android:top="40dp"
+        android:bottom="40dp"
+        android:left="15dp"
+        android:right="65dp"
+        android:drawable="@drawable/die_eye"/>
+    <item
+        android:id="@+id/right_middle_eye"
+        android:top="40dp"
+        android:bottom="40dp"
+        android:left="65dp"
+        android:right="15dp"
+        android:drawable="@drawable/die_eye"/>
 </layer-list>

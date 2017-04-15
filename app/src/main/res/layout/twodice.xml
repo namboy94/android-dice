@@ -20,45 +20,29 @@ You should have received a copy of the GNU General Public License
 along with android-dice. If not, see <http://www.gnu.org/licenses/>.
 -->
 <RelativeLayout
-    android:id="@+id/layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:background="@color/background"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:theme="@android:style/Theme.NoTitleBar">
+    style="@style/Background">
 
-    <include layout="@layout/settingsbutton">
-    </include>
+    <include layout="@layout/settingsbutton"/>
 
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="100dp"
+        style="@style/DoubleDiceFrame"
         android:orientation="vertical">
 
         <ImageView
+            style="@style/DoubleDiceImage"
             android:id="@+id/topdie"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:src="@drawable/classic_6"
-            android:layout_margin="10dp"
             android:contentDescription="@string/dice_content_description"/>
 
 
         <ImageView
+            style="@style/DoubleDiceImage"
             android:id="@+id/bottomdie"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_margin="10dp"
-            android:src="@drawable/classic_6"
             android:contentDescription="@string/dice_content_description"/>
 
     </LinearLayout>
 
-    <include layout="@layout/modeswitcherbar">
-    </include>
+    <include layout="@layout/modeswitcherbar"/>
 
 </RelativeLayout>

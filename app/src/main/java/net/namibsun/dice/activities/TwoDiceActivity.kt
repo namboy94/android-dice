@@ -23,7 +23,6 @@ This file is part of android-dice.
 package net.namibsun.dice.activities
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.ImageView
 import net.namibsun.dice.objects.ClassicDie
@@ -46,11 +45,6 @@ class TwoDiceActivity : BaseActivity() {
      * The Die on the bottom
      */
     var bottomDie : ClassicDie? = null
-
-    /**
-     * A shared preferences object used to store and load settings
-     */
-    var prefs: SharedPreferences? = null
 
     /**
      * Sets the layout, creates the dice objects and overrides their default
@@ -81,6 +75,7 @@ class TwoDiceActivity : BaseActivity() {
         // Define the OnClickListeners for the menu buttons
         initializeSettingsButton(this)
         initializeBottomMenuBar(this)
+        this.findViewById(R.id.two_dice_activity).setOnClickListener { }
     }
 
     /**

@@ -19,15 +19,31 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with android-dice. If not, see <http://www.gnu.org/licenses/>.
 -->
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Background">
 
-    <corners
-        android:radius="10px"/>
+    <include layout="@layout/settingsbutton"/>
 
-    <solid android:color="@color/blue_base"/>
+    <TextView
+        android:id="@+id/textdie"
+        style="@style/TextDieImage"
+        android:text="@string/text_die_start_value"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="60dp"
+        android:textSize="65sp"/>
 
-    <size android:height="100dp"
-        android:width="100dp"/>
+    <android.support.v7.widget.CardView
+        style="@style/TextDieRangeCard"
+        android:layout_marginBottom="60dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="50dp">
 
-</shape>
+        <include layout="@layout/textdice_range_editor"/>
+
+    </android.support.v7.widget.CardView>
+
+    <include layout="@layout/modeswitcherbar"/>
+
+</RelativeLayout>

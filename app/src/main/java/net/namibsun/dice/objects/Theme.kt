@@ -22,7 +22,9 @@ This file is part of android-dice.
 
 package net.namibsun.dice.objects
 
+import android.content.Context
 import android.content.SharedPreferences
+import android.support.v4.content.ContextCompat
 import net.namibsun.dice.R
 
 /**
@@ -34,35 +36,32 @@ import net.namibsun.dice.R
  * @param changeAnimation: Can be set to true to enable an animation that
  *                         changes the eyes of the die while it is rolling
  */
-class Theme(style: ThemeStyles, val vibrate: Boolean,
+class Theme(val style: ThemeStyles, val vibrate: Boolean,
             val wiggleAnimation: Boolean, val changeAnimation: Boolean) {
 
     /**
-     * The permutations for a 6-sided die
+     * Calculates the Theme's colour values
+     * @param context: The currently active activity
+     * @return A hashmap of colour values
      */
-    val permutations = this.findPermutations(style)
-
-    /**
-     * Defines the permutations for a 6-sided die based on the provided style value
-     */
-    fun findPermutations(style: ThemeStyles) : List<Int> {
-
-        // Add new styles here!
-        return when (style) {
-            ThemeStyles.CLASSIC -> listOf(
-                    R.drawable.classic_1, R.drawable.classic_2, R.drawable.classic_3,
-                    R.drawable.classic_4, R.drawable.classic_5, R.drawable.classic_6
+    fun getThemeColors(context: Context) : HashMap<String, Int> {
+        val colors = when (this.style) {
+            ThemeStyles.CLASSIC -> hashMapOf(
+                    "die_base" to R.color.classic_base, "die_eye" to R.color.classic_eye
             )
-            ThemeStyles.RED -> listOf(
-                    R.drawable.red_1, R.drawable.red_2, R.drawable.red_3,
-                    R.drawable.red_4, R.drawable.red_5, R.drawable.red_6
+            ThemeStyles.RED -> hashMapOf(
+                    "die_base" to R.color.red_base, "die_eye" to R.color.red_eye
             )
-            ThemeStyles.BLUE -> listOf(
-                    R.drawable.blue_1, R.drawable.blue_2, R.drawable.blue_3,
-                    R.drawable.blue_4, R.drawable.blue_5, R.drawable.blue_6
+            ThemeStyles.BLUE -> hashMapOf(
+                    "die_base" to R.color.blue_base, "die_eye" to R.color.blue_eye
             )
         }
+        for ((key, value) in colors) {
+            colors[key] = ContextCompat.getColor(context, value)
+        }
+        return colors
     }
+
 }
 
 /**
@@ -75,11 +74,21 @@ enum class ThemeStyles {
 /**
  * Loads a theme object from a shared preferences object
  * @param prefs: The Shared Preferences to use
+ * @param styleOverride: Can be used to override the style of the Theme
  * @return The generated Theme object
  */
-fun loadTheme(prefs: SharedPreferences) : Theme {
+fun loadTheme(prefs: SharedPreferences, styleOverride: ThemeStyles? = null) : Theme {
+
+    val style: ThemeStyles
+    if (styleOverride == null) {
+        style = ThemeStyles.valueOf(prefs.getString("style", "CLASSIC"))
+    }
+    else {
+        style = styleOverride
+    }
+
     return Theme(
-            ThemeStyles.valueOf(prefs.getString("style", "CLASSIC")),
+            style,
             prefs.getBoolean("vibrate", true),
             prefs.getBoolean("wiggleAnimation", true),
             prefs.getBoolean("changeAnimation", true)

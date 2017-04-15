@@ -24,50 +24,57 @@ package net.namibsun.dice.activities
 
 import android.os.Bundle
 import android.widget.ImageView
-import net.namibsun.dice.objects.ClassicDie
 import net.namibsun.dice.R
 import net.namibsun.dice.helpers.initializeBottomMenuBar
 import net.namibsun.dice.helpers.initializeSettingsButton
+import net.namibsun.dice.objects.ClassicDie
+import net.namibsun.dice.objects.ThemeStyles
 import net.namibsun.dice.objects.loadTheme
 
 /**
- * The Main Activity of the Application. Shows a single die, a settings button and
- * a bar to switch between modes
+ * Activity that offers two blue and 3 red dice, for use with the board game
+ * RISK.
  */
-class MainActivity : BaseActivity() {
+class RiskDiceActivity : BaseActivity() {
 
     /**
-     * The Die displayed on the activity
+     * These are the red dice
      */
-    var die: ClassicDie? = null
+    val redDice : MutableList<ClassicDie> = mutableListOf()
 
     /**
-     * Initializes the App's Main Activity View.
-     * @param savedInstanceState: The Instance Information of the app.
+     * And these are the blue dice
+     */
+    val blueDice : MutableList<ClassicDie> = mutableListOf()
+
+    /**
+     * When the Activity is created, the dice are initialized. The dice are assigned static
+     * themes that may not be changed.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        this.setContentView(R.layout.main)
+        this.setContentView(R.layout.riskdice)
 
-        // Get the die views and assign OnClickListeners, as well as initialize the die
-        this.die = ClassicDie(
-                this,
-                this.findViewById(net.namibsun.dice.R.id.die) as ImageView,
-                loadTheme(this.prefs!!)
-        )
-
-        // Define the OnClickListeners for the menu buttons
         initializeSettingsButton(this)
         initializeBottomMenuBar(this)
-        this.findViewById(R.id.single_die_activity).setOnClickListener { }
-    }
+        this.findViewById(R.id.risk_dice_activity).setOnClickListener { }
 
-    /**
-     * Loads the theme whenever the Activity resumes, in case these values have changed
-     */
-    override fun onResume() {
-        super.onResume()
-        this.die!!.updateTheme(loadTheme(this.prefs!!))
+        listOf(R.id.red_die_1, R.id.red_die_2, R.id.red_die_3).mapTo(redDice) {
+            ClassicDie(this, this.findViewById(it) as ImageView,
+                    loadTheme(this.prefs!!, ThemeStyles.RED))
+        }
+        listOf(R.id.blue_die_1, R.id.blue_die_2).mapTo(blueDice) {
+            ClassicDie(this, this.findViewById(it) as ImageView,
+                    loadTheme(this.prefs!!, ThemeStyles.BLUE))
+        }
+
+        for (die in this.redDice + this.blueDice) {
+            die.view.setOnClickListener {
+                for (innerDie in this.redDice + this.blueDice) {
+                    innerDie.roll()
+                }
+            }
+        }
     }
 }

@@ -26,6 +26,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import net.namibsun.dice.R
 import net.namibsun.dice.activities.MainActivity
+import net.namibsun.dice.activities.RiskDiceActivity
 import net.namibsun.dice.activities.SettingsActivity
 import net.namibsun.dice.activities.TwoDiceActivity
 
@@ -50,5 +51,8 @@ fun initializeBottomMenuBar(context: AppCompatActivity) {
     }
     context.findViewById(R.id.two_dice_activity).setOnClickListener {
         context.startActivity(Intent(context, TwoDiceActivity::class.java))
+    }
+    context.findViewById(R.id.risk_dice_activity).setOnClickListener {
+        context.startActivity(Intent(context, RiskDiceActivity::class.java))
     }
 }

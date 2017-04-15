@@ -22,6 +22,8 @@ This file is part of android-dice.
 
 package net.namibsun.dice.activities
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.google.firebase.analytics.FirebaseAnalytics
@@ -33,6 +35,11 @@ open class BaseActivity : AppCompatActivity() {
     var analytics: FirebaseAnalytics? = null
 
     /**
+    * A shared preferences object used to store and load settings
+    */
+    var prefs: SharedPreferences? = null
+
+    /**
      * Initializes the App's Main Activity View.
      * Initializes the Firebase Tracker object
      * @param savedInstanceState: The Instance Information of the app.
@@ -41,6 +48,7 @@ open class BaseActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         this.analytics = FirebaseAnalytics.getInstance(this)
+        this.prefs = this.getSharedPreferences("SHARED_PREFS", Context.MODE_PRIVATE)
 
     }
 

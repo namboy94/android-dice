@@ -23,7 +23,6 @@ This file is part of android-dice.
 package net.namibsun.dice.activities
 
 import android.annotation.SuppressLint
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.CheckBox
 import android.widget.RadioGroup
@@ -35,11 +34,6 @@ import net.namibsun.dice.objects.ThemeStyles
  * to his/her liking.
  */
 class SettingsActivity : BaseActivity() {
-
-    /**
-     * A shared preferences object used to store and load settings
-     */
-    var prefs: SharedPreferences? = null
 
     /**
      * The Checkbox for the vibration option
@@ -68,7 +62,6 @@ class SettingsActivity : BaseActivity() {
 
         super.onCreate(savedInstanceState)
         this.setContentView(net.namibsun.dice.R.layout.settings)
-        this.prefs = this.getSharedPreferences("SHARED_PREFS", android.content.Context.MODE_PRIVATE)
 
         this.findViewById(net.namibsun.dice.R.id.ok_button).setOnClickListener {
             this.storeAndReturn()
