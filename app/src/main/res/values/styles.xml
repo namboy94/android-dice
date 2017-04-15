@@ -42,4 +42,11 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="risk_die">
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
+
+
 </resources>

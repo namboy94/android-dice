@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2015-2017 Hermann Krumrey
+
+This file is part of android-dice.
+
+android-dice is an Android app that allows a user to roll a virtual
+die. Multiple configurations are supported
+
+android-dice is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+android-dice is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with android-dice. If not, see <http://www.gnu.org/licenses/>.
+-->
+<RelativeLayout
+    android:id="@+id/layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@android:style/Theme.NoTitleBar">
+
+    <include layout="@layout/settingsbutton">
+    </include>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+
+        <LinearLayout
+            android:id="@+id/blue_dice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/blue_die_1"
+                android:src="@drawable/blue_3"
+                android:contentDescription="@string/risk_dice_description"
+                style="@style/risk_die"/>
+
+
+            <ImageView
+                android:id="@+id/blue_die_2"
+                android:src="@drawable/blue_2"
+                android:contentDescription="@string/risk_dice_description"
+                style="@style/risk_die"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/red_dice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/red_die_1"
+                android:src="@drawable/red_4"
+                android:contentDescription="@string/risk_dice_description"
+                style="@style/risk_die"/>
+
+            <ImageView
+                android:id="@+id/red_die_2"
+                android:src="@drawable/red_5"
+                android:contentDescription="@string/risk_dice_description"
+                style="@style/risk_die"/>
+
+            <ImageView
+                android:id="@+id/blue_die_3"
+                android:src="@drawable/red_6"
+                android:contentDescription="@string/risk_dice_description"
+                style="@style/risk_die"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/modeswitcherbar">
+    </include>
+
+</RelativeLayout>
