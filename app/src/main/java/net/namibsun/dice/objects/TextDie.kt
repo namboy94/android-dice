@@ -1,6 +1,7 @@
 package net.namibsun.dice.objects
 
 import android.graphics.drawable.GradientDrawable
+import android.widget.EditText
 import android.widget.TextView
 import net.namibsun.dice.R
 import net.namibsun.dice.activities.BaseActivity
@@ -43,17 +44,29 @@ class TextDie(context: BaseActivity,
 
     /**
      * Updates the Range of the die. If the end value is smaller than the start value,
-     * the values are flipped around
+     * the values are flipped around.
+     * @param startEdit: The Start Range EditText
+     * @param endEdit: The End Range EditText
      */
-    fun updateRange(start: Int, end: Int) {
+    fun updateRange(startEdit: EditText, endEdit: EditText) {
 
-        if (this.minimum <= end) {
-            this.minimum = start
-            this.limit = end
+        val values: MutableList<Int> = mutableListOf()
+        listOf(startEdit, endEdit).mapTo(values) {
+            if (it.text.isEmpty()) {
+                0
+            }
+            else {
+                it.text.toString().toInt()
+            }
+        }
+
+        if (values[0] <= values[1]) {
+            this.minimum = values[0]
+            this.limit = values[1]
         }
         else {
-            this.minimum = end
-            this.limit = start
+            this.minimum = values[1]
+            this.limit = values[0]
         }
     }
 }

@@ -40,9 +40,7 @@ class TextDieActivity : BaseActivity() {
         this.textDie!!.view.setOnClickListener {
             val startEdit = this.findViewById(R.id.text_die_range_start_edit) as EditText
             val endEdit = this.findViewById(R.id.text_die_range_end_edit) as EditText
-            val startValue = startEdit.text.toString().toInt()
-            val endValue = endEdit.text.toString().toInt()
-            this.textDie!!.updateRange(startValue, endValue)
+            this.textDie!!.updateRange(startEdit, endEdit)
             this.textDie!!.roll()
         }
 
