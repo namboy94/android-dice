@@ -1,3 +1,7 @@
+V 2.0.0:
+  - Added Risk Dice Mode
+  - Dice colours are now loaded dynamically
+  - Vast improvements to the code base
 V 1.0.1:
   - Fixed Layout of the Settings Screen
   - Fixed dice not changing when only the wiggle animation was selected
