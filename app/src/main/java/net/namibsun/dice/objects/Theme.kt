@@ -50,8 +50,8 @@ class Theme(style: ThemeStyles, val vibrate: Boolean,
         // Add new styles here!
         return when (style) {
             ThemeStyles.CLASSIC -> listOf(
-                    R.drawable.classic_1, R.drawable.classic_2, R.drawable.classic_3,
-                    R.drawable.classic_4, R.drawable.classic_5, R.drawable.classic_6
+                    R.drawable.die_1, R.drawable.die_1, R.drawable.die_1,
+                    R.drawable.die_1, R.drawable.die_1, R.drawable.die_1
             )
             ThemeStyles.RED -> listOf(
                     R.drawable.red_1, R.drawable.red_2, R.drawable.red_3,

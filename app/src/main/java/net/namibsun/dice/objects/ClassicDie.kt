@@ -23,7 +23,10 @@ This file is part of android-dice.
 package net.namibsun.dice.objects
 
 import android.content.Context
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.LayerDrawable
 import android.os.Vibrator
+import android.support.v4.content.ContextCompat
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
@@ -80,6 +83,27 @@ class ClassicDie(private val context: BaseActivity,
     fun updateTheme(theme: Theme) {
         this.theme = theme
         this.draw()
+
+        val layer = this.view.drawable as LayerDrawable
+        layer.mutate()
+
+        for (eye in listOf(
+                R.id.middle_eye, R.id.left_top_eye,  R.id.left_middle_eye,  R.id.left_bottom_eye,
+                R.id.right_top_eye, R.id.right_middle_eye, R.id.right_bottom_eye)) {
+
+            var eyeDrawable = layer.findDrawableByLayerId(eye)
+            val base = layer.findDrawableByLayerId(R.id.die_base) as GradientDrawable
+
+            base.setColor(0)
+
+            if (eyeDrawable != null) {
+                eyeDrawable = eyeDrawable as GradientDrawable
+                eyeDrawable.setColor(0)
+            }
+        }
+
+        this.view.setImageDrawable(layer)
+
     }
 
     /**
