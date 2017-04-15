@@ -31,14 +31,32 @@ import net.namibsun.dice.objects.ClassicDie
 import net.namibsun.dice.objects.ThemeStyles
 import net.namibsun.dice.objects.loadTheme
 
+
+/**
+ * Activity that offers two blue and 3 red dice, for use with the board game
+ * RISK.
+ */
 class RiskDiceActivity : BaseActivity() {
 
+    /**
+     * These are the red dice
+     */
     val redDice : MutableList<ClassicDie> = mutableListOf()
+
+    /**
+     * And these are the blue dice
+     */
     val blueDice : MutableList<ClassicDie> = mutableListOf()
 
+    /**
+     * When the Activity is created, the dice are initialized. The dice are assigned static
+     * themes that may not be changed.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         this.setContentView(R.layout.riskdice)
+
         initializeSettingsButton(this)
         initializeBottomMenuBar(this)
         this.findViewById(R.id.risk_dice_activity).setOnClickListener { }
@@ -60,15 +78,4 @@ class RiskDiceActivity : BaseActivity() {
             }
         }
     }
-
-    override fun onResume() {
-        super.onResume()
-        for (die in this.redDice) {
-            die.updateTheme(loadTheme(this.prefs!!, ThemeStyles.RED))
-        }
-        for (die in this.blueDice) {
-            die.updateTheme(loadTheme(this.prefs!!, ThemeStyles.BLUE))
-        }
-    }
-
 }
