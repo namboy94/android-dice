@@ -26,6 +26,7 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
     <include layout="@layout/settingsbutton"/>
 
     <ImageView
+        android:id="@+id/die"
         style="@style/OneDieImage"
         android:layout_width="220dp"
         android:layout_height="220dp"

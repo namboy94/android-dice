@@ -71,15 +71,12 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
     <style name="OneDieImage">
         <item name="android:layout_centerInParent">true</item>
         <item name="android:src">@drawable/die_5</item>
-        <item type="id" name="die"/>
     </style>
 
     <style name="TextDieImage">
-        <item type="id" name="textdie"/>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:textColor">@color/text_die_font</item>
         <item name="android:gravity">center</item>
-        <item name="text">@string/text_die_start_value</item>
         <item name="android:background">@drawable/die_base</item>
         <item name="android:text">@string/text_die_start_value</item>
     </style>
