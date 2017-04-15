@@ -77,4 +77,17 @@ class RiskDiceActivity : BaseActivity() {
             }
         }
     }
+
+    /**
+     * Updates the theme for the dice
+     */
+    override fun onResume() {
+        super.onResume()
+        for (die in this.redDice) {
+            die.updateTheme(loadTheme(this.prefs!!, ThemeStyles.RED))
+        }
+        for (die in this.blueDice) {
+            die.updateTheme(loadTheme(this.prefs!!, ThemeStyles.BLUE))
+        }
+    }
 }

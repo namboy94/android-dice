@@ -66,7 +66,7 @@ class TwoDiceActivity : BaseActivity() {
                 this,
                 this.findViewById(net.namibsun.dice.R.id.bottomdie) as ImageView,
                 loadTheme(this.prefs!!),
-                animation = R.anim.wigglereverse
+                wiggleAnimationResource=R.anim.wigglereverse
         )
 
         this.topDie!!.view.setOnClickListener { this.topDie!!.roll(); this.bottomDie!!.roll() }
