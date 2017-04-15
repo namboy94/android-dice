@@ -22,10 +22,8 @@ This file is part of android-dice.
 
 package net.namibsun.dice.activities
 
-import android.content.Context
 import android.os.Bundle
 import android.widget.ImageView
-import android.content.SharedPreferences
 import net.namibsun.dice.objects.ClassicDie
 import net.namibsun.dice.R
 import net.namibsun.dice.helpers.initializeBottomMenuBar

@@ -31,7 +31,6 @@ import net.namibsun.dice.objects.ClassicDie
 import net.namibsun.dice.objects.ThemeStyles
 import net.namibsun.dice.objects.loadTheme
 
-
 /**
  * Activity that offers two blue and 3 red dice, for use with the board game
  * RISK.

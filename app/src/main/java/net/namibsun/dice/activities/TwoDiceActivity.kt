@@ -23,7 +23,6 @@ This file is part of android-dice.
 package net.namibsun.dice.activities
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.ImageView
 import net.namibsun.dice.objects.ClassicDie

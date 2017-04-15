@@ -84,7 +84,7 @@ class ClassicDie(private val context: BaseActivity,
         layer.mutate()
 
         for (eye in listOf(
-                R.id.middle_eye, R.id.left_top_eye,  R.id.left_middle_eye,  R.id.left_bottom_eye,
+                R.id.middle_eye, R.id.left_top_eye, R.id.left_middle_eye, R.id.left_bottom_eye,
                 R.id.right_top_eye, R.id.right_middle_eye, R.id.right_bottom_eye)) {
 
             var eyeDrawable = layer.findDrawableByLayerId(eye)

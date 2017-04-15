@@ -23,7 +23,6 @@ This file is part of android-dice.
 package net.namibsun.dice.activities
 
 import android.annotation.SuppressLint
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.CheckBox
 import android.widget.RadioGroup

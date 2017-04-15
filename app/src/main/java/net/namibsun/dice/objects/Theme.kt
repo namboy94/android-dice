@@ -80,7 +80,7 @@ enum class ThemeStyles {
 fun loadTheme(prefs: SharedPreferences, styleOverride: ThemeStyles? = null) : Theme {
 
     val style: ThemeStyles
-    if(styleOverride == null) {
+    if (styleOverride == null) {
         style = ThemeStyles.valueOf(prefs.getString("style", "CLASSIC"))
     }
     else {
