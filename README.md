@@ -7,7 +7,8 @@
 ![Logo](app/resources/playstore/images/logo.png)
 
 Android Dice (Dice Roller) is an Android App that allows a user to
-roll one or more dice virtually.
+roll one or more dice virtually. There are multiple, sometimes user-configurable
+modes available.
 
 ## Further Information
 
