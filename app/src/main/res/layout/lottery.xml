@@ -56,7 +56,7 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
         android:layout_below="@id/lottery_numbers"
         android:layout_marginTop="40dp"
         android:textOn="@string/weighted_values_toggle_text"
-        android:textOff="@string/weighted_values_toggle_text"/>
+        android:textOff="@string/random_values_toggle_text"/>
 
     <include layout="@layout/modeswitcherbar"/>
 
