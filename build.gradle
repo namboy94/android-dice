@@ -22,7 +22,7 @@ This file is part of android-dice.
 
 ext {
     version = "3.0.1"
-    versionCode = 4
+    versionCode = 5
 }
 
 buildscript {
