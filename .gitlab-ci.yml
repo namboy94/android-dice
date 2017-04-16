@@ -86,7 +86,7 @@ upload_play_store_beta:
     - linux-buildserver
   script:
     - pip install --upgrade google-api-python-client pyOpenSSL --user
-    - echo $PLAY_UPLOAD_SECRET | base64 -d - > key.p12
+    - echo $PLAY_UPLOAD_SECRET | base64 -d > key.p12
     - python play_upload.py net.namibsun.dice artifacts/*
     - rm key.p12
 
