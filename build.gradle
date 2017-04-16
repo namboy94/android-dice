@@ -21,8 +21,8 @@ This file is part of android-dice.
 */
 
 ext {
-    version = "3.0.1"
-    versionCode = 5
+    version = "3.0.2"
+    versionCode = 6
 }
 
 buildscript {
