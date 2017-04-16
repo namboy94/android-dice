@@ -1,3 +1,9 @@
+V 3.0.1:
+  - Fixed Wrong command in play upload build step
+V 3.0.0:
+  - Added Text Die Mode
+  - Fixed Risk Dice not applying animation settings
+  - Added automatic Google Play Uploading
 V 2.0.0:
   - Added Risk Dice Mode
   - Dice colours are now loaded dynamically
