@@ -51,4 +51,6 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
     <string name="text_die_start_value">0</string>
     <string name="text_die_range_label">Range:</string>
     <string name="text_die_range_start_value">0</string>
+
+    <string name="weighted_values_toggle_text">Weighted Values</string>
 </resources>

@@ -1,6 +1,27 @@
+/*
+Copyright 2015-2017 Hermann Krumrey
+
+This file is part of android-dice.
+
+    android-dice is an Android app that allows a user to roll a virtual
+    die. Multiple configurations are supported
+
+    android-dice is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    android-dice is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with android-dice. If not, see <http://www.gnu.org/licenses/>.
+*/
+
 package net.namibsun.dice.objects
 
-import android.util.Log
 import android.widget.TextView
 import android.widget.ToggleButton
 import net.namibsun.dice.R
@@ -15,11 +36,11 @@ import net.namibsun.dice.data.lotteryOccurences
  * @param toggle: The toggle used to identify if weight values should be generated
  * @param wiggleAnimationResource: Overrides the wiggle animation if set
  */
-open class LotteryDie(context: BaseActivity,
-                   view: TextView,
-                   theme: Theme,
-                   private val toggle: ToggleButton,
-                   wiggleAnimationResource: Int = R.anim.wiggle) :
+class LotteryDie(context: BaseActivity,
+                 view: TextView,
+                 theme: Theme,
+                 private val toggle: ToggleButton,
+                 wiggleAnimationResource: Int = R.anim.wiggle) :
         TextDie(context, view, theme, initialValue=1, limit=49, minimum=1,
                 wiggleAnimationResource=wiggleAnimationResource) {
 
