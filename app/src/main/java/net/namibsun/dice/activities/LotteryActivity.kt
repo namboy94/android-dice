@@ -8,10 +8,20 @@ import net.namibsun.dice.helpers.initializeSettingsButton
 import net.namibsun.dice.objects.TextDie
 import net.namibsun.dice.objects.loadTheme
 
+/**
+ * An activity that allows a user to generate a lottery number
+ */
 class LotteryActivity : BaseActivity() {
 
+    /**
+     * The Lottery number UI elements, which are represented by TextDies
+     */
     val lotteryNumbers: MutableList<TextDie> = mutableListOf()
 
+    /**
+     * Initializes the lottery TextDies and sets their limit to a value
+     * between 1 and 49
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.setContentView(R.layout.lottery)
@@ -29,9 +39,12 @@ class LotteryActivity : BaseActivity() {
 
         this.lotteryNumbers.map { die -> die.view.setOnClickListener {
             this.lotteryNumbers.map(TextDie::roll)
-        }}
+        } }
     }
 
+    /**
+     * Applies the current theme to the lottery numbers
+     */
     override fun onResume() {
         super.onResume()
         this.lotteryNumbers.map { die -> die.updateTheme(loadTheme(this.prefs!!)) }
