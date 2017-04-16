@@ -78,7 +78,7 @@ open class ClassicDie(context: BaseActivity,
         }
 
         val sdk = android.os.Build.VERSION.SDK_INT
-        if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+        if (sdk <= android.os.Build.VERSION_CODES.JELLY_BEAN) {
             @Suppress("DEPRECATION")
             image.setBackgroundDrawable(layer)
         }
