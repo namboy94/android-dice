@@ -76,6 +76,14 @@ open class ClassicDie(context: BaseActivity,
                 eyeDrawable.setColor(colors["die_eye"]!!)
             }
         }
-        image.setImageDrawable(layer)
+
+        val sdk = android.os.Build.VERSION.SDK_INT
+        if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            @Suppress("DEPRECATION")
+            image.setBackgroundDrawable(layer)
+        }
+        else {
+            image.setImageDrawable(layer)
+        }
     }
 }
