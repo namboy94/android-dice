@@ -37,12 +37,10 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.SettingsActivity">
-        </activity>
-        <activity android:name=".activities.TwoDiceActivity">
-        </activity>
-        <activity android:name=".activities.RiskDiceActivity">
-        </activity>
+        <activity android:name=".activities.SettingsActivity"/>
+        <activity android:name=".activities.TwoDiceActivity"/>
+        <activity android:name=".activities.RiskDiceActivity"/>
+        <activity android:name=".activities.TextDieActivity"/>
     </application>
 
 </manifest>

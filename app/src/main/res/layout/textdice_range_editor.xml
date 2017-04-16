@@ -36,8 +36,8 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
             android:gravity="center"
             android:text="@string/text_die_range_label"/>
 
-        <EditText style="@style/RangeEditBox"/>
-        <EditText style="@style/RangeEditBox"/>
+        <EditText android:id="@+id/text_die_range_start_edit" style="@style/RangeEditBox"/>
+        <EditText android:id="@+id/text_die_range_end_edit" style="@style/RangeEditBox"/>
 
     </LinearLayout>
 </merge>

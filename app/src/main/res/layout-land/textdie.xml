@@ -28,7 +28,6 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
     <TextView
         android:id="@+id/textdie"
         style="@style/TextDieImage"
-        android:text="@string/text_die_start_value"
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:layout_marginTop="60dp"

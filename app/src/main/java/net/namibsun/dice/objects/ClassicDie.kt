@@ -22,65 +22,44 @@ This file is part of android-dice.
 
 package net.namibsun.dice.objects
 
-import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
-import android.os.Vibrator
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import net.namibsun.dice.R
 import net.namibsun.dice.activities.BaseActivity
-import java.security.SecureRandom
-import kotlin.concurrent.thread
 
 /**
  * This is a class that simulates a classic 6-sided die.
  * @param context: The context/Activity for this die.
  * @param view: The view that represents this die
  * @param theme: The starting theme to be applied to the die
- * @param current: Optional parameter that can specify which image of the theme's
- *                 permutations should be the default image. By default this is the 5th element.
- * @param animation: Can be used to override the default wiggle animation
+ * @param initialValue: The initial value of the die
+ * @param wiggleAnimationResource: Can be used to override the default wiggle animation
  */
-class ClassicDie(private val context: BaseActivity,
-                 val view: ImageView,
-                 private var theme: Theme,
-                 private var current: Int = 4,
-                 private val animation: Int = R.anim.wiggle) {
-
-    val dieFaces = listOf(
-            R.drawable.die_1, R.drawable.die_2, R.drawable.die_3,
-            R.drawable.die_4, R.drawable.die_5, R.drawable.die_6
-    )
-
-    /**
-     * The vibrator is used to vibrate the device while the animation is running,
-     * if the theme allows for this.
-     */
-    val vibrator = this.context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-
-    /**
-     * An object that can generate random numbers
-     */
-    val random = SecureRandom()
-
-    /**
-     * Sets the OnClickListener for the image view
-     */
-    init {
-        this.view.setOnClickListener { this.roll() }
-        this.draw()
-    }
+open class ClassicDie(context: BaseActivity,
+                      view: ImageView,
+                      theme: Theme,
+                      initialValue: Int = 5,
+                      wiggleAnimationResource: Int = R.anim.wiggle) :
+        Die(context, view, theme, initialValue=initialValue, limit = 6, minimum = 1,
+                wiggleAnimationResource=wiggleAnimationResource) {
 
     /**
      * Draws the currently selected image resource
      */
-    fun draw() {
-        this.view.setImageResource(this.dieFaces[this.current])
+    override fun draw() {
+
+        val image = this.view as ImageView
+
+        val dieFaces : HashMap<Int, Int> = hashMapOf(
+                1 to R.drawable.die_1, 2 to R.drawable.die_2, 3 to R.drawable.die_3,
+                4 to R.drawable.die_4, 5 to R.drawable.die_5, 6 to R.drawable.die_6
+        )
+
+        image.setImageResource(dieFaces[this.currentValue]!!)
 
         val colors : HashMap<String, Int> = this.theme.getThemeColors(this.context)
-        val layer = this.view.drawable as LayerDrawable
+        val layer = image.drawable as LayerDrawable
         layer.mutate()
 
         for (eye in listOf(
@@ -97,124 +76,6 @@ class ClassicDie(private val context: BaseActivity,
                 eyeDrawable.setColor(colors["die_eye"]!!)
             }
         }
-        this.view.setImageDrawable(layer)
-    }
-
-    /**
-     * Updates the theme of the Die
-     * @param theme: The theme to change to
-     */
-    fun updateTheme(theme: Theme) {
-        this.theme = theme
-        this.draw()
-    }
-
-    /**
-     * Vibrates the device for a set amount of time, but only if vibrating is enabled
-     * in the settings.
-     * @param duration: The duration of the vibration
-     */
-    fun vibrate(duration: Long) {
-        if (this.theme.vibrate) {
-            this.vibrator.vibrate(duration)
-        }
-    }
-
-    /**
-     * Switches the Image resource to the next image.
-     * While doing so, it is ensured that classic_2 consecutive images are always different
-     * from each other
-     */
-    fun nextImage() {
-        var next = this.current
-        while (next == this.current) {
-            next = this.random.nextInt(6)
-        }
-        this.current = next
-        this.draw()
-    }
-
-    /**
-     * Starts the die roll. Depending on the settings stored in the theme variable,
-     * animations and vibrations are started
-     */
-    fun roll() {
-
-        this.context.logEvent("Diceroll", "Start")
-
-        if (this.theme.vibrate && !this.theme.wiggleAnimation && !this.theme.changeAnimation) {
-            this.vibrator.vibrate(100)
-            this.nextImage()
-        }
-        else if (this.theme.wiggleAnimation) {
-            this.animate()
-        }
-        else if (this.theme.changeAnimation) {
-            this.vibrate(1000)
-            thread(start = true) {
-                var runtime = 0
-                while (runtime < 1000) {
-                    this.context.runOnUiThread { this.nextImage() }
-                    Thread.sleep(200)
-                    runtime += 200
-                }
-            }
-        }
-        else {
-            this.nextImage()
-        }
-    }
-
-    /**
-     * Animates the die roll. If vibration is activated, the device will vibrate during the
-     * animation.
-     *
-     * An AnimationListener is required, it is used to change the picture of the
-     * die while the animation is running
-     */
-    fun animate() {
-        val animation = AnimationUtils.loadAnimation(this.context, this.animation)
-
-        if (this.theme.changeAnimation) {
-            animation.setAnimationListener(ChangeAnimator())
-        }
-        else {
-            animation.setAnimationListener(object : Animation.AnimationListener {
-                override fun onAnimationRepeat(animation: Animation?) { }
-                override fun onAnimationStart(animation: Animation?) { }
-                override fun onAnimationEnd(animation: Animation?) { this@ClassicDie.nextImage() }
-            })
-        }
-
-        this.vibrate(animation.duration * 10)
-        this.view.startAnimation(animation)
-    }
-
-    /**
-     * Implementation of the AnimationListener that changes the background image
-     * of the die to one of the permutations stored in the themes objects while an animation
-     * is running
-     */
-    inner class ChangeAnimator : Animation.AnimationListener {
-
-        //Not Needed
-        override fun onAnimationRepeat(animation: Animation?) {}
-        override fun onAnimationEnd(animation: Animation?) {}
-
-        /**
-         * When the animation starts, a new thread is created that periodically changes the
-         * die image.
-         */
-        override fun onAnimationStart(animation: Animation) {
-
-            thread(start = true) {
-                var sleep = 0
-                while (sleep < animation.duration * 10) {
-                    this@ClassicDie.context.runOnUiThread { this@ClassicDie.nextImage() }
-                    Thread.sleep(200)
-                    sleep += 200
-                }
-            }
-        }
+        image.setImageDrawable(layer)
     }
 }
