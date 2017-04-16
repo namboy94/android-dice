@@ -48,6 +48,15 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
 
     </LinearLayout>
 
+    <ToggleButton
+        android:id="@+id/weighted_lottery_toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/lottery_numbers"
+        android:layout_marginTop="40dp"
+        android:textOn="Weighted Values"
+        android:textOff="Weigted Values"/>
 
     <include layout="@layout/modeswitcherbar"/>
 

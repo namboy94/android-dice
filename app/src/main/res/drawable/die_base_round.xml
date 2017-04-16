@@ -23,7 +23,7 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
     android:shape="rectangle">
 
     <corners
-        android:radius="100px"/>
+        android:radius="1000px"/>
 
     <solid android:color="@color/classic_base"/>
 

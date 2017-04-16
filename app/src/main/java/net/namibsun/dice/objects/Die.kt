@@ -60,7 +60,7 @@ abstract class Die(protected val context: BaseActivity,
     /**
     * Displays the next value in the view
     */
-    fun next() {
+    open fun next() {
         this.currentValue = this.next_random_number()
         this.draw()
     }

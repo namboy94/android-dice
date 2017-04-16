@@ -2,9 +2,11 @@ package net.namibsun.dice.activities
 
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.ToggleButton
 import net.namibsun.dice.R
 import net.namibsun.dice.helpers.initializeBottomMenuBar
 import net.namibsun.dice.helpers.initializeSettingsButton
+import net.namibsun.dice.objects.LotteryDie
 import net.namibsun.dice.objects.TextDie
 import net.namibsun.dice.objects.loadTheme
 
@@ -31,10 +33,10 @@ class LotteryActivity : BaseActivity() {
         listOf(R.id.lottery_die_one, R.id.lottery_die_two, R.id.lottery_die_three,
                 R.id.lottery_die_four, R.id.lottery_die_five, R.id.lottery_die_six)
                 .mapTo(lotteryNumbers) {
-            TextDie(this,
+            LotteryDie(this,
                     this.findViewById(it) as TextView,
                     loadTheme(this.prefs!!),
-                    initialValue=1, limit=49, minimum=1)
+                    this.findViewById(R.id.weighted_lottery_toggle) as ToggleButton)
                 }
 
         this.lotteryNumbers.map { die -> die.view.setOnClickListener {
@@ -49,5 +51,4 @@ class LotteryActivity : BaseActivity() {
         super.onResume()
         this.lotteryNumbers.map { die -> die.updateTheme(loadTheme(this.prefs!!)) }
     }
-
 }
