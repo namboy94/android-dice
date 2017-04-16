@@ -110,8 +110,9 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/die_base_round</item>
         <item name="android:text">@string/text_die_start_value</item>
-        <item name="android:layout_width">60dp</item>
-        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <!--item name="android:layout_gravity">1</item-->
         <item name="android:textSize">30sp</item>
         <item name="android:layout_margin">1dp</item>
     </style>

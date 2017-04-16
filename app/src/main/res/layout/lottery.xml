@@ -29,15 +29,22 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
         android:id="@+id/lottery_numbers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:layout_centerInParent="true"
         android:orientation="horizontal">
 
-        <TextView style="@style/LotteryDie" android:id="@+id/lottery_die_one"/>
-        <TextView style="@style/LotteryDie" android:id="@+id/lottery_die_two"/>
-        <TextView style="@style/LotteryDie" android:id="@+id/lottery_die_three"/>
-        <TextView style="@style/LotteryDie" android:id="@+id/lottery_die_four"/>
-        <TextView style="@style/LotteryDie" android:id="@+id/lottery_die_five"/>
-        <TextView style="@style/LotteryDie" android:id="@+id/lottery_die_six"/>
+        <net.namibsun.dice.views.SquareWidthTextView android:layout_weight="1"
+            style="@style/LotteryDie" android:id="@+id/lottery_die_one"/>
+        <net.namibsun.dice.views.SquareWidthTextView android:layout_weight="1"
+            style="@style/LotteryDie" android:id="@+id/lottery_die_two"/>
+        <net.namibsun.dice.views.SquareWidthTextView android:layout_weight="1"
+            style="@style/LotteryDie" android:id="@+id/lottery_die_three"/>
+        <net.namibsun.dice.views.SquareWidthTextView android:layout_weight="1"
+            style="@style/LotteryDie" android:id="@+id/lottery_die_four"/>
+        <net.namibsun.dice.views.SquareWidthTextView android:layout_weight="1"
+            style="@style/LotteryDie" android:id="@+id/lottery_die_five"/>
+        <net.namibsun.dice.views.SquareWidthTextView android:layout_weight="1"
+            style="@style/LotteryDie" android:id="@+id/lottery_die_six"/>
 
     </LinearLayout>
 
