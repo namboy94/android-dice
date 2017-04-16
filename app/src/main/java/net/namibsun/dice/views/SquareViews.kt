@@ -20,30 +20,22 @@ This file is part of android-dice.
     along with android-dice. If not, see <http://www.gnu.org/licenses/>.
 */
 
-ext {
-    version = "4.0.0"
-    versionCode = 400
-}
+package net.namibsun.dice.views
 
-buildscript {
+import android.content.Context
+import android.util.AttributeSet
+import android.widget.TextView
 
-    ext.kotlin_version = '1.1.1'
-    repositories {
-        jcenter()
+/**
+ * A Text View that Always has the same height as its width
+ */
+class SquareWidthTextView @JvmOverloads constructor(context: Context,
+                                                    attrs: AttributeSet? = null,
+                                                    defStyleAttr: Int = 0)
+    : TextView(context, attrs, defStyleAttr) {
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, widthMeasureSpec)
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.google.gms:google-services:3.0.0'
-    }
-}
 
-allprojects {
-    repositories {
-        jcenter()
-    }
-}
-
-task version() {
-    println rootProject.ext.version
 }

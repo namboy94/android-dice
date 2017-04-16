@@ -19,31 +19,3 @@ This file is part of android-dice.
     You should have received a copy of the GNU General Public License
     along with android-dice. If not, see <http://www.gnu.org/licenses/>.
 */
-
-ext {
-    version = "4.0.0"
-    versionCode = 400
-}
-
-buildscript {
-
-    ext.kotlin_version = '1.1.1'
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.google.gms:google-services:3.0.0'
-    }
-}
-
-allprojects {
-    repositories {
-        jcenter()
-    }
-}
-
-task version() {
-    println rootProject.ext.version
-}

@@ -45,9 +45,14 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
     <string name="two_dice_activity_button">2 Dice</string>
     <string name="risk_dice_activity_button">Risk Dice</string>
     <string name="text_die_activity_button">Text Die</string>
+    <string name="lottery_activity_button">Lottery</string>
 
     <!-- Text Dice -->
     <string name="text_die_start_value">0</string>
     <string name="text_die_range_label">Range:</string>
     <string name="text_die_range_start_value">0</string>
+
+    <!-- Lottery -->
+    <string name="weighted_values_toggle_text">Weighted Values</string>
+    <string name="random_values_toggle_text">Random Values</string>
 </resources>

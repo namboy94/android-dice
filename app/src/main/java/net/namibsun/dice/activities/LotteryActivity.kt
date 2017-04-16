@@ -23,57 +23,54 @@ This file is part of android-dice.
 package net.namibsun.dice.activities
 
 import android.os.Bundle
-import android.widget.EditText
 import android.widget.TextView
+import android.widget.ToggleButton
 import net.namibsun.dice.R
 import net.namibsun.dice.helpers.initializeBottomMenuBar
 import net.namibsun.dice.helpers.initializeSettingsButton
+import net.namibsun.dice.objects.LotteryDie
 import net.namibsun.dice.objects.TextDie
 import net.namibsun.dice.objects.loadTheme
 
 /**
- * The Text Die Activity Allows a user to specify a range of numbers of which he/she will
- * then be provided a die with a number written on it which may be rolled like any other die.
+ * An activity that allows a user to generate a lottery number
  */
-class TextDieActivity : BaseActivity() {
+class LotteryActivity : BaseActivity() {
 
     /**
-     * The Text Die shown on the activity
+     * The Lottery number UI elements, which are represented by TextDies
      */
-    var textDie : TextDie? = null
+    val lotteryNumbers: MutableList<TextDie> = mutableListOf()
 
     /**
-     * Initializes the Text Die and its OnClickListener
-     * @param savedInstanceState: The saved instance state of the Activity
+     * Initializes the lottery TextDies and sets their limit to a value
+     * between 1 and 49
      */
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
-        this.setContentView(R.layout.textdie)
-
+        this.setContentView(R.layout.lottery)
         initializeBottomMenuBar(this)
         initializeSettingsButton(this)
 
-        this.textDie = TextDie(
-                this, this.findViewById(R.id.textdie) as TextView, loadTheme(this.prefs!!)
-        )
+        listOf(R.id.lottery_die_one, R.id.lottery_die_two, R.id.lottery_die_three,
+                R.id.lottery_die_four, R.id.lottery_die_five, R.id.lottery_die_six)
+                .mapTo(lotteryNumbers) {
+            LotteryDie(this,
+                    this.findViewById(it) as TextView,
+                    loadTheme(this.prefs!!),
+                    this.findViewById(R.id.weighted_lottery_toggle) as ToggleButton)
+                }
 
-        // Check for values in the range edits
-        this.textDie!!.view.setOnClickListener {
-            val startEdit = this.findViewById(R.id.text_die_range_start_edit) as EditText
-            val endEdit = this.findViewById(R.id.text_die_range_end_edit) as EditText
-            this.textDie!!.updateRange(startEdit, endEdit)
-            this.textDie!!.roll()
-        }
-
+        this.lotteryNumbers.map { die -> die.view.setOnClickListener {
+            this.lotteryNumbers.map(TextDie::roll)
+        } }
     }
 
     /**
-     * Updated the Theme of the Die when the activity is resume
+     * Applies the current theme to the lottery numbers
      */
     override fun onResume() {
         super.onResume()
-        this.textDie!!.updateTheme(loadTheme(this.prefs!!))
+        this.lotteryNumbers.map { die -> die.updateTheme(loadTheme(this.prefs!!)) }
     }
-
 }
