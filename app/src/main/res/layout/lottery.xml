@@ -54,7 +54,7 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/lottery_numbers"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:textOn="@string/weighted_values_toggle_text"
         android:textOff="@string/random_values_toggle_text"/>
 

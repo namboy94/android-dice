@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2015-2017 Hermann Krumrey
+
+This file is part of android-dice.
+
+android-dice is an Android app that allows a user to roll a virtual
+die. Multiple configurations are supported
+
+android-dice is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+android-dice is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with android-dice. If not, see <http://www.gnu.org/licenses/>.
+-->
+<resources>
+    <string name="app_name">Würfelwerfer</string>
+
+    <!-- Titles -->
+    <string name="theme_settings_title">Farbeinstellungen</string>
+
+    <!-- Image Descriptions -->
+    <string name="dice_content_description">Ein normaler Würfel</string>
+    <string name="setting_button_description">Der Einstellungsknopf</string>
+    <string name="red_risk_dice_description">Ein roter Risiko Würfel</string>
+    <string name="blue_risk_dice_description">Ein blauer Risiko Würfel</string>
+
+    <!-- Menu options -->
+    <string name="vibrate_option">Vibration</string>
+    <string name="wiggle_animation_option">Wackelanimation</string>
+    <string name="switcher_animation_option">Wechselanimation</string>
+    <string name="classic_theme_option">Standard</string>
+    <string name="red_theme_option">Rot</string>
+    <string name="blue_theme_option">Blau</string>
+
+    <!-- Buttons -->
+    <string name="ok_button_text">OK</string>
+    <string name="one_die_activity_button">1 Würfel</string>
+    <string name="two_dice_activity_button">2 Würfel</string>
+    <string name="risk_dice_activity_button">Risiko Würfel</string>
+    <string name="text_die_activity_button">Text Würfel</string>
+    <string name="lottery_activity_button">Lotto Würfel</string>
+
+    <!-- Text Dice -->
+    <string name="text_die_start_value">0</string>
+    <string name="text_die_range_label">Bereich:</string>
+    <string name="text_die_range_start_value">0</string>
+
+    <!-- Lottery -->
+    <string name="weighted_values_toggle_text">Gewichtete Werte</string>
+    <string name="random_values_toggle_text">Zufällige Werte</string>
+</resources>
