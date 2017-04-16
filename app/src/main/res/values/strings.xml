@@ -45,6 +45,7 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
     <string name="two_dice_activity_button">2 Dice</string>
     <string name="risk_dice_activity_button">Risk Dice</string>
     <string name="text_die_activity_button">Text Die</string>
+    <string name="lottery_activity_button">Lottery</string>
 
     <!-- Text Dice -->
     <string name="text_die_start_value">0</string>
