@@ -61,10 +61,14 @@ class TextDieActivity : BaseActivity() {
                 "" + R.id.textdie
         )
 
+        val startEdit = this.findViewById(R.id.text_die_range_start_edit) as EditText
+        val endEdit = this.findViewById(R.id.text_die_range_end_edit) as EditText
+
+        startEdit.setText(this.prefs!!.getInt("" + R.id.textdie + "startvalue", 0).toString())
+        endEdit.setText(this.prefs!!.getInt("" + R.id.textdie + "endvalue", 0).toString())
+
         // Check for values in the range edits
         this.textDie!!.view.setOnClickListener {
-            val startEdit = this.findViewById(R.id.text_die_range_start_edit) as EditText
-            val endEdit = this.findViewById(R.id.text_die_range_end_edit) as EditText
             this.textDie!!.updateRange(startEdit, endEdit)
             this.textDie!!.roll()
         }

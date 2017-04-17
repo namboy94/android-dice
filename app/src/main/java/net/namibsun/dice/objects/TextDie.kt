@@ -84,6 +84,11 @@ open class TextDie(context: BaseActivity,
             }
         }
 
+        val editor = this.context.prefs!!.edit()
+        editor.putInt(this.storedValueKey + "startvalue", values[0])
+        editor.putInt(this.storedValueKey + "endvalue", values[1])
+        editor.apply()
+
         if (values[0] <= values[1]) {
             this.minimum = values[0]
             this.limit = values[1]
