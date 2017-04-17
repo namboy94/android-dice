@@ -60,7 +60,6 @@ open class ClassicDie(context: BaseActivity,
 
         val colors : HashMap<String, Int> = this.theme.getThemeColors(this.context)
         val layer = image.drawable as LayerDrawable
-        layer.mutate()
 
         for (eye in listOf(
                 R.id.middle_eye, R.id.left_top_eye, R.id.left_middle_eye, R.id.left_bottom_eye,
@@ -76,14 +75,6 @@ open class ClassicDie(context: BaseActivity,
                 eyeDrawable.setColor(colors["die_eye"]!!)
             }
         }
-
-        val sdk = android.os.Build.VERSION.SDK_INT
-        if (sdk <= android.os.Build.VERSION_CODES.JELLY_BEAN) {
-            @Suppress("DEPRECATION")
-            image.setBackgroundDrawable(layer)
-        }
-        else {
-            image.setImageDrawable(layer)
-        }
+        image.setImageDrawable(layer)
     }
 }
