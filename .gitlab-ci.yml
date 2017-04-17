@@ -86,13 +86,14 @@ upload_play_store_beta:
   tags:
     - linux-buildserver
   script:
-    - git clone https://gitlab.namibsun.net/namboy94/changelog-reader.git
-    - python changelog-reader/changelog-reader.py -c CHANGELOG -d current_changelog
-    - python changelog-reader/changelog-reader.py -c CHANGELOG-de -d current_changelog_de
     - pip install --upgrade google-api-python-client pyOpenSSL --user
+    - git clone https://gitlab.namibsun.net/namboy94/changelog-reader.git
+    - git clone https://gitlab.namibsun.net/namboy94/play-upload.git
+    - python changelog-reader/changelog-reader.py -c CHANGELOG -d en-US
+    - python changelog-reader/changelog-reader.py -c CHANGELOG-de -d de-DE
     - echo $PLAY_UPLOAD_SECRET | base64 -d > key.p12
-    - python play_upload.py net.namibsun.dice production current_changelog current_changelog_de $PLAY_UPLOAD_EMAIL key.p12 artifacts/*.apk
-    - rm key.p12 current_changelog
+    - python play-upload/play-upload.py net.namibsun.dice production $PLAY_UPLOAD_EMAIL key.p12 artifacts/*.apk --changes="en-US,de-DE"
+    - rm key.p12
 
 gitstats:
   stage: docs
