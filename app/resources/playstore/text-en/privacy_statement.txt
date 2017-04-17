@@ -1,0 +1,6 @@
+This Android Application makes use of Firebase Analytics.
+
+The following information is tracked:
+
+- Whenever a die is rolled, the app notifies the Firebase Servers that a die was rolled,
+  as well as the type of die that was rolled

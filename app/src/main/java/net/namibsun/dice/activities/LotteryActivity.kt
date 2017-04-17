@@ -52,13 +52,22 @@ class LotteryActivity : BaseActivity() {
         initializeBottomMenuBar(this)
         initializeSettingsButton(this)
 
+        val toggle = this.findViewById(R.id.weighted_lottery_toggle) as ToggleButton
+        toggle.isChecked = this.prefs!!.getBoolean("" + R.id.weighted_lottery_toggle, false)
+
+        toggle.setOnCheckedChangeListener {
+            _, isChecked -> this.prefs!!.edit()
+                .putBoolean("" + R.id.weighted_lottery_toggle, isChecked).apply()
+        }
+
         listOf(R.id.lottery_die_one, R.id.lottery_die_two, R.id.lottery_die_three,
                 R.id.lottery_die_four, R.id.lottery_die_five, R.id.lottery_die_six)
                 .mapTo(lotteryNumbers) {
             LotteryDie(this,
                     this.findViewById(it) as TextView,
                     loadTheme(this.prefs!!),
-                    this.findViewById(R.id.weighted_lottery_toggle) as ToggleButton)
+                    "" + it,
+                    toggle)
                 }
 
         this.lotteryNumbers.map { die -> die.view.setOnClickListener {

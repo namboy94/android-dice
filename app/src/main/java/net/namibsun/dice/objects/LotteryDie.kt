@@ -33,15 +33,17 @@ import net.namibsun.dice.data.lotteryOccurences
  * @param context: The Activity that uses this die
  * @param view: The View of the Die, which is a TextView
  * @param theme: The theme to be applied to the die
+ * @param storedValueKey: The key string used to store the current value in the shared preferences
  * @param toggle: The toggle used to identify if weight values should be generated
  * @param wiggleAnimationResource: Overrides the wiggle animation if set
  */
 class LotteryDie(context: BaseActivity,
                  view: TextView,
                  theme: Theme,
+                 storedValueKey: String,
                  private val toggle: ToggleButton,
                  wiggleAnimationResource: Int = R.anim.wiggle) :
-        TextDie(context, view, theme, initialValue=1, limit=49, minimum=1,
+        TextDie(context, view, theme, storedValueKey, initialValue=1, limit=49, minimum=1,
                 wiggleAnimationResource=wiggleAnimationResource) {
 
     /**

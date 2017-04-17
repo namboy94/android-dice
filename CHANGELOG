@@ -1,3 +1,8 @@
+V 4.1.0:
+  - Jelly Bean graphical issues fixed
+  - Dice Values are now persistent between sessions
+  - Dice Values no longer reset when orientation changes
+  - German Language Support Added
 V 4.0.0:
   - Added lottery mode
 V 3.0.3:

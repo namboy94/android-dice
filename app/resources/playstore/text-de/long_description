@@ -1,0 +1,17 @@
+Würfel zuhause vergessen? Du hast Schwierigkeiten deine Lottonummern auszuwählen? Dann kommt
+Der Würfel Werfer genau richtig!
+
+Der Würfel Werfer erlaubt es dir, virtuelle Würfel zu werfen, wobei man hier verschiedene
+Modi auswählen kann, welche auch mehrere Würfel, benutzerdefinierte Würfel oder sogar einen
+nach Häufigkeit gewichteten Lottonummergenerator beinhalten.
+
+Würfel können geworfen werden, indem man sie berührt. Man kann in einen anderen Modus wechseln,
+indem man einen der Knöpfe auf der unteren Seite der App betätigt. Die Animations- und
+Farbeinstellungen können mithilfe des Knopfes in der oberen rechten Ecke adjustiert werden.
+
+Diese App ist vollständig quelloffen(open source) unter der GPLv3 Lizenz. Der Quellcode kann auf
+Github eingesehen werden: https://github.com/namboy94/android-dice. Diese App ist frei und
+enthält keine Werbung. Wenn du deine Anerkennung für diese App zeigen möchtest, erwäge die Option,
+der Free Software Foundation eine Spende zukommen zu lassen: https://www.fsf.org/donate
+
+Datenschutzerklärung: https://gitlab.namibsun.net/namboy94/android-dice/raw/develop/app/resources/playstore/text-de/privacy_statement.txt

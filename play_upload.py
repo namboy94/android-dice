@@ -28,7 +28,8 @@ argparser = argparse.ArgumentParser(add_help=False)
 argparser.add_argument("package_name", help="The package name. Example: com.android.sample")
 argparser.add_argument("track", help="The Track on which to release the APK file."
                                      "Can be 'alpha', beta', 'production' or 'rollout'")
-argparser.add_argument("changes_en", help="The changes to the app in this version")
+argparser.add_argument("changes_en", help="The changes to the app in this version (English)")
+argparser.add_argument("changes_de", help="The changes to the app in this version (German)")
 argparser.add_argument("service_account_email", help="The Service Account Email Address for the "
                                                      "Google API for this project")
 argparser.add_argument("key_file", help="The path to the p12 key file generated for the"
@@ -96,6 +97,16 @@ def main():
         body={'recentChanges': changes_en}).execute()
 
     print("Listing for language " + str(listing_response['language']) + " was updated.")
+
+    with open(flags.changes_de) as f:
+        changes_de = f.read()
+
+    listing_response_de = service.edits().apklistings().update(
+        editId=edit_id, packageName=package_name, language='de-DE',
+        apkVersionCode=apk_response['versionCode'],
+        body={'recentChanges': changes_de}).execute()
+
+    print("Listing for language " + str(listing_response_de['language']) + " was updated.")
 
     commit_request = service.edits().commit(
         editId=edit_id, packageName=package_name).execute()

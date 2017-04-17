@@ -33,16 +33,18 @@ import net.namibsun.dice.activities.BaseActivity
  * @param context: The context/Activity for this die.
  * @param view: The view that represents this die
  * @param theme: The starting theme to be applied to the die
+ * @param storedValueKey: The key string used to store the current value in the shared preferences
  * @param initialValue: The initial value of the die
  * @param wiggleAnimationResource: Can be used to override the default wiggle animation
  */
 open class ClassicDie(context: BaseActivity,
                       view: ImageView,
                       theme: Theme,
+                      storedValueKey: String,
                       initialValue: Int = 5,
                       wiggleAnimationResource: Int = R.anim.wiggle) :
-        Die(context, view, theme, initialValue=initialValue, limit = 6, minimum = 1,
-                wiggleAnimationResource=wiggleAnimationResource) {
+        Die(context, view, theme, storedValueKey, initialValue=initialValue,
+                limit = 6, minimum = 1, wiggleAnimationResource=wiggleAnimationResource) {
 
     /**
      * Draws the currently selected image resource
@@ -60,7 +62,6 @@ open class ClassicDie(context: BaseActivity,
 
         val colors : HashMap<String, Int> = this.theme.getThemeColors(this.context)
         val layer = image.drawable as LayerDrawable
-        layer.mutate()
 
         for (eye in listOf(
                 R.id.middle_eye, R.id.left_top_eye, R.id.left_middle_eye, R.id.left_bottom_eye,
@@ -76,14 +77,6 @@ open class ClassicDie(context: BaseActivity,
                 eyeDrawable.setColor(colors["die_eye"]!!)
             }
         }
-
-        val sdk = android.os.Build.VERSION.SDK_INT
-        if (sdk <= android.os.Build.VERSION_CODES.JELLY_BEAN) {
-            @Suppress("DEPRECATION")
-            image.setBackgroundDrawable(layer)
-        }
-        else {
-            image.setImageDrawable(layer)
-        }
+        image.setImageDrawable(layer)
     }
 }
