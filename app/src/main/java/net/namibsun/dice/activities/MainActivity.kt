@@ -53,8 +53,9 @@ class MainActivity : BaseActivity() {
         // Get the die views and assign OnClickListeners, as well as initialize the die
         this.die = ClassicDie(
                 this,
-                this.findViewById(net.namibsun.dice.R.id.die) as ImageView,
-                loadTheme(this.prefs!!)
+                this.findViewById(R.id.die) as ImageView,
+                loadTheme(this.prefs!!),
+                "" + R.id.die
         )
 
         // Define the OnClickListeners for the menu buttons

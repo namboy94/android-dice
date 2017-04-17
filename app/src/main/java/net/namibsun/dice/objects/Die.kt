@@ -37,6 +37,7 @@ import kotlin.concurrent.thread
  * @param context: The Activity using the Die
  * @param view: The View displaying the die
  * @param theme: The theme that defines the look of the View
+ * @param storedValueKey: The key string used to store the current value in the shared preferences
  * @param limit: The maximum value of the Die
  * @param minimum: The minimum value of the Die
  * @param initialValue: The initial value of the Die
@@ -45,6 +46,7 @@ import kotlin.concurrent.thread
 abstract class Die(protected val context: BaseActivity,
                    val view: View,
                    protected var theme: Theme,
+                   protected val storedValueKey: String,
                    protected var limit: Int = 6,
                    protected var minimum: Int = 1,
                    initialValue: Int = 5,
@@ -76,6 +78,7 @@ abstract class Die(protected val context: BaseActivity,
      */
     init {
         this.view.setOnClickListener { this.roll() }
+        this.currentValue = this.context.prefs!!.getInt(this.storedValueKey, initialValue)
         this.draw()
     }
 
@@ -84,6 +87,7 @@ abstract class Die(protected val context: BaseActivity,
     */
     open fun next() {
         this.currentValue = this.next_random_number()
+        this.context.prefs!!.edit().putInt(this.storedValueKey, this.currentValue).apply()
         this.draw()
     }
 

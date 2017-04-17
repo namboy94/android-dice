@@ -55,7 +55,10 @@ class TextDieActivity : BaseActivity() {
         initializeSettingsButton(this)
 
         this.textDie = TextDie(
-                this, this.findViewById(R.id.textdie) as TextView, loadTheme(this.prefs!!)
+                this,
+                this.findViewById(R.id.textdie) as TextView,
+                loadTheme(this.prefs!!),
+                "" + R.id.textdie
         )
 
         // Check for values in the range edits

@@ -62,11 +62,11 @@ class RiskDiceActivity : BaseActivity() {
 
         listOf(R.id.red_die_1, R.id.red_die_2, R.id.red_die_3).mapTo(redDice) {
             ClassicDie(this, this.findViewById(it) as ImageView,
-                    loadTheme(this.prefs!!, ThemeStyles.RED))
+                    loadTheme(this.prefs!!, ThemeStyles.RED), "" + it)
         }
         listOf(R.id.blue_die_1, R.id.blue_die_2).mapTo(blueDice) {
             ClassicDie(this, this.findViewById(it) as ImageView,
-                    loadTheme(this.prefs!!, ThemeStyles.BLUE))
+                    loadTheme(this.prefs!!, ThemeStyles.BLUE), "" + it)
         }
 
         for (die in this.redDice + this.blueDice) {

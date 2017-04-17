@@ -59,13 +59,15 @@ class TwoDiceActivity : BaseActivity() {
 
         this.topDie = ClassicDie(
                 this,
-                this.findViewById(net.namibsun.dice.R.id.topdie) as ImageView,
-                loadTheme(this.prefs!!)
+                this.findViewById(R.id.topdie) as ImageView,
+                loadTheme(this.prefs!!),
+                "" + R.id.topdie
         )
         this.bottomDie = ClassicDie(
                 this,
-                this.findViewById(net.namibsun.dice.R.id.bottomdie) as ImageView,
+                this.findViewById(R.id.bottomdie) as ImageView,
                 loadTheme(this.prefs!!),
+                "" + R.id.bottomdie,
                 wiggleAnimationResource=R.anim.wigglereverse
         )
 

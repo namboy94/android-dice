@@ -34,6 +34,7 @@ import net.namibsun.dice.activities.BaseActivity
  * @param context: The Activity that uses this die
  * @param view: The View of the Die, which is a TextView
  * @param theme: The theme to be applied to the die
+ * @param storedValueKey: The key string used to store the current value in the shared preferences
  * @param limit: The upper limit of the die
  * @param minimum: The lower limit of the die
  * @param wiggleAnimationResource: Overrides the wiggle animation if set
@@ -41,12 +42,13 @@ import net.namibsun.dice.activities.BaseActivity
 open class TextDie(context: BaseActivity,
                    view: TextView,
                    theme: Theme,
+                   storedValueKey: String,
                    initialValue: Int = 0,
                    limit: Int = 0,
                    minimum: Int = 0,
                    wiggleAnimationResource: Int = R.anim.wiggle) :
-        Die(context, view, theme, initialValue=initialValue, limit=limit, minimum=minimum,
-                wiggleAnimationResource=wiggleAnimationResource) {
+        Die(context, view, theme, storedValueKey, initialValue=initialValue,
+                limit=limit, minimum=minimum, wiggleAnimationResource=wiggleAnimationResource) {
 
     /**
      * Draws the current value of the Die as a TextView, applying the current theme

@@ -58,6 +58,7 @@ class LotteryActivity : BaseActivity() {
             LotteryDie(this,
                     this.findViewById(it) as TextView,
                     loadTheme(this.prefs!!),
+                    "" + it,
                     this.findViewById(R.id.weighted_lottery_toggle) as ToggleButton)
                 }
 
