@@ -1,0 +1,6 @@
+Diese Android App verwendet Firebase Analytics.
+
+Die folgenden Informationen werden über die Nutzer dieser App gesammelt:
+
+- Jedes mal wenn ein Würfel geworfen wird, werden die Firebase Server benachrichtigt.
+  Der Typ des Würfels wird ebenfalls mitgesendet.

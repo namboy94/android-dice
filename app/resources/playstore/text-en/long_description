@@ -1,0 +1,18 @@
+Forgot your dice at home? Can't decide on the lottery numbers to pick?
+No problem, you can just use Dice Roller instead!
+
+Dice Roller allows you to roll virtual dice in different modes, allowing for multiple dice and even
+completely custom number ranges, as well as lottery number generation with options to prefer the
+most commonly drawn numbers.
+
+Dice are rolled by tapping on them, modes are switched using the bottom bar and animation settings
+and color themes are accessible via the settings menu, which may be accessed via the top-right
+button.
+
+Dice Roller is completely open source under the GPLv3 license, if you would like to check out the
+source code of the app have a look at its Github page: https://github.com/namboy94/android-dice.
+This App is also completely free of charge and contains no ads. If you would like to show your
+appreciation for this app, consider donating to the Free Software Foundation:
+https://www.fsf.org/donate
+
+Privacy Statement: https://gitlab.namibsun.net/namboy94/android-dice/raw/develop/app/resources/playstore/text-en/privacy_statement.txt
