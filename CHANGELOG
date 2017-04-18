@@ -1,3 +1,7 @@
+V 4.1.2:
+  - Made builds depend less on local build server configuration
+V 4.1.1:
+  - Optimized Play Store uploads
 V 4.1.0:
   - Jelly Bean graphical issues fixed
   - Dice Values are now persistent between sessions
