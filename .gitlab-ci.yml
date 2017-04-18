@@ -10,12 +10,12 @@ variables:
   GITLAB_ACCESS_TOKEN: "$GITLAB_ACCESS_TOKEN"
   GITHUB_ACCESS_TOKEN: "$GITHUB_ACCESS_TOKEN"
   ANDROID_HOME: "$ANDROID_SDK_LOCATION"
+  ANDROIDKEY: "$ANDROIDKEY"
   ANDROIDKEY_ALIAS: "$ANDROIDKEY_ALIAS"
   ANDROIDKEY_PASS: "$ANDROIDKEY_PASS"
-  ANDROIDKEY_LOCATION: "$ANDROIDKEY_LOCATION"
+  GOOGLE_SERVICES_JSON: "$GOOGLE_SERVICES_JSON"
   PLAY_UPLOAD_SECRET: "$PLAY_UPLOAD_SECRET"
   PLAY_UPLOAD_EMAIL: "$PLAY_UPLOAD_EMAIL"
-  GOOGLE_SERVICES_JSON_LOCATION: "$GOOGLE_SERVICES_JSON_LOCATION"
 
 github_mirror:
   stage: mirror
@@ -44,9 +44,11 @@ build_app:
     - linux-buildserver
   script:
     - mkdir -p artifacts
-    - cp $GOOGLE_SERVICES_JSON_LOCATION app/google-services.json
-    - ./gradlew assembleRelease -Pandroid.injected.signing.store.file=$ANDROIDKEY_LOCATION -Pandroid.injected.signing.store.password=$ANDROIDKEY_PASS -Pandroid.injected.signing.key.alias=$ANDROIDKEY_ALIAS -Pandroid.injected.signing.key.password=$ANDROIDKEY_PASS
+    - echo $ANDROIDKEY | base64 -d > androidkey
+    - echo $GOOGLE_SERVICES_JSON > app/google-services.json
+    - ./gradlew assembleRelease -Pandroid.injected.signing.store.file=androidkey -Pandroid.injected.signing.store.password=$ANDROIDKEY_PASS -Pandroid.injected.signing.key.alias=$ANDROIDKEY_ALIAS -Pandroid.injected.signing.key.password=$ANDROIDKEY_PASS
     - mv app/build/outputs/apk/app-release.apk artifacts/diceroll-$(gradle version -q).apk
+    - rm androidkey app/google-services.json
   artifacts:
      paths:
       - artifacts/
