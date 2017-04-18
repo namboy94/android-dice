@@ -1,3 +1,5 @@
+V 4.1.2:
+  - Made builds depend less on local build server configuration
 V 4.1.1:
   - Optimized Play Store uploads
 V 4.1.0:
