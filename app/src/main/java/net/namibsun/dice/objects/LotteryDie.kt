@@ -22,6 +22,7 @@ This file is part of android-dice.
 
 package net.namibsun.dice.objects
 
+import android.util.Log
 import android.widget.TextView
 import android.widget.ToggleButton
 import net.namibsun.dice.R
@@ -52,6 +53,11 @@ class LotteryDie(context: BaseActivity,
     val weighted: MutableList<Int> = mutableListOf()
 
     /**
+     * The other lottery dice linked with this Die
+     */
+    var neighbourDice: List<LotteryDie> = listOf()
+
+    /**
      * Initialize the weighted values
      */
     init {
@@ -62,17 +68,32 @@ class LotteryDie(context: BaseActivity,
     }
 
     /**
+     * Sets the neighbour lottery dice.
+     * @param neighbours The neighbours to set
+     */
+    fun setNeighbours(neighbours: List<LotteryDie>) {
+        this.neighbourDice = neighbours
+    }
+
+    /**
      * In case the weighted values should be used, they are used to generate the
      * next values.
      */
     override fun next() {
-        if (this.toggle.isChecked) {
-            this.currentValue = this.weighted[this.random.nextInt(this.weighted.size)]
-            this.draw()
+
+        do {
+            if (this.toggle.isChecked) {
+                this.currentValue = this.weighted[this.random.nextInt(this.weighted.size)]
+            }
+            else {
+                this.currentValue = this.next_random_number()
+            }
+            Log.e("Test", "$this.currentValue")
         }
-        else {
-            super.next()
-        }
+        while (this.currentValue in this.neighbourDice.map(LotteryDie::currentValue))
+
+        this.context.prefs!!.edit().putInt(this.storedValueKey, this.currentValue).apply()
+        this.draw()
     }
 
 }
