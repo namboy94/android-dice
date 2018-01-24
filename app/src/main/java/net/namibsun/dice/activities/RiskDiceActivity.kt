@@ -37,12 +37,12 @@ class RiskDiceActivity : BaseActivity() {
     /**
      * These are the red dice
      */
-    val redDice : MutableList<ClassicDie> = mutableListOf()
+    private val redDice: MutableList<ClassicDie> = mutableListOf()
 
     /**
      * And these are the blue dice
      */
-    val blueDice : MutableList<ClassicDie> = mutableListOf()
+    private val blueDice: MutableList<ClassicDie> = mutableListOf()
 
     /**
      * When the Activity is created, the dice are initialized. The dice are assigned static

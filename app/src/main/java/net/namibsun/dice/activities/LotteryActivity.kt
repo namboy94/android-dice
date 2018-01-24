@@ -37,7 +37,7 @@ class LotteryActivity : BaseActivity() {
     /**
      * The Lottery number UI elements, which are represented by TextDies
      */
-    val lotteryNumbers: MutableList<LotteryDie> = mutableListOf()
+    private val lotteryNumbers: MutableList<LotteryDie> = mutableListOf()
 
     /**
      * Initializes the lottery TextDies and sets their limit to a value
@@ -73,12 +73,11 @@ class LotteryActivity : BaseActivity() {
             }
         }
 
-        for (i in 0..this.lotteryNumbers.size - 1) {
+        for (i in 0 until this.lotteryNumbers.size) {
             val neighbours = this.lotteryNumbers.toMutableList()
             neighbours.removeAt(i)
             this.lotteryNumbers[i].setNeighbours(neighbours)
         }
-
     }
 
     /**

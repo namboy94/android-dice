@@ -41,7 +41,7 @@ class Theme(val style: ThemeStyles, val vibrate: Boolean,
      * @param context: The currently active activity
      * @return A hashmap of colour values
      */
-    fun getThemeColors(context: Context) : HashMap<String, Int> {
+    fun getThemeColors(context: Context): HashMap<String, Int> {
         val colors = when (this.style) {
             ThemeStyles.CLASSIC -> hashMapOf(
                     "die_base" to R.color.classic_base, "die_eye" to R.color.classic_eye
@@ -58,7 +58,6 @@ class Theme(val style: ThemeStyles, val vibrate: Boolean,
         }
         return colors
     }
-
 }
 
 /**
@@ -74,14 +73,12 @@ enum class ThemeStyles {
  * @param styleOverride: Can be used to override the style of the Theme
  * @return The generated Theme object
  */
-fun loadTheme(prefs: SharedPreferences, styleOverride: ThemeStyles? = null) : Theme {
+fun loadTheme(prefs: SharedPreferences, styleOverride: ThemeStyles? = null): Theme {
 
-    val style: ThemeStyles
-    if (styleOverride == null) {
-        style = ThemeStyles.valueOf(prefs.getString("style", "CLASSIC"))
-    }
-    else {
-        style = styleOverride
+    val style = if (styleOverride == null) {
+        ThemeStyles.valueOf(prefs.getString("style", "CLASSIC"))
+    } else {
+        styleOverride
     }
 
     return Theme(

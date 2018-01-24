@@ -41,18 +41,18 @@ class LotteryDie(context: BaseActivity,
                  storedValueKey: String,
                  private val toggle: ToggleButton,
                  wiggleAnimationResource: Int = R.anim.wiggle) :
-        TextDie(context, view, theme, storedValueKey, initialValue=1, limit=49, minimum=1,
-                wiggleAnimationResource=wiggleAnimationResource) {
+        TextDie(context, view, theme, storedValueKey, initialValue = 1, limit = 49, minimum = 1,
+                wiggleAnimationResource = wiggleAnimationResource) {
 
     /**
      * The Weighted list of numbers in case weighted values should be generated
      */
-    val weighted: MutableList<Int> = mutableListOf()
+    private val weighted: MutableList<Int> = mutableListOf()
 
     /**
      * The other lottery dice linked with this Die
      */
-    var neighbourDice: List<LotteryDie> = listOf()
+    private var neighbourDice: List<LotteryDie> = listOf()
 
     /**
      * Initialize the weighted values
@@ -81,9 +81,8 @@ class LotteryDie(context: BaseActivity,
         do {
             if (this.toggle.isChecked) {
                 this.currentValue = this.weighted[this.random.nextInt(this.weighted.size)]
-            }
-            else {
-                this.currentValue = this.next_random_number()
+            } else {
+                this.currentValue = this.nextRandomNumber()
             }
             Log.e("Test", "$this.currentValue")
         }
@@ -92,5 +91,4 @@ class LotteryDie(context: BaseActivity,
         this.context.prefs!!.edit().putInt(this.storedValueKey, this.currentValue).apply()
         this.draw()
     }
-
 }

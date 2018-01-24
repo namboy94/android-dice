@@ -44,8 +44,8 @@ open class TextDie(context: BaseActivity,
                    limit: Int = 0,
                    minimum: Int = 0,
                    wiggleAnimationResource: Int = R.anim.wiggle) :
-        Die(context, view, theme, storedValueKey, initialValue=initialValue,
-                limit=limit, minimum=minimum, wiggleAnimationResource=wiggleAnimationResource) {
+        Die(context, view, theme, storedValueKey, initialValue = initialValue, limit = limit,
+                minimum = minimum, wiggleAnimationResource = wiggleAnimationResource) {
 
     /**
      * Draws the current value of the Die as a TextView, applying the current theme
@@ -75,8 +75,7 @@ open class TextDie(context: BaseActivity,
         listOf(startEdit, endEdit).mapTo(values) {
             if (it.text.isEmpty()) {
                 0
-            }
-            else {
+            } else {
                 it.text.toString().toInt()
             }
         }
@@ -89,8 +88,7 @@ open class TextDie(context: BaseActivity,
         if (values[0] <= values[1]) {
             this.minimum = values[0]
             this.limit = values[1]
-        }
-        else {
+        } else {
             this.minimum = values[1]
             this.limit = values[0]
         }

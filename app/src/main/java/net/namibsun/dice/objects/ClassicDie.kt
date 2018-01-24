@@ -40,8 +40,8 @@ open class ClassicDie(context: BaseActivity,
                       storedValueKey: String,
                       initialValue: Int = 5,
                       wiggleAnimationResource: Int = R.anim.wiggle) :
-        Die(context, view, theme, storedValueKey, initialValue=initialValue,
-                limit = 6, minimum = 1, wiggleAnimationResource=wiggleAnimationResource) {
+        Die(context, view, theme, storedValueKey, initialValue = initialValue,
+                limit = 6, minimum = 1, wiggleAnimationResource = wiggleAnimationResource) {
 
     /**
      * Draws the currently selected image resource
@@ -50,14 +50,18 @@ open class ClassicDie(context: BaseActivity,
 
         val image = this.view as ImageView
 
-        val dieFaces : HashMap<Int, Int> = hashMapOf(
-                1 to R.drawable.die_1, 2 to R.drawable.die_2, 3 to R.drawable.die_3,
-                4 to R.drawable.die_4, 5 to R.drawable.die_5, 6 to R.drawable.die_6
+        val dieFaces: HashMap<Int, Int> = hashMapOf(
+                1 to R.drawable.die_1,
+                2 to R.drawable.die_2,
+                3 to R.drawable.die_3,
+                4 to R.drawable.die_4,
+                5 to R.drawable.die_5,
+                6 to R.drawable.die_6
         )
 
         image.setImageResource(dieFaces[this.currentValue]!!)
 
-        val colors : HashMap<String, Int> = this.theme.getThemeColors(this.context)
+        val colors: HashMap<String, Int> = this.theme.getThemeColors(this.context)
         val layer = image.drawable as LayerDrawable
 
         for (eye in listOf(

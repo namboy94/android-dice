@@ -63,7 +63,7 @@ abstract class Die(protected val context: BaseActivity,
      * The vibrator is used to vibrate the device while the animation is running,
      * if the theme allows for this.
      */
-    protected val vibrator = this.context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+    private val vibrator = this.context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
     /**
      * An object that can generate random numbers
@@ -83,7 +83,7 @@ abstract class Die(protected val context: BaseActivity,
     * Displays the next value in the view
     */
     open fun next() {
-        this.currentValue = this.next_random_number()
+        this.currentValue = this.nextRandomNumber()
         this.context.prefs!!.edit().putInt(this.storedValueKey, this.currentValue).apply()
         this.draw()
     }
@@ -98,25 +98,6 @@ abstract class Die(protected val context: BaseActivity,
     }
 
     /**
-     * Vibrates the device for a set amount of time, but only if vibrating is enabled
-     * in the settings.
-     * @param duration: The duration of the vibration
-     */
-    fun vibrate(duration: Long) {
-        if (this.theme.vibrate) {
-            this.vibrator.vibrate(duration)
-        }
-    }
-
-    /**
-     * Generates a new random number within the limits
-     * @return The generated random number
-     */
-    fun next_random_number() : Int {
-        return this.random.nextInt(this.limit - this.minimum + 1) + this.minimum
-    }
-
-    /**
      * Rolls the Die according to the settings provided by the theme
      */
     fun roll() {
@@ -124,15 +105,31 @@ abstract class Die(protected val context: BaseActivity,
         if (this.theme.vibrate && !this.theme.wiggleAnimation && !this.theme.changeAnimation) {
             this.vibrator.vibrate(100)
             this.next()
-        }
-        else if (this.theme.wiggleAnimation) {
+        } else if (this.theme.wiggleAnimation) {
             this.animate(AnimationUtils.loadAnimation(this.context, this.wiggleAnimationResource))
-        }
-        else if (this.theme.changeAnimation) {
+        } else if (this.theme.changeAnimation) {
             this.changeAnimation(1000)
-        }
-        else {
+        } else {
             this.next()
+        }
+    }
+
+    /**
+     * Generates a new random number within the limits
+     * @return The generated random number
+     */
+    protected fun nextRandomNumber(): Int {
+        return this.random.nextInt(this.limit - this.minimum + 1) + this.minimum
+    }
+
+    /**
+     * Vibrates the device for a set amount of time, but only if vibrating is enabled
+     * in the settings.
+     * @param duration: The duration of the vibration
+     */
+    private fun vibrate(duration: Long) {
+        if (this.theme.vibrate) {
+            this.vibrator.vibrate(duration)
         }
     }
 
@@ -140,7 +137,7 @@ abstract class Die(protected val context: BaseActivity,
      * Starts animating the die
      * @param animation: The animation to use
      */
-    fun animate(animation: Animation) {
+    private fun animate(animation: Animation) {
 
         if (this.theme.vibrate) {
             this.vibrate(animation.duration)
@@ -148,8 +145,7 @@ abstract class Die(protected val context: BaseActivity,
 
         if (this.theme.changeAnimation) {
             this.changeAnimation(animation.duration * 10)
-        }
-        else {
+        } else {
             animation.setAnimationListener(object : Animation.AnimationListener {
                 override fun onAnimationRepeat(animation: Animation?) { }
                 override fun onAnimationStart(animation: Animation?) { }
@@ -164,7 +160,7 @@ abstract class Die(protected val context: BaseActivity,
     /**
      * Changes the currently displayed value of the Die for a specified period of time
      */
-    fun changeAnimation(duration: Long, pause: Int = 100) {
+    private fun changeAnimation(duration: Long, pause: Int = 100) {
 
         if (this.theme.vibrate) {
             this.vibrate(duration)

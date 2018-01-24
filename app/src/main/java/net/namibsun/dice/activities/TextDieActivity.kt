@@ -37,7 +37,7 @@ class TextDieActivity : BaseActivity() {
     /**
      * The Text Die shown on the activity
      */
-    var textDie : TextDie? = null
+    private var textDie: TextDie? = null
 
     /**
      * Initializes the Text Die and its OnClickListener
@@ -69,7 +69,6 @@ class TextDieActivity : BaseActivity() {
             this.textDie!!.updateRange(startEdit, endEdit)
             this.textDie!!.roll()
         }
-
     }
 
     /**
@@ -79,5 +78,4 @@ class TextDieActivity : BaseActivity() {
         super.onResume()
         this.textDie!!.updateTheme(loadTheme(this.prefs!!))
     }
-
 }

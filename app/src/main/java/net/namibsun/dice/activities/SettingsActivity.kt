@@ -35,22 +35,22 @@ class SettingsActivity : BaseActivity() {
     /**
      * The Checkbox for the vibration option
      */
-    var vibrateCheck : CheckBox? = null
+    private var vibrateCheck: CheckBox? = null
 
     /**
      * The Checkbox for the Wiggle Animation option
      */
-    var wiggleAnimationCheck : CheckBox? = null
+    private var wiggleAnimationCheck: CheckBox? = null
 
     /**
      * The Checkbox for the Change Animation option
      */
-    var changeAnimationCheck : CheckBox? = null
+    private var changeAnimationCheck: CheckBox? = null
 
     /**
      * The Radiobutton Group for the style options
      */
-    var styleGroup : RadioGroup? = null
+    private var styleGroup: RadioGroup? = null
 
     /**
      * Initializes the layout and the OnClickListeners
@@ -93,7 +93,7 @@ class SettingsActivity : BaseActivity() {
      * Stores the current input and returns to the previous activity
      */
     @SuppressLint("CommitPrefEdits")
-    fun storeAndReturn() {
+    private fun storeAndReturn() {
         val editor = this.prefs!!.edit()
 
         val radioGroup = this.findViewById(net.namibsun.dice.R.id.style_select_group) as RadioGroup
@@ -105,8 +105,7 @@ class SettingsActivity : BaseActivity() {
         editor.putBoolean("wiggleAnimation", this.wiggleAnimationCheck!!.isChecked)
         editor.putBoolean("changeAnimation", this.changeAnimationCheck!!.isChecked)
 
-        editor.commit() // We need to commit to ensure that other activities are updated ASAP
+        editor.apply() // We need to commit to ensure that other activities are updated ASAP
         this.finish()
     }
-
 }

@@ -36,12 +36,12 @@ class TwoDiceActivity : BaseActivity() {
     /**
      * The Die on top
      */
-    var topDie : ClassicDie? = null
+    private var topDie: ClassicDie? = null
 
     /**
      * The Die on the bottom
      */
-    var bottomDie : ClassicDie? = null
+    private var bottomDie: ClassicDie? = null
 
     /**
      * Sets the layout, creates the dice objects and overrides their default
@@ -65,7 +65,7 @@ class TwoDiceActivity : BaseActivity() {
                 this.findViewById(R.id.bottomdie) as ImageView,
                 loadTheme(this.prefs!!),
                 "" + R.id.bottomdie,
-                wiggleAnimationResource=R.anim.wigglereverse
+                wiggleAnimationResource = R.anim.wigglereverse
         )
 
         this.topDie!!.view.setOnClickListener { this.topDie!!.roll(); this.bottomDie!!.roll() }
@@ -85,5 +85,4 @@ class TwoDiceActivity : BaseActivity() {
         this.topDie!!.updateTheme(loadTheme(this.prefs!!))
         this.bottomDie!!.updateTheme(loadTheme(this.prefs!!))
     }
-
 }

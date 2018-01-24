@@ -23,13 +23,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.google.firebase.analytics.FirebaseAnalytics
 
 open class BaseActivity : AppCompatActivity() {
-    /**
-     * The Analytics Tracker
-     */
-    var analytics: FirebaseAnalytics? = null
 
     /**
     * A shared preferences object used to store and load settings
@@ -44,17 +39,6 @@ open class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        this.analytics = FirebaseAnalytics.getInstance(this)
         this.prefs = this.getSharedPreferences("SHARED_PREFS", Context.MODE_PRIVATE)
-
-    }
-
-    /**
-     * Logs an event with the Firebase Tracker
-     */
-    fun logEvent(type: String, message: String) {
-        val event = Bundle()
-        event.putString(type, message)
-        this.analytics!!.logEvent("Event", event)
     }
 }

@@ -34,5 +34,4 @@ class SquareWidthTextView @JvmOverloads constructor(context: Context,
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, widthMeasureSpec)
     }
-
 }
