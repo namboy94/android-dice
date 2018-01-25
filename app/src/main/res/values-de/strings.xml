@@ -53,4 +53,6 @@ along with android-dice.  If not, see <http://www.gnu.org/licenses/>.
     <!-- Lottery -->
     <string name="weighted_values_toggle_text">Gewichtete Werte</string>
     <string name="random_values_toggle_text">Zufällige Werte</string>
+    <string name="eurojackpot">Eurojackpot</string>
+    <string name="normal">Normal</string>
 </resources>

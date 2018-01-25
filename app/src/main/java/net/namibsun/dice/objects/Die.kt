@@ -71,6 +71,16 @@ abstract class Die(protected val context: BaseActivity,
     protected val random = SecureRandom()
 
     /**
+     * Indicates if the change animation is currently active
+     */
+    private var changeAnimating = false
+
+    /**
+     * Indicates if the wiggle animation is currently active
+     */
+    private var wiggleAnimating = false
+
+    /**
      * Sets the OnClickListener for the image view
      */
     init {
@@ -81,9 +91,10 @@ abstract class Die(protected val context: BaseActivity,
 
     /**
     * Displays the next value in the view
+     * @param specificNumber: Instead of a random number, display a specific number
     */
-    open fun next() {
-        this.currentValue = this.nextRandomNumber()
+    open fun next(specificNumber: Int? = null) {
+        this.currentValue = specificNumber ?: this.nextRandomNumber()
         this.context.prefs!!.edit().putInt(this.storedValueKey, this.currentValue).apply()
         this.draw()
     }
@@ -112,6 +123,20 @@ abstract class Die(protected val context: BaseActivity,
         } else {
             this.next()
         }
+    }
+
+    /**
+     * @return The current value of the die
+     */
+    fun getValue(): Int {
+        return this.currentValue
+    }
+
+    /**
+     * @return true if the die is currently being animated, false otherwise
+     */
+    fun isAnimating(): Boolean {
+        return this.changeAnimating || this.wiggleAnimating
     }
 
     /**
@@ -145,15 +170,19 @@ abstract class Die(protected val context: BaseActivity,
 
         if (this.theme.changeAnimation) {
             this.changeAnimation(animation.duration * 10)
-        } else {
-            animation.setAnimationListener(object : Animation.AnimationListener {
-                override fun onAnimationRepeat(animation: Animation?) { }
-                override fun onAnimationStart(animation: Animation?) { }
-                override fun onAnimationEnd(animation: Animation?) { this@Die.next() }
-            })
         }
 
+        animation.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationRepeat(animation: Animation?) { }
+            override fun onAnimationStart(animation: Animation?) { }
+            override fun onAnimationEnd(animation: Animation?) {
+                this@Die.next()
+                this@Die.wiggleAnimating = false
+            }
+        })
+
         this.vibrate(animation.duration * 10)
+        this.wiggleAnimating = true
         this.view.startAnimation(animation)
     }
 
@@ -162,6 +191,7 @@ abstract class Die(protected val context: BaseActivity,
      */
     private fun changeAnimation(duration: Long, pause: Int = 100) {
 
+        this.changeAnimating = true
         if (this.theme.vibrate) {
             this.vibrate(duration)
         }
@@ -173,6 +203,7 @@ abstract class Die(protected val context: BaseActivity,
                 Thread.sleep(pause.toLong())
                 runtime += pause
             }
+            this.changeAnimating = false
         }
     }
 }

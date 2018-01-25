@@ -19,12 +19,17 @@ along with android-dice.  If not, see <http://www.gnu.org/licenses/>.
 
 package net.namibsun.dice.objects
 
-import android.util.Log
 import android.widget.TextView
 import android.widget.ToggleButton
 import net.namibsun.dice.R
 import net.namibsun.dice.activities.BaseActivity
 import net.namibsun.dice.data.lotteryOccurences
+
+enum class LotteryDieType(val limit: Int) {
+    NORMAL(49),
+    EURO_JACKPOT(50),
+    EURO_JACKPOT_BONUS(10)
+}
 
 /**
  * Class that models a Lottery die with the ability to generate weighted values
@@ -39,9 +44,11 @@ class LotteryDie(context: BaseActivity,
                  view: TextView,
                  theme: Theme,
                  storedValueKey: String,
+                 private val lotteryType: LotteryDieType,
                  private val toggle: ToggleButton,
                  wiggleAnimationResource: Int = R.anim.wiggle) :
-        TextDie(context, view, theme, storedValueKey, initialValue = 1, limit = 49, minimum = 1,
+        TextDie(context, view, theme, storedValueKey,
+                initialValue = 1, limit = lotteryType.limit, minimum = 1,
                 wiggleAnimationResource = wiggleAnimationResource) {
 
     /**
@@ -75,18 +82,23 @@ class LotteryDie(context: BaseActivity,
     /**
      * In case the weighted values should be used, they are used to generate the
      * next values.
+     * @param specificNumber: Specifies a specific number to use
      */
-    override fun next() {
+    override fun next(specificNumber: Int?) {
 
-        do {
-            if (this.toggle.isChecked) {
-                this.currentValue = this.weighted[this.random.nextInt(this.weighted.size)]
-            } else {
-                this.currentValue = this.nextRandomNumber()
+        if (specificNumber != null) {
+            this.currentValue = specificNumber
+        } else {
+            do {
+                // TODO implement weighted numbers for Euro Jackpot
+                if (this.toggle.isChecked && this.lotteryType == LotteryDieType.NORMAL) {
+                    this.currentValue = this.weighted[this.random.nextInt(this.weighted.size)]
+                } else {
+                    this.currentValue = this.nextRandomNumber()
+                }
             }
-            Log.e("Test", "$this.currentValue")
+            while (this.currentValue in this.neighbourDice.map(LotteryDie::currentValue))
         }
-        while (this.currentValue in this.neighbourDice.map(LotteryDie::currentValue))
 
         this.context.prefs!!.edit().putInt(this.storedValueKey, this.currentValue).apply()
         this.draw()
