@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright 2015-2017 Hermann Krumrey
+<!--
+Copyright 2017-2018 Hermann Krumrey<hermann@krumreyh.com>
 
 This file is part of android-dice.
-
-android-dice is an Android app that allows a user to roll a virtual
-die. Multiple configurations are supported
 
 android-dice is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,7 +15,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with android-dice. If not, see <http://www.gnu.org/licenses/>.
+along with android-dice.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -48,15 +46,72 @@ along with android-dice. If not, see <http://www.gnu.org/licenses/>.
 
     </LinearLayout>
 
-    <ToggleButton
-        android:id="@+id/weighted_lottery_toggle"
+    <LinearLayout
+        android:id="@+id/eurojackpot_lottery_numbers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <net.namibsun.dice.views.SquareWidthTextView android:layout_weight="1"
+                style="@style/LotteryDie" android:id="@+id/eurojackpot_die_one"/>
+            <net.namibsun.dice.views.SquareWidthTextView android:layout_weight="1"
+                style="@style/LotteryDie" android:id="@+id/eurojackpot_die_two"/>
+            <net.namibsun.dice.views.SquareWidthTextView android:layout_weight="1"
+                style="@style/LotteryDie" android:id="@+id/eurojackpot_die_three"/>
+            <net.namibsun.dice.views.SquareWidthTextView android:layout_weight="1"
+                style="@style/LotteryDie" android:id="@+id/eurojackpot_die_four"/>
+            <net.namibsun.dice.views.SquareWidthTextView android:layout_weight="1"
+                style="@style/LotteryDie" android:id="@+id/eurojackpot_die_five"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="130dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <net.namibsun.dice.views.SquareWidthTextView android:layout_weight="1"
+                style="@style/LotteryDie"
+                android:layout_width="1dp"
+                android:id="@+id/eurojackpot_bonus_die_one"/>
+            <net.namibsun.dice.views.SquareWidthTextView android:layout_weight="1"
+                style="@style/LotteryDie"
+                android:id="@+id/eurojackpot_bonus_die_two"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/lottery_numbers"
-        android:layout_marginTop="20dp"
-        android:textOn="@string/weighted_values_toggle_text"
-        android:textOff="@string/random_values_toggle_text"/>
+        android:layout_below="@id/eurojackpot_lottery_numbers"
+        android:layout_marginTop="20dp">
+
+        <ToggleButton
+            android:id="@+id/eurojackpot_toggle"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textOn="@string/eurojackpot"
+            android:textOff="@string/normal"/>
+
+        <ToggleButton
+            android:id="@+id/weighted_lottery_toggle"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textOn="@string/weighted_values_toggle_text"
+            android:textOff="@string/random_values_toggle_text"/>
+
+    </LinearLayout>
 
     <include layout="@layout/modeswitcherbar"/>
 

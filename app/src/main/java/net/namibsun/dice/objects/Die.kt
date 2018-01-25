@@ -1,23 +1,20 @@
 /*
-Copyright 2015-2017 Hermann Krumrey
+Copyright 2015-2018 Hermann Krumrey<hermann@krumreyh.com>
 
 This file is part of android-dice.
 
-    android-dice is an Android app that allows a user to roll a virtual
-    die. Multiple configurations are supported
+android-dice is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-    android-dice is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+android-dice is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-    android-dice is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with android-dice. If not, see <http://www.gnu.org/licenses/>.
+You should have received a copy of the GNU General Public License
+along with android-dice.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 package net.namibsun.dice.objects
@@ -66,12 +63,22 @@ abstract class Die(protected val context: BaseActivity,
      * The vibrator is used to vibrate the device while the animation is running,
      * if the theme allows for this.
      */
-    protected val vibrator = this.context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+    private val vibrator = this.context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
     /**
      * An object that can generate random numbers
      */
     protected val random = SecureRandom()
+
+    /**
+     * Indicates if the change animation is currently active
+     */
+    private var changeAnimating = false
+
+    /**
+     * Indicates if the wiggle animation is currently active
+     */
+    private var wiggleAnimating = false
 
     /**
      * Sets the OnClickListener for the image view
@@ -84,9 +91,10 @@ abstract class Die(protected val context: BaseActivity,
 
     /**
     * Displays the next value in the view
+     * @param specificNumber: Instead of a random number, display a specific number
     */
-    open fun next() {
-        this.currentValue = this.next_random_number()
+    open fun next(specificNumber: Int? = null) {
+        this.currentValue = specificNumber ?: this.nextRandomNumber()
         this.context.prefs!!.edit().putInt(this.storedValueKey, this.currentValue).apply()
         this.draw()
     }
@@ -101,25 +109,6 @@ abstract class Die(protected val context: BaseActivity,
     }
 
     /**
-     * Vibrates the device for a set amount of time, but only if vibrating is enabled
-     * in the settings.
-     * @param duration: The duration of the vibration
-     */
-    fun vibrate(duration: Long) {
-        if (this.theme.vibrate) {
-            this.vibrator.vibrate(duration)
-        }
-    }
-
-    /**
-     * Generates a new random number within the limits
-     * @return The generated random number
-     */
-    fun next_random_number() : Int {
-        return this.random.nextInt(this.limit - this.minimum + 1) + this.minimum
-    }
-
-    /**
      * Rolls the Die according to the settings provided by the theme
      */
     fun roll() {
@@ -127,15 +116,45 @@ abstract class Die(protected val context: BaseActivity,
         if (this.theme.vibrate && !this.theme.wiggleAnimation && !this.theme.changeAnimation) {
             this.vibrator.vibrate(100)
             this.next()
-        }
-        else if (this.theme.wiggleAnimation) {
+        } else if (this.theme.wiggleAnimation) {
             this.animate(AnimationUtils.loadAnimation(this.context, this.wiggleAnimationResource))
-        }
-        else if (this.theme.changeAnimation) {
+        } else if (this.theme.changeAnimation) {
             this.changeAnimation(1000)
-        }
-        else {
+        } else {
             this.next()
+        }
+    }
+
+    /**
+     * @return The current value of the die
+     */
+    fun getValue(): Int {
+        return this.currentValue
+    }
+
+    /**
+     * @return true if the die is currently being animated, false otherwise
+     */
+    fun isAnimating(): Boolean {
+        return this.changeAnimating || this.wiggleAnimating
+    }
+
+    /**
+     * Generates a new random number within the limits
+     * @return The generated random number
+     */
+    protected fun nextRandomNumber(): Int {
+        return this.random.nextInt(this.limit - this.minimum + 1) + this.minimum
+    }
+
+    /**
+     * Vibrates the device for a set amount of time, but only if vibrating is enabled
+     * in the settings.
+     * @param duration: The duration of the vibration
+     */
+    private fun vibrate(duration: Long) {
+        if (this.theme.vibrate) {
+            this.vibrator.vibrate(duration)
         }
     }
 
@@ -143,7 +162,7 @@ abstract class Die(protected val context: BaseActivity,
      * Starts animating the die
      * @param animation: The animation to use
      */
-    fun animate(animation: Animation) {
+    private fun animate(animation: Animation) {
 
         if (this.theme.vibrate) {
             this.vibrate(animation.duration)
@@ -152,23 +171,27 @@ abstract class Die(protected val context: BaseActivity,
         if (this.theme.changeAnimation) {
             this.changeAnimation(animation.duration * 10)
         }
-        else {
-            animation.setAnimationListener(object : Animation.AnimationListener {
-                override fun onAnimationRepeat(animation: Animation?) { }
-                override fun onAnimationStart(animation: Animation?) { }
-                override fun onAnimationEnd(animation: Animation?) { this@Die.next() }
-            })
-        }
+
+        animation.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationRepeat(animation: Animation?) { }
+            override fun onAnimationStart(animation: Animation?) { }
+            override fun onAnimationEnd(animation: Animation?) {
+                this@Die.next()
+                this@Die.wiggleAnimating = false
+            }
+        })
 
         this.vibrate(animation.duration * 10)
+        this.wiggleAnimating = true
         this.view.startAnimation(animation)
     }
 
     /**
      * Changes the currently displayed value of the Die for a specified period of time
      */
-    fun changeAnimation(duration: Long, pause: Int = 100) {
+    private fun changeAnimation(duration: Long, pause: Int = 100) {
 
+        this.changeAnimating = true
         if (this.theme.vibrate) {
             this.vibrate(duration)
         }
@@ -180,6 +203,7 @@ abstract class Die(protected val context: BaseActivity,
                 Thread.sleep(pause.toLong())
                 runtime += pause
             }
+            this.changeAnimating = false
         }
     }
 }

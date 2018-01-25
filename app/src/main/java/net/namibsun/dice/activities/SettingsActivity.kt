@@ -1,23 +1,20 @@
 /*
-Copyright 2015-2017 Hermann Krumrey
+Copyright 2015-2018 Hermann Krumrey<hermann@krumreyh.com>
 
 This file is part of android-dice.
 
-    android-dice is an Android app that allows a user to roll a virtual
-    die. Multiple configurations are supported
+android-dice is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-    android-dice is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+android-dice is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-    android-dice is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with android-dice. If not, see <http://www.gnu.org/licenses/>.
+You should have received a copy of the GNU General Public License
+along with android-dice.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 package net.namibsun.dice.activities
@@ -38,22 +35,22 @@ class SettingsActivity : BaseActivity() {
     /**
      * The Checkbox for the vibration option
      */
-    var vibrateCheck : CheckBox? = null
+    private var vibrateCheck: CheckBox? = null
 
     /**
      * The Checkbox for the Wiggle Animation option
      */
-    var wiggleAnimationCheck : CheckBox? = null
+    private var wiggleAnimationCheck: CheckBox? = null
 
     /**
      * The Checkbox for the Change Animation option
      */
-    var changeAnimationCheck : CheckBox? = null
+    private var changeAnimationCheck: CheckBox? = null
 
     /**
      * The Radiobutton Group for the style options
      */
-    var styleGroup : RadioGroup? = null
+    private var styleGroup: RadioGroup? = null
 
     /**
      * Initializes the layout and the OnClickListeners
@@ -96,7 +93,7 @@ class SettingsActivity : BaseActivity() {
      * Stores the current input and returns to the previous activity
      */
     @SuppressLint("CommitPrefEdits")
-    fun storeAndReturn() {
+    private fun storeAndReturn() {
         val editor = this.prefs!!.edit()
 
         val radioGroup = this.findViewById(net.namibsun.dice.R.id.style_select_group) as RadioGroup
@@ -108,8 +105,7 @@ class SettingsActivity : BaseActivity() {
         editor.putBoolean("wiggleAnimation", this.wiggleAnimationCheck!!.isChecked)
         editor.putBoolean("changeAnimation", this.changeAnimationCheck!!.isChecked)
 
-        editor.commit() // We need to commit to ensure that other activities are updated ASAP
+        editor.apply() // We need to commit to ensure that other activities are updated ASAP
         this.finish()
     }
-
 }

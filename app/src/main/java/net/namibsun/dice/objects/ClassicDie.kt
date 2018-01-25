@@ -1,23 +1,20 @@
 /*
-Copyright 2015-2017 Hermann Krumrey
+Copyright 2015-2018 Hermann Krumrey<hermann@krumreyh.com>
 
 This file is part of android-dice.
 
-    android-dice is an Android app that allows a user to roll a virtual
-    die. Multiple configurations are supported
+android-dice is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-    android-dice is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+android-dice is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-    android-dice is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with android-dice. If not, see <http://www.gnu.org/licenses/>.
+You should have received a copy of the GNU General Public License
+along with android-dice.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 package net.namibsun.dice.objects
@@ -43,8 +40,8 @@ open class ClassicDie(context: BaseActivity,
                       storedValueKey: String,
                       initialValue: Int = 5,
                       wiggleAnimationResource: Int = R.anim.wiggle) :
-        Die(context, view, theme, storedValueKey, initialValue=initialValue,
-                limit = 6, minimum = 1, wiggleAnimationResource=wiggleAnimationResource) {
+        Die(context, view, theme, storedValueKey, initialValue = initialValue,
+                limit = 6, minimum = 1, wiggleAnimationResource = wiggleAnimationResource) {
 
     /**
      * Draws the currently selected image resource
@@ -53,14 +50,18 @@ open class ClassicDie(context: BaseActivity,
 
         val image = this.view as ImageView
 
-        val dieFaces : HashMap<Int, Int> = hashMapOf(
-                1 to R.drawable.die_1, 2 to R.drawable.die_2, 3 to R.drawable.die_3,
-                4 to R.drawable.die_4, 5 to R.drawable.die_5, 6 to R.drawable.die_6
+        val dieFaces: HashMap<Int, Int> = hashMapOf(
+                1 to R.drawable.die_1,
+                2 to R.drawable.die_2,
+                3 to R.drawable.die_3,
+                4 to R.drawable.die_4,
+                5 to R.drawable.die_5,
+                6 to R.drawable.die_6
         )
 
         image.setImageResource(dieFaces[this.currentValue]!!)
 
-        val colors : HashMap<String, Int> = this.theme.getThemeColors(this.context)
+        val colors: HashMap<String, Int> = this.theme.getThemeColors(this.context)
         val layer = image.drawable as LayerDrawable
 
         for (eye in listOf(

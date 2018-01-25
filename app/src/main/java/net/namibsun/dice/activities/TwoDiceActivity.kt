@@ -1,23 +1,20 @@
 /*
-Copyright 2015-2017 Hermann Krumrey
+Copyright 2015-2018 Hermann Krumrey<hermann@krumreyh.com>
 
 This file is part of android-dice.
 
-    android-dice is an Android app that allows a user to roll a virtual
-    die. Multiple configurations are supported
+android-dice is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-    android-dice is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+android-dice is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-    android-dice is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with android-dice. If not, see <http://www.gnu.org/licenses/>.
+You should have received a copy of the GNU General Public License
+along with android-dice.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 package net.namibsun.dice.activities
@@ -39,12 +36,12 @@ class TwoDiceActivity : BaseActivity() {
     /**
      * The Die on top
      */
-    var topDie : ClassicDie? = null
+    private var topDie: ClassicDie? = null
 
     /**
      * The Die on the bottom
      */
-    var bottomDie : ClassicDie? = null
+    private var bottomDie: ClassicDie? = null
 
     /**
      * Sets the layout, creates the dice objects and overrides their default
@@ -68,7 +65,7 @@ class TwoDiceActivity : BaseActivity() {
                 this.findViewById(R.id.bottomdie) as ImageView,
                 loadTheme(this.prefs!!),
                 "" + R.id.bottomdie,
-                wiggleAnimationResource=R.anim.wigglereverse
+                wiggleAnimationResource = R.anim.wigglereverse
         )
 
         this.topDie!!.view.setOnClickListener { this.topDie!!.roll(); this.bottomDie!!.roll() }
@@ -88,5 +85,4 @@ class TwoDiceActivity : BaseActivity() {
         this.topDie!!.updateTheme(loadTheme(this.prefs!!))
         this.bottomDie!!.updateTheme(loadTheme(this.prefs!!))
     }
-
 }

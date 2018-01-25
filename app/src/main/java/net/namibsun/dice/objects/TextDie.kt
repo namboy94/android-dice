@@ -1,23 +1,20 @@
 /*
-Copyright 2015-2017 Hermann Krumrey
+Copyright 2015-2018 Hermann Krumrey<hermann@krumreyh.com>
 
 This file is part of android-dice.
 
-    android-dice is an Android app that allows a user to roll a virtual
-    die. Multiple configurations are supported
+android-dice is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-    android-dice is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+android-dice is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-    android-dice is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with android-dice. If not, see <http://www.gnu.org/licenses/>.
+You should have received a copy of the GNU General Public License
+along with android-dice.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 package net.namibsun.dice.objects
@@ -47,8 +44,8 @@ open class TextDie(context: BaseActivity,
                    limit: Int = 0,
                    minimum: Int = 0,
                    wiggleAnimationResource: Int = R.anim.wiggle) :
-        Die(context, view, theme, storedValueKey, initialValue=initialValue,
-                limit=limit, minimum=minimum, wiggleAnimationResource=wiggleAnimationResource) {
+        Die(context, view, theme, storedValueKey, initialValue = initialValue, limit = limit,
+                minimum = minimum, wiggleAnimationResource = wiggleAnimationResource) {
 
     /**
      * Draws the current value of the Die as a TextView, applying the current theme
@@ -78,8 +75,7 @@ open class TextDie(context: BaseActivity,
         listOf(startEdit, endEdit).mapTo(values) {
             if (it.text.isEmpty()) {
                 0
-            }
-            else {
+            } else {
                 it.text.toString().toInt()
             }
         }
@@ -92,8 +88,7 @@ open class TextDie(context: BaseActivity,
         if (values[0] <= values[1]) {
             this.minimum = values[0]
             this.limit = values[1]
-        }
-        else {
+        } else {
             this.minimum = values[1]
             this.limit = values[0]
         }
