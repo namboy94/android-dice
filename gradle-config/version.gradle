@@ -20,24 +20,20 @@ You should have received a copy of the GNU General Public License
 along with dice-roller. If not, see <http://www.gnu.org/licenses/>.
 */
 
-android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.3"
+task version(type: VersionTask)
+class VersionTask extends DefaultTask {
+    @SuppressWarnings("GroovyUnusedDeclaration")
+    @TaskAction
+    def version() {
+        println project.ext.version
+    }
+}
 
-    defaultConfig {
-        applicationId "net.namibsun.dice"
-        minSdkVersion 16
-        targetSdkVersion 27
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.version
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-    packagingOptions {
-        exclude 'META-INF/*'
+task versionCode(type: VersionCodeTask)
+class VersionCodeTask extends DefaultTask {
+    @SuppressWarnings("GroovyUnusedDeclaration")
+    @TaskAction
+    def version() {
+        println project.ext.versionCode
     }
 }
