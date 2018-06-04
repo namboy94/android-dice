@@ -24,7 +24,6 @@ package net.namibsun.dice.activities
 
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import android.widget.ToggleButton
 import net.namibsun.dice.R
 import net.namibsun.dice.helpers.initializeBottomMenuBar
