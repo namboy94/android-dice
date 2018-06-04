@@ -24,6 +24,7 @@ package net.namibsun.dice.activities
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.View
 import android.widget.CheckBox
 import android.widget.RadioGroup
 import net.namibsun.dice.R
@@ -63,18 +64,18 @@ class SettingsActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         this.setContentView(net.namibsun.dice.R.layout.settings)
 
-        this.findViewById(net.namibsun.dice.R.id.ok_button).setOnClickListener {
+        this.findViewById<View>(net.namibsun.dice.R.id.ok_button).setOnClickListener {
             this.storeAndReturn()
         }
 
         this.vibrateCheck =
-                this.findViewById(net.namibsun.dice.R.id.vibrate_check) as CheckBox
+                this.findViewById(net.namibsun.dice.R.id.vibrate_check)
         this.styleGroup =
-                this.findViewById(net.namibsun.dice.R.id.style_select_group) as RadioGroup
+                this.findViewById(net.namibsun.dice.R.id.style_select_group)
         this.wiggleAnimationCheck =
-                this.findViewById(net.namibsun.dice.R.id.wiggle_animation_check) as CheckBox
+                this.findViewById(net.namibsun.dice.R.id.wiggle_animation_check)
         this.changeAnimationCheck =
-                this.findViewById(net.namibsun.dice.R.id.change_animation_check) as CheckBox
+                this.findViewById(net.namibsun.dice.R.id.change_animation_check)
 
         val style = ThemeStyles.valueOf(this.prefs!!.getString("style", "CLASSIC"))
         val vibrate = this.prefs!!.getBoolean("vibrate", true)
@@ -99,8 +100,8 @@ class SettingsActivity : BaseActivity() {
     private fun storeAndReturn() {
         val editor = this.prefs!!.edit()
 
-        val radioGroup = this.findViewById(net.namibsun.dice.R.id.style_select_group) as RadioGroup
-        val selected = this.findViewById(radioGroup.checkedRadioButtonId)
+        val radioGroup = this.findViewById<RadioGroup>(net.namibsun.dice.R.id.style_select_group)
+        val selected = this.findViewById<View>(radioGroup.checkedRadioButtonId)
         val styleName: String = selected.tag as String
 
         editor.putString("style", styleName)

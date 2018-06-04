@@ -29,10 +29,11 @@ import android.widget.TextView
 /**
  * A Text View that Always has the same height as its width
  */
-class SquareWidthTextView @JvmOverloads constructor(context: Context,
-                                                    attrs: AttributeSet? = null,
-                                                    defStyleAttr: Int = 0)
-    : TextView(context, attrs, defStyleAttr) {
+class SquareWidthTextView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : TextView(context, attrs, defStyleAttr) {
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, widthMeasureSpec)

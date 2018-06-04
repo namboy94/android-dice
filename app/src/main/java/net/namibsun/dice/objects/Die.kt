@@ -43,14 +43,16 @@ import kotlin.concurrent.thread
  * @param initialValue: The initial value of the Die
  * @param wiggleAnimationResource: Overrides the default wiggle animation if set
  */
-abstract class Die(protected val context: BaseActivity,
-                   val view: View,
-                   protected var theme: Theme,
-                   protected val storedValueKey: String,
-                   protected var limit: Int = 6,
-                   protected var minimum: Int = 1,
-                   initialValue: Int = 5,
-                   protected val wiggleAnimationResource: Int = R.anim.wiggle) {
+abstract class Die(
+    protected val context: BaseActivity,
+    val view: View,
+    protected var theme: Theme,
+    protected val storedValueKey: String,
+    protected var limit: Int = 6,
+    protected var minimum: Int = 1,
+    initialValue: Int = 5,
+    protected val wiggleAnimationResource: Int = R.anim.wiggle
+) {
 
     /**
      * Draws the Current Information as the View

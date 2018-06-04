@@ -24,7 +24,7 @@ package net.namibsun.dice.activities
 
 import android.content.Context
 import android.os.Bundle
-import android.widget.ImageView
+import android.view.View
 import net.namibsun.dice.objects.ClassicDie
 import net.namibsun.dice.R
 import net.namibsun.dice.helpers.initializeBottomMenuBar
@@ -59,13 +59,13 @@ class TwoDiceActivity : BaseActivity() {
 
         this.topDie = ClassicDie(
                 this,
-                this.findViewById(R.id.topdie) as ImageView,
+                this.findViewById(R.id.topdie),
                 loadTheme(this.prefs!!),
                 "" + R.id.topdie
         )
         this.bottomDie = ClassicDie(
                 this,
-                this.findViewById(R.id.bottomdie) as ImageView,
+                this.findViewById(R.id.bottomdie),
                 loadTheme(this.prefs!!),
                 "" + R.id.bottomdie,
                 wiggleAnimationResource = R.anim.wigglereverse
@@ -77,7 +77,7 @@ class TwoDiceActivity : BaseActivity() {
         // Define the OnClickListeners for the menu buttons
         initializeSettingsButton(this)
         initializeBottomMenuBar(this)
-        this.findViewById(R.id.two_dice_activity).setOnClickListener { }
+        this.findViewById<View>(R.id.two_dice_activity).setOnClickListener { }
     }
 
     /**

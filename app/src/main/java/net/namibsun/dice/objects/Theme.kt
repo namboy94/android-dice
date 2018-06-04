@@ -36,8 +36,12 @@ import net.namibsun.dice.R
  * @param changeAnimation: Can be set to true to enable an animation that
  *                         changes the eyes of the die while it is rolling
  */
-class Theme(val style: ThemeStyles, val vibrate: Boolean,
-            val wiggleAnimation: Boolean, val changeAnimation: Boolean) {
+class Theme(
+    val style: ThemeStyles,
+    val vibrate: Boolean,
+    val wiggleAnimation: Boolean,
+    val changeAnimation: Boolean
+) {
 
     /**
      * Calculates the Theme's colour values

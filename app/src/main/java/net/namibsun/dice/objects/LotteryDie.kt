@@ -43,16 +43,24 @@ enum class LotteryDieType(val limit: Int) {
  * @param toggle: The toggle used to identify if weight values should be generated
  * @param wiggleAnimationResource: Overrides the wiggle animation if set
  */
-class LotteryDie(context: BaseActivity,
-                 view: TextView,
-                 theme: Theme,
-                 storedValueKey: String,
-                 private val lotteryType: LotteryDieType,
-                 private val toggle: ToggleButton,
-                 wiggleAnimationResource: Int = R.anim.wiggle) :
-        TextDie(context, view, theme, storedValueKey,
-                initialValue = 1, limit = lotteryType.limit, minimum = 1,
-                wiggleAnimationResource = wiggleAnimationResource) {
+class LotteryDie(
+    context: BaseActivity,
+    view: TextView,
+    theme: Theme,
+    storedValueKey: String,
+    private val lotteryType: LotteryDieType,
+    private val toggle: ToggleButton,
+    wiggleAnimationResource: Int = R.anim.wiggle
+) : TextDie(
+        context,
+        view,
+        theme,
+        storedValueKey,
+        initialValue = 1,
+        limit = lotteryType.limit,
+        minimum = 1,
+        wiggleAnimationResource = wiggleAnimationResource
+) {
 
     /**
      * The Weighted list of numbers in case weighted values should be generated

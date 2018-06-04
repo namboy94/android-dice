@@ -24,6 +24,7 @@ package net.namibsun.dice.helpers
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import net.namibsun.dice.R
 import net.namibsun.dice.activities.LotteryActivity
 import net.namibsun.dice.activities.MainActivity
@@ -37,7 +38,7 @@ import net.namibsun.dice.activities.TwoDiceActivity
  * @param context: The activity that calls this method
  */
 fun initializeSettingsButton(context: AppCompatActivity) {
-    context.findViewById(R.id.settings).setOnClickListener {
+    context.findViewById<View>(R.id.settings).setOnClickListener {
         context.startActivity(Intent(context, SettingsActivity::class.java))
     }
 }
@@ -48,19 +49,19 @@ fun initializeSettingsButton(context: AppCompatActivity) {
  * @param context: The activity that calls this method
  */
 fun initializeBottomMenuBar(context: AppCompatActivity) {
-    context.findViewById(R.id.single_die_activity).setOnClickListener {
+    context.findViewById<View>(R.id.single_die_activity).setOnClickListener {
         context.startActivity(Intent(context, MainActivity::class.java))
     }
-    context.findViewById(R.id.two_dice_activity).setOnClickListener {
+    context.findViewById<View>(R.id.two_dice_activity).setOnClickListener {
         context.startActivity(Intent(context, TwoDiceActivity::class.java))
     }
-    context.findViewById(R.id.risk_dice_activity).setOnClickListener {
+    context.findViewById<View>(R.id.risk_dice_activity).setOnClickListener {
         context.startActivity(Intent(context, RiskDiceActivity::class.java))
     }
-    context.findViewById(R.id.text_dice_activity).setOnClickListener {
+    context.findViewById<View>(R.id.text_dice_activity).setOnClickListener {
         context.startActivity(Intent(context, TextDieActivity::class.java))
     }
-    context.findViewById(R.id.lottery_activity).setOnClickListener {
+    context.findViewById<View>(R.id.lottery_activity).setOnClickListener {
         context.startActivity(Intent(context, LotteryActivity::class.java))
     }
 }

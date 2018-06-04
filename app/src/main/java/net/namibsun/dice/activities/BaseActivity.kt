@@ -22,11 +22,13 @@ along with dice-roller. If not, see <http://www.gnu.org/licenses/>.
 
 package net.namibsun.dice.activities
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 
+@SuppressLint("Registered")
 open class BaseActivity : AppCompatActivity() {
 
     /**

@@ -39,16 +39,25 @@ import net.namibsun.dice.activities.BaseActivity
  * @param minimum: The lower limit of the die
  * @param wiggleAnimationResource: Overrides the wiggle animation if set
  */
-open class TextDie(context: BaseActivity,
-                   view: TextView,
-                   theme: Theme,
-                   storedValueKey: String,
-                   initialValue: Int = 0,
-                   limit: Int = 0,
-                   minimum: Int = 0,
-                   wiggleAnimationResource: Int = R.anim.wiggle) :
-        Die(context, view, theme, storedValueKey, initialValue = initialValue, limit = limit,
-                minimum = minimum, wiggleAnimationResource = wiggleAnimationResource) {
+open class TextDie(
+    context: BaseActivity,
+    view: TextView,
+    theme: Theme,
+    storedValueKey: String,
+    initialValue: Int = 0,
+    limit: Int = 0,
+    minimum: Int = 0,
+    wiggleAnimationResource: Int = R.anim.wiggle
+) : Die(
+        context,
+        view,
+        theme,
+        storedValueKey,
+        initialValue = initialValue,
+        limit = limit,
+        minimum = minimum,
+        wiggleAnimationResource = wiggleAnimationResource
+) {
 
     /**
      * Draws the current value of the Die as a TextView, applying the current theme

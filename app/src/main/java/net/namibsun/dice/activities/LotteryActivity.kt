@@ -86,10 +86,10 @@ class LotteryActivity : BaseActivity() {
         this.setContentView(R.layout.lottery)
         initializeBottomMenuBar(this)
         initializeSettingsButton(this)
-        this.findViewById(R.id.lottery_activity).setOnClickListener { }
+        this.findViewById<View>(R.id.lottery_activity).setOnClickListener { }
 
         for (toggle in listOf(R.id.weighted_lottery_toggle, R.id.eurojackpot_toggle)) {
-            val toggleButton = this.findViewById(toggle) as ToggleButton
+            val toggleButton = this.findViewById<ToggleButton>(toggle)
             toggleButton.isChecked = this.prefs!!.getBoolean("$toggle", false)
             toggleButton.setOnCheckedChangeListener {
                 _, isChecked -> this.prefs!!.edit()
@@ -102,7 +102,7 @@ class LotteryActivity : BaseActivity() {
         }
 
         this.switchlotteryType(
-                (this.findViewById(R.id.eurojackpot_toggle) as ToggleButton).isChecked
+                this.findViewById<ToggleButton>(R.id.eurojackpot_toggle).isChecked
         )
 
         for (combination in listOf(
@@ -116,11 +116,11 @@ class LotteryActivity : BaseActivity() {
             combination.first.mapTo(combination.second) {
                 LotteryDie(
                         this,
-                        this.findViewById(it) as TextView,
+                        this.findViewById(it),
                         loadTheme(this.prefs!!),
                         "$it",
                         combination.third,
-                        this.findViewById(R.id.weighted_lottery_toggle) as ToggleButton
+                        this.findViewById(R.id.weighted_lottery_toggle)
                 )
             }
         }
@@ -173,9 +173,9 @@ class LotteryActivity : BaseActivity() {
      * @param euroJackpotToggleState: The state of the eurojackpot toggle button
      */
     private fun switchlotteryType(euroJackpotToggleState: Boolean) {
-        val normal = this.findViewById(R.id.lottery_numbers)
+        val normal = this.findViewById<View>(R.id.lottery_numbers)
         val eurojackpot =
-                this.findViewById(R.id.eurojackpot_lottery_numbers)
+                this.findViewById<View>(R.id.eurojackpot_lottery_numbers)
         if (euroJackpotToggleState) {
             normal.visibility = View.INVISIBLE
             eurojackpot.visibility = View.VISIBLE

@@ -37,14 +37,23 @@ import net.namibsun.dice.activities.BaseActivity
  * @param initialValue: The initial value of the die
  * @param wiggleAnimationResource: Can be used to override the default wiggle animation
  */
-open class ClassicDie(context: BaseActivity,
-                      view: ImageView,
-                      theme: Theme,
-                      storedValueKey: String,
-                      initialValue: Int = 5,
-                      wiggleAnimationResource: Int = R.anim.wiggle) :
-        Die(context, view, theme, storedValueKey, initialValue = initialValue,
-                limit = 6, minimum = 1, wiggleAnimationResource = wiggleAnimationResource) {
+open class ClassicDie(
+    context: BaseActivity,
+    view: ImageView,
+    theme: Theme,
+    storedValueKey: String,
+    initialValue: Int = 5,
+    wiggleAnimationResource: Int = R.anim.wiggle
+) : Die (
+        context,
+        view,
+        theme,
+        storedValueKey,
+        initialValue = initialValue,
+        limit = 6,
+        minimum = 1,
+        wiggleAnimationResource = wiggleAnimationResource
+) {
 
     /**
      * Draws the currently selected image resource

@@ -23,7 +23,7 @@ along with dice-roller. If not, see <http://www.gnu.org/licenses/>.
 package net.namibsun.dice.activities
 
 import android.os.Bundle
-import android.widget.ImageView
+import android.view.View
 import net.namibsun.dice.objects.ClassicDie
 import net.namibsun.dice.R
 import net.namibsun.dice.helpers.initializeBottomMenuBar
@@ -53,7 +53,7 @@ class MainActivity : BaseActivity() {
         // Get the die views and assign OnClickListeners, as well as initialize the die
         this.die = ClassicDie(
                 this,
-                this.findViewById(R.id.die) as ImageView,
+                this.findViewById(R.id.die),
                 loadTheme(this.prefs!!),
                 "" + R.id.die
         )
@@ -61,7 +61,7 @@ class MainActivity : BaseActivity() {
         // Define the OnClickListeners for the menu buttons
         initializeSettingsButton(this)
         initializeBottomMenuBar(this)
-        this.findViewById(R.id.single_die_activity).setOnClickListener { }
+        this.findViewById<View>(R.id.single_die_activity).setOnClickListener { }
     }
 
     /**
