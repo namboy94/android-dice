@@ -1,8 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
-Copyright 2017 Hermann Krumrey<hermann@krumreyh.com>
+/*
+Copyright 2015 Hermann Krumrey
 
 This file is part of dice-roller.
+
+dice-roller is an Android app that allows a user to roll a virtual
+die. Multiple configurations are supported
 
 dice-roller is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -15,17 +17,14 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with dice-roller.  If not, see <http://www.gnu.org/licenses/>.
--->
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
+along with dice-roller. If not, see <http://www.gnu.org/licenses/>.
+*/
 
-    <corners
-        android:radius="10px"/>
+apply plugin: 'org.jetbrains.dokka-android'
 
-    <solid android:color="@color/classic_base"/>
-
-    <size android:height="100dp"
-        android:width="100dp"/>
-
-</shape>
+dokka {
+    outputFormat = 'javadoc'
+    outputDirectory = "$buildDir/javadoc"
+    skipEmptyPackages = true
+    noStdlibLink = true
+}

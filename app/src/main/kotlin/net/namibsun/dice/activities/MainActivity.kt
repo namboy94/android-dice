@@ -1,26 +1,29 @@
 /*
-Copyright 2015-2018 Hermann Krumrey<hermann@krumreyh.com>
+Copyright 2015 Hermann Krumrey
 
-This file is part of android-dice.
+This file is part of dice-roller.
 
-android-dice is free software: you can redistribute it and/or modify
+dice-roller is an Android app that allows a user to roll a virtual
+die. Multiple configurations are supported
+
+dice-roller is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-android-dice is distributed in the hope that it will be useful,
+dice-roller is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with android-dice.  If not, see <http://www.gnu.org/licenses/>.
+along with dice-roller. If not, see <http://www.gnu.org/licenses/>.
 */
 
 package net.namibsun.dice.activities
 
 import android.os.Bundle
-import android.widget.ImageView
+import android.view.View
 import net.namibsun.dice.objects.ClassicDie
 import net.namibsun.dice.R
 import net.namibsun.dice.helpers.initializeBottomMenuBar
@@ -50,7 +53,7 @@ class MainActivity : BaseActivity() {
         // Get the die views and assign OnClickListeners, as well as initialize the die
         this.die = ClassicDie(
                 this,
-                this.findViewById(R.id.die) as ImageView,
+                this.findViewById(R.id.die),
                 loadTheme(this.prefs!!),
                 "" + R.id.die
         )
@@ -58,7 +61,7 @@ class MainActivity : BaseActivity() {
         // Define the OnClickListeners for the menu buttons
         initializeSettingsButton(this)
         initializeBottomMenuBar(this)
-        this.findViewById(R.id.single_die_activity).setOnClickListener { }
+        this.findViewById<View>(R.id.single_die_activity).setOnClickListener { }
     }
 
     /**

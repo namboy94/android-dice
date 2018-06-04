@@ -1,26 +1,30 @@
 /*
-Copyright 2015-2018 Hermann Krumrey<hermann@krumreyh.com>
+Copyright 2015 Hermann Krumrey
 
-This file is part of android-dice.
+This file is part of dice-roller.
 
-android-dice is free software: you can redistribute it and/or modify
+dice-roller is an Android app that allows a user to roll a virtual
+die. Multiple configurations are supported
+
+dice-roller is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-android-dice is distributed in the hope that it will be useful,
+dice-roller is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with android-dice.  If not, see <http://www.gnu.org/licenses/>.
+along with dice-roller. If not, see <http://www.gnu.org/licenses/>.
 */
 
 package net.namibsun.dice.activities
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.View
 import android.widget.CheckBox
 import android.widget.RadioGroup
 import net.namibsun.dice.R
@@ -60,18 +64,18 @@ class SettingsActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         this.setContentView(net.namibsun.dice.R.layout.settings)
 
-        this.findViewById(net.namibsun.dice.R.id.ok_button).setOnClickListener {
+        this.findViewById<View>(net.namibsun.dice.R.id.ok_button).setOnClickListener {
             this.storeAndReturn()
         }
 
         this.vibrateCheck =
-                this.findViewById(net.namibsun.dice.R.id.vibrate_check) as CheckBox
+                this.findViewById(net.namibsun.dice.R.id.vibrate_check)
         this.styleGroup =
-                this.findViewById(net.namibsun.dice.R.id.style_select_group) as RadioGroup
+                this.findViewById(net.namibsun.dice.R.id.style_select_group)
         this.wiggleAnimationCheck =
-                this.findViewById(net.namibsun.dice.R.id.wiggle_animation_check) as CheckBox
+                this.findViewById(net.namibsun.dice.R.id.wiggle_animation_check)
         this.changeAnimationCheck =
-                this.findViewById(net.namibsun.dice.R.id.change_animation_check) as CheckBox
+                this.findViewById(net.namibsun.dice.R.id.change_animation_check)
 
         val style = ThemeStyles.valueOf(this.prefs!!.getString("style", "CLASSIC"))
         val vibrate = this.prefs!!.getBoolean("vibrate", true)
@@ -96,8 +100,8 @@ class SettingsActivity : BaseActivity() {
     private fun storeAndReturn() {
         val editor = this.prefs!!.edit()
 
-        val radioGroup = this.findViewById(net.namibsun.dice.R.id.style_select_group) as RadioGroup
-        val selected = this.findViewById(radioGroup.checkedRadioButtonId)
+        val radioGroup = this.findViewById<RadioGroup>(net.namibsun.dice.R.id.style_select_group)
+        val selected = this.findViewById<View>(radioGroup.checkedRadioButtonId)
         val styleName: String = selected.tag as String
 
         editor.putString("style", styleName)
